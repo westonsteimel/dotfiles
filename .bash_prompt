@@ -56,7 +56,7 @@ prompt_git() {
 
 		[ -n "${s}" ] && s=" [${s}]";
 
-		echo -e "${1}${branchName}${COLOR_LIGHT_BLUE}${s}";
+		echo -e "${1}${branchName}${light_blue}${s}";
 	else
 		return;
 	fi;
@@ -64,27 +64,27 @@ prompt_git() {
 
 #Prompt setup
 
-COLOR_NC='\e[0m' # No Color
-COLOR_WHITE='\e[1;37m'
-COLOR_BLACK='\e[0;30m'
-COLOR_BLUE='\e[0;34m'
-COLOR_LIGHT_BLUE='\e[1;34m'
-COLOR_GREEN='\e[0;32m'
-COLOR_LIGHT_GREEN='\e[1;32m'
-COLOR_CYAN='\e[0;36m'
-COLOR_LIGHT_CYAN='\e[1;36m'
-COLOR_RED='\e[0;31m'
-COLOR_LIGHT_RED='\e[1;31m'
-COLOR_PURPLE='\e[0;35m'
-COLOR_LIGHT_PURPLE='\e[1;35m'
-COLOR_BROWN='\e[0;33m'
-COLOR_YELLOW='\e[1;33m'
-COLOR_GRAY='\e[0;30m'
-COLOR_LIGHT_GRAY='\e[0;37m'
+reset="\\e[0m" # No Color
+white="\\e[1;37m"
+black="\\e[0;30m"
+blue="\\e[0;34m"
+light_blue="\\e[1;34m"
+green="\\e[0;32m"
+light_green="\\e[1;32m"
+cyan="\\e[0;36m"
+light_cyan="\\e[1;36m"
+red="\\e[0;31m"
+light_red="\\e[1;31m"
+purple="\\e[0;35m"
+light_purple="\\e[1;35m"
+brown="\\e[0;33m"
+yellow="\\e[1;33m"
+gray="\\e[0;30m"
+light_gray="\\e[0;37m"
 
 
-PS1="\\[${COLOR_LIGHT_RED}\\]\\u\\[${COLOR_WHITE}\\]@\\[${COLOR_LIGHT_CYAN}\\]\\h \\[${COLOR_PURPLE}\\]\w\$(prompt_git \"\\[${COLOR_WHITE}\\] on \\[${COLOR_LIGHT_GREEN}\\]\")\\[${COLOR_LIGHT_BLUE}\\] \$\\[${COLOR_NC}\\] ";
+PS1="\\[${light_red}\\]\\u\\[${white}\\]@\\[${light_cyan}\\]\\h \\[${purple}\\]\\w\$(prompt_git \"\\[${white}\\] on \\[${light_green}\\]\")\\[${light_blue}\\]\\n\\$\\[${reset}\\] ";
 export PS1;
 
-PS2="\\[${COLOR_YELLOW}\\]→ \\[${COLOR_NC}\\]";
+PS2="\\[${yellow}\\]→ \\[${reset}\\]";
 export PS2;
