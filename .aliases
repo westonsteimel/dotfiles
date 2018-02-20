@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Linux specific aliases
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+# Shortcuts
+alias dl="cd ~/Downloads"
+alias h="history"
+
+# untar
+alias untar='tar xvzf'
