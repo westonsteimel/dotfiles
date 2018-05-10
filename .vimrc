@@ -13,13 +13,16 @@ Plug 'scrooloose/nerdtree'
 Plug 'tomasr/molokai'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'tpope/vim-fugitive'
 Plug 'chriskempson/base16-vim'
+" Plugin 'davidhalter/jedi-vim'
 call plug#end()
 
 syntax on
 colorscheme molokai
+"let base16colorspace=256  " Access colors present in 256 colorspace
+"colorscheme base16-monokai
 
 let g:rehash256 = 1
 let g:pymode_rope = 0
