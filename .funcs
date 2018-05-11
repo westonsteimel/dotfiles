@@ -1,7 +1,7 @@
  #!/bin/sh
 
 fork_sync() {
-    for repo in $GITHUB_REPO_ROOT/{faas,faas-cli,faas-netes,cilium,QuantLib,QuantLib-SWIG,runc,containerd}; do
+    for repo in $GITHUB_REPO_ROOT/{faas,faas-cli,faas-netes,cilium,QuantLib,QuantLib-SWIG,runc,containerd,kubernetes,minikube,go,moby,buildkit,img}; do
         echo "Syncing fork in $repo"
         cd "$repo"
         git pull upstream master
