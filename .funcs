@@ -1,6 +1,6 @@
  #!/bin/sh
 
-fork_sync() {
+fork-sync() {
     for repo in $GITHUB_REPO_ROOT/{faas,faas-cli,faas-netes,cilium,QuantLib,QuantLib-SWIG,runc,containerd,kubernetes,minikube,go,moby,buildkit,img}; do
         echo "Syncing fork in $repo"
         cd "$repo"
@@ -16,7 +16,12 @@ update() {
     yay -Syu
 }
 
-update_k8s() {
+clean() {
+    echo "Cleaning the Arch Linux and AUR package cache via yay..."
+    yay -Sc
+}
+
+update-k8s() {
     echo "Updating kubectl..."
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
     chmod +x ./kubectl
@@ -28,13 +33,13 @@ update_k8s() {
     sudo mv minikube /usr/local/bin/
 }
 
-update_faas() {
+update-faas() {
     echo "Updating OpenFaaS CLI..."
     curl -sSL https://cli.openfaas.com | sudo sh
 }
 
-update_all() {
+update-all() {
     update
-    update_k8s
-    update_faas
+    update-k8s
+    update-faas
 }
