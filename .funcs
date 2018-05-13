@@ -1,8 +1,9 @@
- #!/bin/sh
+#!/bin/sh
 
 fork-sync() {
-    for repo in $GITHUB_REPO_ROOT/{faas,faas-cli,faas-netes,cilium,QuantLib,QuantLib-SWIG,runc,containerd,kubernetes,minikube,go,moby,buildkit,img,spark,envoy,hadoop}; do
-        cd "$repo"
+    while IFS=, read -d, -r GITHUB_FORKS; do
+	repo=$GITHUB_FORKS    
+        cd "$GITHUB_REPO_ROOT/$repo"
         curr_branch=$(git rev-parse --abbrev-ref HEAD)
         if [ $curr_branch = "master" ]; then
             echo "Syncing fork in $repo..."
@@ -13,7 +14,7 @@ fork-sync() {
         fi
         unset curr_branch
         cd -
-    done
+    done <<< "${GITHUB_FORKS,+"${GITHUB_FORKS},"}"
     unset repo
 }
 
