@@ -8,7 +8,15 @@ fork-sync() {
         if [ $curr_branch = "master" ]; then
             echo "Syncing fork in $repo..."
             git pull upstream master
-            git push origin master
+            changed=$(git log origin/master..master)
+
+            if [ -n "${changed}" ]; then
+                echo "Pushing changes to origin..."
+                git push origin master
+            else
+                echo "No changes"
+            fi
+            unset changed
         else
             echo "Working in branch $curr_branch.  Not Syncing"
         fi
@@ -46,6 +54,16 @@ update-faas() {
     echo "Updating OpenFaaS CLI..."
     curl -sSL https://cli.openfaas.com | sudo sh
     faas version
+}
+
+update-img() {
+    echo "Installing latest img binary..."
+    sudo curl -L https://github.com/genuinetools/img/releases/download/v0.4.2/img-linux-amd64 -o /usr/local/bin/img
+    # Verify the sha256sum
+    export SHASUM=$(curl -L https://github.com/genuinetools/img/releases/download/v0.4.2/img-linux-amd64.sha256 | awk '{ print $1 }')
+    if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/img | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
+    sudo chmod a+x /usr/local/bin/img
+    echo "img installed!"
 }
 
 update-all() {
