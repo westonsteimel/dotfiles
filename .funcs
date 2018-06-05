@@ -68,6 +68,18 @@ update-img() {
     echo "img installed!"
 }
 
+update-reg() {
+    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/genuinetools/reg/releases/latest)
+    LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    echo "Installing reg version ${LATEST_VERSION}..."
+    sudo curl -L https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64 -o /usr/local/bin/reg
+    # Verify the sha256sum
+    export SHASUM=$(curl -L https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64.sha256 | awk '{ print $1 }')
+    if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/img | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
+    sudo chmod a+x /usr/local/bin/reg
+    echo "reg installed!"
+}
+
 update-all() {
     update
     update-k8s
