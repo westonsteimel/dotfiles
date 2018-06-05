@@ -57,10 +57,12 @@ update-faas() {
 }
 
 update-img() {
-    echo "Installing latest img binary..."
-    sudo curl -L https://github.com/genuinetools/img/releases/download/v0.4.2/img-linux-amd64 -o /usr/local/bin/img
+    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/genuinetools/img/releases/latest)
+    LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    echo "Installing img version ${LATEST_VERSION}..."
+    sudo curl -L https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64 -o /usr/local/bin/img
     # Verify the sha256sum
-    export SHASUM=$(curl -L https://github.com/genuinetools/img/releases/download/v0.4.2/img-linux-amd64.sha256 | awk '{ print $1 }')
+    export SHASUM=$(curl -L https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64.sha256 | awk '{ print $1 }')
     if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/img | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
     sudo chmod a+x /usr/local/bin/img
     echo "img installed!"
