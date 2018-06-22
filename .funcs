@@ -1,8 +1,9 @@
 #!/bin/sh
 
 fork-sync() {
-    while IFS=, read -d, -r GITHUB_FORKS; do
-	repo=$GITHUB_FORKS    
+    forks=$GITHUB_FORKS
+    while IFS=, read -d, -r forks; do
+	repo=$forks    
         cd "$GITHUB_REPO_ROOT/$repo"
         curr_branch=$(git rev-parse --abbrev-ref HEAD)
         if [ $curr_branch = "master" ]; then
@@ -22,8 +23,9 @@ fork-sync() {
         fi
         unset curr_branch
         cd -
-    done <<< "${GITHUB_FORKS,+"${GITHUB_FORKS},"}"
+    done <<< "${forks,+"${forks},"}"
     unset repo
+    unset forks
 }
 
 update() {
