@@ -1,3 +1,15 @@
+URxvt*font: xft:DejaVu Sans Mono:size=14
+URxvt*scrollBar_right: true
+URxvt*thickness: 12
+Xft*antialias: true
+Xft*hinting: true
+
+!Perl extensions
+URxvt.perl-ext-common: default,selection-to-clipboard,keyboard-select
+URxvt.url-launcher: /usr/bin/google-chrome-unstable
+URxvt.matcher.button: 1
+URxvt.underlineURLs: true
+URxvt.clipboard.autocopy: true
 ! Base16 Summerfruit Dark
 ! Scheme: Christopher Corley (http://christop.club/)
 
