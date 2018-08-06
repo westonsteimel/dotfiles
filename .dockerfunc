@@ -1029,6 +1029,7 @@ visualstudio(){
 	docker run -d \
 		-v /etc/localtime:/etc/localtime:ro \
 		-v /tmp/.X11-unix:/tmp/.X11-unix  \
+		-v "${HOME}/.vscode:/home/user/.vscode" \
 		-e "DISPLAY=unix${DISPLAY}" \
 		--device /dev/dri \
 		--name visualstudio \
