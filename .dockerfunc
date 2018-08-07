@@ -245,7 +245,7 @@ firefox(){
 		--device /dev/snd \
 		--device /dev/dri \
 		--name firefox \
-		${DOCKER_REPO_PREFIX}/firefox:alpine sh "$@"
+		${DOCKER_REPO_PREFIX}/firefox "$@"
 
 	# exit current shell
 	exit 0

@@ -7,7 +7,7 @@ bin: ## Installs the bin directory files.
 	mkdir -p ${HOME}/bin
 	for file in $(shell find $(CURDIR)/bin -type f -not -name "*backlight" -not -name ".*.swp"); do \
 		f=$$(basename $$file); \
-		ln -sf $$file ${HOME}/bin/$$f; \
+		sudo ln -sf $$file /usr/local/bin/$$f; \
 	done	
 
 .PHONY: dotfiles
