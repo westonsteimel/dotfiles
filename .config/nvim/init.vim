@@ -1,6 +1,4 @@
 set nocompatible              " be iMproved, required
-filetype off
-filetype plugin indent on
 
 set noerrorbells
 set number
