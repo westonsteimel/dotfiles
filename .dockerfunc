@@ -227,7 +227,8 @@ dcos(){
 firefox(){
 	del_stopped firefox
 
-	docker run -d \
+	docker run -it \
+		--rm
 		--memory 2gb \
 		--net host \
 		--cpuset-cpus 0 \
@@ -244,7 +245,7 @@ firefox(){
 		--device /dev/snd \
 		--device /dev/dri \
 		--name firefox \
-		${DOCKER_REPO_PREFIX}/firefox "$@"
+		${DOCKER_REPO_PREFIX}/firefox:alpine sh "$@"
 
 	# exit current shell
 	exit 0
@@ -364,18 +365,18 @@ kernel_builder(){
 		--name kernel-builder \
 		${DOCKER_REPO_PREFIX}/kernel-builder
 }
-keypassxc(){
-	del_stopped keypassxc
-
-	docker run -d \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-v /usr/share/X11/xkb:/usr/share/X11/xkb:ro \
-		-e "DISPLAY=unix${DISPLAY}" \
-		-v /etc/machine-id:/etc/machine-id:ro \
-		--name keypassxc \
-		${DOCKER_REPO_PREFIX}/keepassxc
-}
+#keypassxc(){
+#	del_stopped keypassxc
+#
+#	docker run -d \
+#		-v /etc/localtime:/etc/localtime:ro \
+#		-v /tmp/.X11-unix:/tmp/.X11-unix \
+#		-v /usr/share/X11/xkb:/usr/share/X11/xkb:ro \
+#		-e "DISPLAY=unix${DISPLAY}" \
+#		-v /etc/machine-id:/etc/machine-id:ro \
+#		--name keypassxc \
+#		${DOCKER_REPO_PREFIX}/keepassxc
+#}
 kvm(){
 	del_stopped kvm
 	relies_on pulseaudio
@@ -794,23 +795,23 @@ skype(){
 		--name skype \
 		${DOCKER_REPO_PREFIX}/skype
 }
-slack(){
-	del_stopped slack
-
-	docker run -d \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-e "DISPLAY=unix${DISPLAY}" \
-		--device /dev/snd \
-		--device /dev/dri \
-		--device /dev/video0 \
-		--group-add audio \
-		--group-add video \
-		-v "${HOME}/.slack:/root/.config/Slack" \
-		--ipc="host" \
-		--name slack \
-		${DOCKER_REPO_PREFIX}/slack "$@"
-}
+#slack(){
+#	del_stopped slack
+#
+#	docker run -d \
+#		-v /etc/localtime:/etc/localtime:ro \
+#		-v /tmp/.X11-unix:/tmp/.X11-unix \
+#		-e "DISPLAY=unix${DISPLAY}" \
+#		--device /dev/snd \
+#		--device /dev/dri \
+#		--device /dev/video0 \
+#		--group-add audio \
+#		--group-add video \
+#		-v "${HOME}/.slack:/root/.config/Slack" \
+#		--ipc="host" \
+#		--name slack \
+#		${DOCKER_REPO_PREFIX}/slack "$@"
+#}
 spotify(){
 	del_stopped spotify
 
