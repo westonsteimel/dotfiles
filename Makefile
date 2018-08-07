@@ -20,7 +20,7 @@ dotfiles: ## Installs the dotfiles.
 	mkdir -p $(HOME)/.config/nvim;
 	ln -snf $(CURDIR)/.i3 $(HOME)/.i3;
 	ln -snf $(CURDIR)/.bash_profile $(HOME)/.bash_profile;
-	ln -snf $(CURDIR)/.config/nvim/init.vim $(HOME)/.config/nvim/init.vim
+	ln -snf $(CURDIR)/.config/nvim/init.vim $(HOME)/.config/nvim/init.vim;
 
 .PHONY: test
 test: shellcheck ## Runs all the tests on the files in the repository.
