@@ -64,7 +64,7 @@ install_golang() {
 	local user="$USER"
 	# rebuild stdlib for faster builds
 	sudo chown -R "${user}" /usr/local/go/pkg
-	CGO_ENABLED=0 go install -a -installsuffix cgo std
+	CGO_ENABLED=0 /usr/local/go/bin/go install -a -installsuffix cgo std
 	)
 
 	# get commandline tools
@@ -94,8 +94,8 @@ main() {
 		get_user
 	elif [[ $cmd == "rust" ]]; then
 		install_rust
-	#elif [[ $cmd == "golang" ]]; then
-	#	install_golang "$2"
+	elif [[ $cmd == "golang" ]]; then
+		install_golang "$2"
 	fi
 }
 
