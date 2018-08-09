@@ -224,29 +224,6 @@ dcos(){
 		-w /root/apps \
 		${DOCKER_REPO_PREFIX}/dcos-cli "$@"
 }
-firefox(){
-	del_stopped firefox
-
-	docker run -d \
-		--rm \
-		--memory 2gb \
-		--net host \
-		--cpuset-cpus 0 \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-v "${HOME}/.firefox/cache:/root/.cache/mozilla" \
-		-v "${HOME}/.firefox/mozilla:/root/.mozilla" \
-		-v "${HOME}/Downloads:/root/Downloads" \
-		-v "${HOME}/Pictures:/root/Pictures" \
-		-v "${HOME}/Torrents:/root/Torrents" \
-		-e "DISPLAY=unix${DISPLAY}" \
-		-e GDK_SCALE \
-		-e GDK_DPI_SCALE \
-		--device /dev/snd \
-		--device /dev/dri \
-		--name firefox \
-		${DOCKER_REPO_PREFIX}/firefox "$@"
-}
 fleetctl(){
 	docker run --rm -it \
 		--entrypoint fleetctl \
@@ -792,23 +769,6 @@ skype(){
 		--name skype \
 		${DOCKER_REPO_PREFIX}/skype
 }
-#slack(){
-#	del_stopped slack
-#
-#	docker run -d \
-#		-v /etc/localtime:/etc/localtime:ro \
-#		-v /tmp/.X11-unix:/tmp/.X11-unix \
-#		-e "DISPLAY=unix${DISPLAY}" \
-#		--device /dev/snd \
-#		--device /dev/dri \
-#		--device /dev/video0 \
-#		--group-add audio \
-#		--group-add video \
-#		-v "${HOME}/.slack:/root/.config/Slack" \
-#		--ipc="host" \
-#		--name slack \
-#		${DOCKER_REPO_PREFIX}/slack "$@"
-#}
 spotify(){
 	del_stopped spotify
 
@@ -1021,19 +981,6 @@ virt_viewer(){
 		${DOCKER_REPO_PREFIX}/virt-viewer "$@"
 }
 alias virt-viewer="virt_viewer"
-visualstudio(){
-	del_stopped visualstudio
-
-	docker run -d \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /tmp/.X11-unix:/tmp/.X11-unix  \
-		-v "${HOME}/.vscode:/home/user/.vscode" \
-		-e "DISPLAY=unix${DISPLAY}" \
-		--device /dev/dri \
-		--name visualstudio \
-		${DOCKER_REPO_PREFIX}/vscode
-}
-alias vscode="visualstudio"
 vlc(){
 	del_stopped vlc
 	relies_on pulseaudio
