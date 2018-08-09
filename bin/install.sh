@@ -35,7 +35,7 @@ check_is_sudo() {
 
 # install rust
 install_rust() {
-	curl https://sh.rustup.rs -sSf | sh
+	sudo curl https://sh.rustup.rs -sSf | sh
 }
 
 # install/update golang from source
@@ -68,26 +68,26 @@ install_golang() {
 	)
 
 	# get commandline tools
-	(
-	set -x
-	set +e
-	go get github.com/golang/lint/golint
-	go get golang.org/x/tools/cmd/cover
-	go get golang.org/x/review/git-codereview
-	go get golang.org/x/tools/cmd/goimports
-	go get golang.org/x/tools/cmd/gorename
-	go get golang.org/x/tools/cmd/guru
-	go get honnef.co/go/tools/cmd/staticcheck
-	)
+#	(
+#	set -x
+#	set +e
+#	go get github.com/golang/lint/golint
+#	go get golang.org/x/tools/cmd/cover
+#	go get golang.org/x/review/git-codereview
+#	go get golang.org/x/tools/cmd/goimports
+#	go get golang.org/x/tools/cmd/gorename
+#	go get golang.org/x/tools/cmd/guru
+#	go get honnef.co/go/tools/cmd/staticcheck
+#	)
 }
 
 main() {
 	local cmd=$1
 
-	if [[ -z "$cmd" ]]; then
-		usage
-		exit 1
-	fi
+	#if [[ -z "$cmd" ]]; then
+	#	usage
+	#	exit 1
+	#fi
 
 	if [[ $cmd == "base" ]]; then
 		check_is_sudo

@@ -37,7 +37,7 @@ dcleanup(){
 
 update_docker() {
 	local user_home="/home/${TARGET_USER}"
-	local docker_dir="${user_home}/.go/src/github.com/docker/docker-ce"
+	local docker_dir="${GO_PATH}/src/github.com/docker/docker-ce"
 
 	# stop docker
 	dcleanup || true
@@ -55,42 +55,45 @@ update_docker() {
 		rm -rf bundles
 
 		# move vim syntax highlighting
-		if [[ ! -d "${user_home}/.vim/bundle/Dockerfile" ]]; then
-			mkdir -p "${user_home}/.vim/bundle/Dockerfile"
+		if [[ ! -d "${user_home}/.local/share/nvim/plugged/Dockerfile" ]]; then
+			mkdir -p "${user_home}/.local/share/nvim/plugged/Dockerfile"
 		fi
 		# shellcheck disable=SC2216
-		yes | cp -r contrib/syntax/vim/* "${user_home}/.vim/bundle/Dockerfile/"
-		chown -R "${TARGET_USER}" "${user_home}/.vim/bundle/Dockerfile"
+		yes | cp -r contrib/syntax/vim/* "${user_home}/.local/share/nvim/plugged/Dockerfile/"
+		chown -R "${TARGET_USER}" "${user_home}/.local/share/nvim/plugged/Dockerfile"
 		)
 	fi
 
 	# get the binary
 	local tmp_tar=/tmp/docker.tgz
-	local binary_uri="https://download.docker.com/linux/static/edge/x86_64"
+	local binary_uri="https://download.docker.com/linux/static/nightly/x86_64"
 	local docker_version
-	docker_version=$(curl -sSL "https://api.github.com/repos/docker/docker-ce/releases/latest" | jq --raw-output .tag_name)
-	docker_version=${docker_version#v}
+	#docker_version=$(curl -sSL "https://api.github.com/repos/docker/docker-ce/releases/latest" | jq --raw-output .tag_name)
+    docker_version=$(curl -sSL "https://download.docker.com/linux/static/nightly/x86_64/" | pcregrep -o1 "^\<a href=\"(docker-0.0.0-.*.tgz)\"\>" | sort | tail -n 1
+)
 	# local docker_sha256
 	# docker_sha256=$(curl -sSL "${binary_uri}/docker-${docker_version}.tgz.sha256" | awk '{print $1}')
 	(
 	set -x
-	curl -fSL "${binary_uri}/docker-${docker_version}.tgz" -o "$tmp_tar"
+	curl -fSL "${binary_uri}/${docker_version}" -o "$tmp_tar"
 	# echo "${docker_sha256} ${tmp_tar}" | sha256sum -c -
 	tar -C /usr/local/bin --strip-components 1 -xzvf "$tmp_tar"
 	rm "${tmp_tar}"
 	# remove binaries we don't need
-	rm /usr/local/bin/docker-containerd*
+	#rm /usr/local/bin/docker-containerd*
 	docker -v
 	)
 	chmod +x /usr/local/bin/docker*
 
 	# enable and start docker
-	rc-update add docker default
+	# rc-update add docker default
 	rc-service docker start
 }
 
 update_containerd() {
-	local tmp_tar=/tmp/containerd.tar.gz
+	rc-service containerd stop || true
+    
+    local tmp_tar=/tmp/containerd.tar.gz
 	local containerd_version
 	containerd_version=$(curl -sSL "https://api.github.com/repos/containerd/containerd/releases" | jq --raw-output .[0].tag_name)
 	containerd_version=${containerd_version#v}
@@ -104,7 +107,7 @@ update_containerd() {
 	)
 
 	# enable and start containerd
-	rc-update add containerd default
+	#rc-update add containerd default
 	rc-service containerd start
 }
 
@@ -125,12 +128,12 @@ update_kubectl() {
 	KUBERNETES_VERSION=$(curl -sSL https://storage.googleapis.com/kubernetes-release/release/stable.txt)
 	curl -sSL "https://storage.googleapis.com/kubernetes-release/release/${KUBERNETES_VERSION}/bin/linux/amd64/kubectl" > /usr/local/bin/kubectl
 	chmod +x /usr/local/bin/kubectl
-	echo "kuebctl $(kubectl version --client --short)"
+	echo "kubectl $(kubectl version --client --short)"
 }
 
 update_rust() {
-	su -l -c "rustup update" "$TARGET_USER"
-	su -l -c "rustc --version" "$TARGET_USER"
+    rustup update
+	rustc --version
 }
 
 update() {
@@ -147,10 +150,9 @@ update() {
 		fi
 
 		# update
-		# We'll do these via portage for now and see how it goes
 		#update_runc;
 		#update_containerd;
-		#update_docker;
+		update_docker;
 		update_kubectl;
 		update_rust;
 	else

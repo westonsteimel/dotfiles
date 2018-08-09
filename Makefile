@@ -1,5 +1,16 @@
 .PHONY: all
-all: bin dotfiles ## Installs dotfiles.
+all: etc bin dotfiles ## Installs dotfiles.
+
+.PHONY: etc
+etc: ## Installs the etc directory files.
+	sudo mkdir -p /etc/docker/seccomp
+	for file in $(shell find $(CURDIR)/etc -type f -not -name ".*.swp"); do \
+		f=$$(echo $$file | sed -e 's|$(CURDIR)||'); \
+		sudo mkdir -p $$(dirname $$f); \
+		sudo ln -f $$file $$f; \
+	done
+	#systemctl --user daemon-reload || true
+	#sudo systemctl daemon-reload
 
 .PHONY: bin
 bin: ## Installs the bin directory files.
