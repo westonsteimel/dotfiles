@@ -752,23 +752,23 @@ shorewall(){
 		--name shorewall \
 		${DOCKER_REPO_PREFIX}/shorewall "$@"
 }
-skype(){
-	del_stopped skype
-	relies_on pulseaudio
-
-	docker run -d \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-e "DISPLAY=unix${DISPLAY}" \
-		--link pulseaudio:pulseaudio \
-		-e PULSE_SERVER=pulseaudio \
-		--security-opt seccomp:unconfined \
-		--device /dev/video0 \
-		--group-add video \
-		--group-add audio \
-		--name skype \
-		${DOCKER_REPO_PREFIX}/skype
-}
+#skype(){
+#	del_stopped skype
+#	relies_on pulseaudio
+#
+#	docker run -d \
+#		-v /etc/localtime:/etc/localtime:ro \
+#		-v /tmp/.X11-unix:/tmp/.X11-unix \
+#		-e "DISPLAY=unix${DISPLAY}" \
+#		--link pulseaudio:pulseaudio \
+#		-e PULSE_SERVER=pulseaudio \
+#		--security-opt seccomp:unconfined \
+#		--device /dev/video0 \
+#		--group-add video \
+#		--group-add audio \
+#		--name skype \
+#		${DOCKER_REPO_PREFIX}/skype
+#}
 spotify(){
 	del_stopped spotify
 
@@ -806,8 +806,8 @@ sshb0t(){
 	fi
 
 	GITHUB_USER=${GITHUB_USER:=jessfraz}
-
-	docker run --rm -it \
+    
+    docker run --rm -it \
 		--name sshb0t \
 		-v "${HOME}/.ssh/authorized_keys:/root/.ssh/authorized_keys" \
 		r.j3ss.co/sshb0t \
@@ -1019,28 +1019,28 @@ weeslack(){
 		--name weeslack \
 		${DOCKER_REPO_PREFIX}/wee-slack
 }
-wg(){
-	docker run -i --rm \
-		--log-driver none \
-		-v /tmp:/tmp \
-		--cap-add NET_ADMIN \
-		--net host \
-		--name wg \
-		${DOCKER_REPO_PREFIX}/wg "$@"
-}
-wireshark(){
-	del_stopped wireshark
-
-	docker run -d \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-e "DISPLAY=unix${DISPLAY}" \
-		--cap-add NET_RAW \
-		--cap-add NET_ADMIN \
-		--net host \
-		--name wireshark \
-		${DOCKER_REPO_PREFIX}/wireshark
-}
+#wg(){
+#	docker run -i --rm \
+#		--log-driver none \
+#		-v /tmp:/tmp \
+#		--cap-add NET_ADMIN \
+#		--net host \
+#		--name wg \
+#		${DOCKER_REPO_PREFIX}/wg "$@"
+#}
+#wireshark(){
+#	del_stopped wireshark
+#
+#	docker run -d \
+#		-v /etc/localtime:/etc/localtime:ro \
+#		-v /tmp/.X11-unix:/tmp/.X11-unix \
+#		-e "DISPLAY=unix${DISPLAY}" \
+#		--cap-add NET_RAW \
+#		--cap-add NET_ADMIN \
+#		--net host \
+#		--name wireshark \
+#		${DOCKER_REPO_PREFIX}/wireshark
+#}
 wrk(){
 	docker run -it --rm \
 		--log-driver none \

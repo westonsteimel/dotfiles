@@ -1,0 +1,9 @@
+#!/bin/sh
+
+docker run -i --rm \
+	--log-driver none \
+	-v /tmp:/tmp \
+	--cap-add NET_ADMIN \
+	--net host \
+	--name wg \
+	${DOCKER_REPO_PREFIX}/wg "$@"

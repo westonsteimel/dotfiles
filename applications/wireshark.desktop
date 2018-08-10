@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Wireshark
+Exec=wireshark
+Type=Application
