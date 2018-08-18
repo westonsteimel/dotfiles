@@ -9,7 +9,7 @@
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{goenv,exports,bash_prompt,aliases,funcs}; do
+for file in ~/.{path,goenv,exports,bash_prompt,aliases,dockerfunc}; do
 	if [[ -r "$file" ]] && [[ -f "$file" ]]; then
 		# shellcheck source=/dev/null
 		source "$file"
@@ -40,3 +40,5 @@ done
 	-W "$(grep "^Host" ~/.ssh/config | \
 	grep -v "[?*]" | cut -d " " -f2 | \
 	tr ' ' '\n')" scp sftp ssh
+
+export PATH="$HOME/.cargo/bin:$PATH"

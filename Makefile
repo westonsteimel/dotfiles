@@ -1,5 +1,25 @@
 .PHONY: all
-all: dotfiles ## Installs dotfiles.
+all: etc bin dotfiles ## Installs dotfiles.
+
+.PHONY: etc
+etc: ## Installs the etc directory files.
+	sudo mkdir -p /etc/docker/seccomp
+	for file in $(shell find $(CURDIR)/etc -type f -not -name ".*.swp"); do \
+		f=$$(echo $$file | sed -e 's|$(CURDIR)||'); \
+		sudo mkdir -p $$(dirname $$f); \
+		sudo ln -f $$file $$f; \
+	done
+	#systemctl --user daemon-reload || true
+	#sudo systemctl daemon-reload
+
+.PHONY: bin
+bin: ## Installs the bin directory files.
+	# add aliases for things in bin
+	mkdir -p ${HOME}/bin
+	for file in $(shell find $(CURDIR)/bin -type f -not -name "*backlight" -not -name ".*.swp"); do \
+		f=$$(basename $$file); \
+		sudo ln -sf $$file /usr/local/bin/$$f; \
+	done	
 
 .PHONY: dotfiles
 dotfiles: ## Installs the dotfiles.
@@ -8,9 +28,10 @@ dotfiles: ## Installs the dotfiles.
 		f=$$(basename $$file); \
 		ln -sfn $$file $(HOME)/$$f; \
 	done; \
-	mkdir -p $(HOME)/.config;
+	mkdir -p $(HOME)/.config/nvim;
 	ln -snf $(CURDIR)/.i3 $(HOME)/.i3;
 	ln -snf $(CURDIR)/.bash_profile $(HOME)/.bash_profile;
+	ln -snf $(CURDIR)/.config/nvim/init.vim $(HOME)/.config/nvim/init.vim;
 
 .PHONY: test
 test: shellcheck ## Runs all the tests on the files in the repository.

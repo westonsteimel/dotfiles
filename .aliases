@@ -10,3 +10,4 @@ alias h="history"
 
 # untar
 alias untar='tar xvzf'
+alias vim="nvim"

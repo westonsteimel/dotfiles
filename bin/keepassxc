@@ -1,0 +1,13 @@
+#!/bin/sh
+
+docker run --rm -d \
+    -v /etc/localtime:/etc/localtime:ro \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v /usr/share/X11/xkb:/usr/share/X11/xkb:ro \
+    -e "DISPLAY=unix${DISPLAY}" \
+    -v /etc/machine-id:/etc/machine-id:ro \
+    -v "${HOME}/.keepass:/root/keepass" \
+    -v "${HOME}/.config/keepassxc:/home/root/.config/keepassxc" \
+    --name keepassxc \
+    ${DOCKER_REPO_PREFIX}/keepassxc
+
