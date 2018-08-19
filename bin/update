@@ -124,11 +124,49 @@ update_runc() {
 	)
 }
 
-update_kubectl() {
-	KUBERNETES_VERSION=$(curl -sSL https://storage.googleapis.com/kubernetes-release/release/stable.txt)
+update_k8s() {
+	echo "Updating kubectl..."
+    KUBERNETES_VERSION=$(curl -sSL https://storage.googleapis.com/kubernetes-release/release/stable.txt)
 	curl -sSL "https://storage.googleapis.com/kubernetes-release/release/${KUBERNETES_VERSION}/bin/linux/amd64/kubectl" > /usr/local/bin/kubectl
 	chmod +x /usr/local/bin/kubectl
 	echo "kubectl $(kubectl version --client --short)"
+
+    echo "Updating minikube..."
+    curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    chmod +x minikube
+    sudo mv minikube /usr/local/bin/
+    minikube version
+}
+
+update_faas() {
+    echo "Updating OpenFaaS CLI..."
+    curl -sSL https://cli.openfaas.com | sudo sh
+    faas version
+}
+
+update_img() {
+    echo "Updating Genuine Tools img..."
+    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/genuinetools/img/releases/latest)
+    LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    echo "Installing img version ${LATEST_VERSION}..."
+    sudo curl -L https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64 -o /usr/local/bin/img
+    # Verify the sha256sum
+    export SHASUM=$(curl -L https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64.sha256 | awk '{ print $1 }')
+    if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/img | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
+    sudo chmod a+x /usr/local/bin/img
+    echo "img installed!"
+}
+
+update_reg() {
+    echo "Updating Genuine Tools reg..."
+    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/genuinetools/reg/releases/latest)
+    LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    echo "Installing reg version ${LATEST_VERSION}..."
+    sudo curl -L https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64 -o /usr/local/bin/reg
+    # Verify the sha256sum
+    export SHASUM=$(curl -L https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64.sha256 | awk '{ print $1 }')
+    if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/reg | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
+    sudo chmod a+x /usr/local/bin/reg
 }
 
 update_rust() {
@@ -153,7 +191,9 @@ update() {
 		#update_runc;
 		#update_containerd;
 		update_docker;
-		update_kubectl;
+		update_k8s;
+        update_img;
+        update_faas;
 		update_rust;
 	else
 		echo "We don't have update functions for OS: ${OSTYPE}"
