@@ -7,6 +7,7 @@ docker run --rm \
     -e "Display=unix${DISPLAY}" \
     -e GDK_SCALE \
     -e GDK_DPI_SCALE \
+    -v /dev/shm:/dev/shm \
     --device /dev/snd \
     --name torbrowser \
     ${DOCKER_REPO_PREFIX}/tor-browser
