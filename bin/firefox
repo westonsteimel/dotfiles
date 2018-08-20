@@ -15,6 +15,7 @@ docker run -d \
     -e "DISPLAY=unix${DISPLAY}" \
     -e GDK_SCALE \
     -e GDK_DPI_SCALE \
+    -v /dev/shm:/dev/shm \
     --device /dev/snd \
     --device /dev/dri \
     --name firefox \
