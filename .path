@@ -1,2 +1,2 @@
 export GPG_TTY=$(tty)
-export PATH=/usr/local/bin:/sbin:/usr/sbin/:${PATH}
+export PATH="${HOME}/.cargo/bin:/usr/local/bin:/sbin:/usr/sbin/:${PATH}"
