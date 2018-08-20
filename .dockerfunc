@@ -882,22 +882,22 @@ tor(){
 	# validate we are running through tor
 	browser-exec "https://check.torproject.org/"
 }
-torbrowser(){
-	del_stopped torbrowser
+#torbrowser(){
+#	del_stopped torbrowser
 
-	docker run -d \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-e "DISPLAY=unix${DISPLAY}" \
-		-e GDK_SCALE \
-		-e GDK_DPI_SCALE \
-		--device /dev/snd \
-		--name torbrowser \
-		${DOCKER_REPO_PREFIX}/tor-browser
+#	docker run -d \
+#		-v /etc/localtime:/etc/localtime:ro \
+#		-v /tmp/.X11-unix:/tmp/.X11-unix \
+#		-e "DISPLAY=unix${DISPLAY}" \
+#		-e GDK_SCALE \
+#		-e GDK_DPI_SCALE \
+#		--device /dev/snd \
+#		--name torbrowser \
+#		${DOCKER_REPO_PREFIX}/tor-browser
 
 	# exit current shell
 	#exit 0
-}
+#}
 tormessenger(){
 	del_stopped tormessenger
 
