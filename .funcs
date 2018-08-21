@@ -1,11 +1,25 @@
 #!/bin/sh
 
 fork-sync() {
-    forks=$GITHUB_FORKS
-    while IFS=, read -d, -r forks; do
-	repo=$forks    
-        cd "$GITHUB_REPO_ROOT/$repo"
+    while read -r line; do
+        echo $line
+        repo=$(echo $line | pcregrep -o2 "^(.*)\/(.*)")
+        directory="$GITHUB_PATH/$repo"
+
+        if [ ! -d "$directory" ]; then
+            cd $GITHUB_PATH
+            echo "Cloning repo $GITHUB_USERNAME/$repo..."
+            git clone git@github.com:$GITHUB_USERNAME/$repo.git
+        fi
+
+        cd "$directory"
+        
+        if [ ! $(git config remote.upstream.url) ]; then
+            git remote add upstream git@github.com:$line.git
+        fi
+
         curr_branch=$(git rev-parse --abbrev-ref HEAD)
+
         if [ $curr_branch = "master" ] || [ $curr_branch = "trunk" ] ; then
             echo "Syncing fork in $repo..."
             git pull upstream $curr_branch
@@ -22,8 +36,8 @@ fork-sync() {
             echo "Working in branch $curr_branch.  Not Syncing"
         fi
         unset curr_branch
+        unset repo
+        unset directory
         cd -
-    done <<< "${forks,+"${forks},"}"
-    unset repo
-    unset forks
+    done <$HOME/.github_forks
 }

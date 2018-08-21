@@ -9,7 +9,7 @@
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{env,creds,bash_prompt,aliases,dockerfunc}; do
+for file in ~/.{env,creds,bash_prompt,aliases,funcs,dockerfunc}; do
 	if [[ -r "$file" ]] && [[ -f "$file" ]]; then
 		# shellcheck source=/dev/null
 		source "$file"
