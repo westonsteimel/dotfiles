@@ -127,21 +127,19 @@ update_runc() {
 update_k8s() {
 	echo "Updating kubectl..."
     KUBERNETES_VERSION=$(curl -sSL https://storage.googleapis.com/kubernetes-release/release/stable.txt)
-	curl -sSL "https://storage.googleapis.com/kubernetes-release/release/${KUBERNETES_VERSION}/bin/linux/amd64/kubectl" > /usr/local/bin/kubectl
+	curl -fSL "https://storage.googleapis.com/kubernetes-release/release/${KUBERNETES_VERSION}/bin/linux/amd64/kubectl" > /usr/local/bin/kubectl
 	chmod +x /usr/local/bin/kubectl
 	echo "kubectl $(kubectl version --client --short)"
 
     echo "Updating minikube..."
-    curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-    chmod +x minikube
-    sudo mv minikube /usr/local/bin/
+    curl -fSL "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64" > /usr/local/bin/minikube
+    chmod +x /usr/local/bin/minikube
     minikube version
 }
 
 update_faas() {
     echo "Updating OpenFaaS CLI..."
-    curl -sSL https://cli.openfaas.com | sudo sh
-    faas version
+    curl -fSL https://cli.openfaas.com | sudo sh
 }
 
 update_img() {
