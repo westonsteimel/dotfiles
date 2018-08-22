@@ -39,7 +39,7 @@ opencontainers/runc
 openfaas/faas
 openfaas/faas-cli
 openfaas/faas-netes
-openfaas/templates
+openfaas/templates westonsteimel/openfaas-templates
 pandas-dev/pandas
 prestodb/presto
 python/cpython
@@ -49,6 +49,6 @@ scikit-learn/scikit-learn
 scipy/scipy
 statsmodels/statsmodels
 tensorflow/tensorflow
-um/cilium
+cilium/cilium
 virtual-kubelet/virtual-kubelet
 xfernando/go2seccomp
