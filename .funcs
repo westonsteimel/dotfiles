@@ -29,7 +29,7 @@ fork-sync() {
         curr_branch=$(git rev-parse --abbrev-ref HEAD)
 
         if [ $curr_branch = "master" ] || [ $curr_branch = "trunk" ] ; then
-            echo "Syncing fork in $repo..."
+            echo "Syncing fork in $fork_repo..."
             git pull upstream $curr_branch
             changed=$(git log origin/${curr_branch}..${curr_branch})
 
