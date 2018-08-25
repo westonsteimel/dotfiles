@@ -4,11 +4,11 @@ docker run --rm \
     -d \
     -v /etc/localtime:/etc/localtime:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -e "Display=unix${DISPLAY}" \
+    -e "DISPLAY=unix${DISPLAY}" \
     -e GDK_SCALE \
     -e GDK_DPI_SCALE \
     -v /dev/shm:/dev/shm \
     --device /dev/snd \
     --name torbrowser \
-    ${DOCKER_REPO_PREFIX}/tor-browser
+    ${DOCKER_REPO_PREFIX}/tor-browser:alpha
     
