@@ -49,9 +49,12 @@ pytorch/pytorch
 rust-lang/rust
 scikit-learn/scikit-learn
 scipy/scipy
+servo/servo
 statsmodels/statsmodels
 tensorflow/tensorflow
 torvalds/linux
 cilium/cilium
 virtual-kubelet/virtual-kubelet
+WireGuard/WireGuard
+wireshark/wireshark
 xfernando/go2seccomp
