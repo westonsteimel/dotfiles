@@ -50,6 +50,7 @@ scikit-learn/scikit-learn
 scipy/scipy
 statsmodels/statsmodels
 tensorflow/tensorflow
+torvalds/linux
 cilium/cilium
 virtual-kubelet/virtual-kubelet
 xfernando/go2seccomp
