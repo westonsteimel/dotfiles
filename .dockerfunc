@@ -276,13 +276,6 @@ hollywood(){
 		--name hollywood \
 		${DOCKER_REPO_PREFIX}/hollywood
 }
-htop(){
-	docker run --rm -it \
-		--pid host \
-		--net none \
-		--name htop \
-		${DOCKER_REPO_PREFIX}/htop
-}
 htpasswd(){
 	docker run --rm -it \
 		--net none \
@@ -491,11 +484,6 @@ nes(){
 		--name nes \
 		${DOCKER_REPO_PREFIX}/nes "/games/${game}.rom"
 }
-netcat(){
-	docker run --rm -it \
-		--net host \
-		${DOCKER_REPO_PREFIX}/netcat "$@"
-}
 nginx(){
 	del_stopped nginx
 
@@ -508,11 +496,6 @@ nginx(){
 
 	# add domain to hosts & open nginx
 	sudo hostess add jess 127.0.0.1
-}
-nmap(){
-	docker run --rm -it \
-		--net host \
-		${DOCKER_REPO_PREFIX}/nmap "$@"
 }
 notify_osd(){
 	del_stopped notify_osd

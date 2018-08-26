@@ -1,0 +1,6 @@
+#!/bin/sh
+
+docker run --rm -it \
+    --net host \
+    ${DOCKER_REPO_PREFIX}/nmap "$@"
+

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+docker run --rm -it \
+	--pid host \
+	--net none \
+	--name htop \
+    ${DOCKER_REPO_PREFIX}/htop
