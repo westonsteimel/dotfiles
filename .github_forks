@@ -35,6 +35,7 @@ moby/buildkit
 moby/moby
 neovim/neovim
 nltk/nltk
+nmap/nmap
 numpy/numpy
 offensive-security/kali-linux-docker
 opencontainers/runc
