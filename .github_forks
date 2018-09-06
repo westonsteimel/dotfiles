@@ -43,6 +43,7 @@ openfaas/faas
 openfaas/faas-cli
 openfaas/faas-netes
 openfaas/templates westonsteimel/openfaas-templates
+OWASP/Amass
 pandas-dev/pandas
 prestodb/presto
 python/cpython
