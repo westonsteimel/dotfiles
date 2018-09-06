@@ -10,5 +10,5 @@ docker run --rm \
     -v /dev/shm:/dev/shm \
     --device /dev/snd \
     --name torbrowser \
-    ${DOCKER_REPO_PREFIX}/tor-browser:alpha
+    ${DOCKER_REPO_PREFIX}/tor-browser
     
