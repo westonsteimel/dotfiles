@@ -54,6 +54,7 @@ scikit-learn/scikit-learn
 scipy/scipy
 servo/servo
 statsmodels/statsmodels
+subfinder/subfinder
 tensorflow/tensorflow
 torvalds/linux
 cilium/cilium
