@@ -22,6 +22,7 @@ genuinetools/reg
 gliderlabs/docker-alpine
 golang/go
 google/syzkaller
+hashcat/hashcat
 hashicorp/vault
 junegunn/vim-plug
 keras-team/keras
