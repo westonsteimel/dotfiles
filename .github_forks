@@ -9,7 +9,9 @@ aws/aws-cli
 aws/chalice
 Azure/acs-engine
 bashtage/randomgen
+blechschmidt/massdns
 boto/boto3
+bugcrowd/HUNT
 containerd/containerd
 coreos/clair
 curl/curl
@@ -39,6 +41,7 @@ nltk/nltk
 nmap/nmap
 numpy/numpy
 offensive-security/kali-linux-docker
+OJ/gobuster
 opencontainers/runc
 openfaas/faas
 openfaas/faas-cli
@@ -63,3 +66,4 @@ virtual-kubelet/virtual-kubelet
 WireGuard/WireGuard
 wireshark/wireshark
 xfernando/go2seccomp
+zaproxy/zaproxy
