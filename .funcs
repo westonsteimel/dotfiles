@@ -1,5 +1,11 @@
 #!/bin/sh
 
+pull-docker-images() {
+    while read -r line; do
+        docker pull $line
+    done <$HOME/.docker_pulls
+}
+
 fork-sync() {
     while read -r line; do
         repos=($line)
