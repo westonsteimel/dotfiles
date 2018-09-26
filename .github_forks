@@ -49,6 +49,8 @@ openfaas/faas-netes
 openfaas/templates westonsteimel/openfaas-templates
 OWASP/Amass
 pandas-dev/pandas
+pi-hole/docker-pi-hole
+pi-hole/pi-hole
 prestodb/presto
 python/cpython
 pytorch/pytorch
