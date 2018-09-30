@@ -54,6 +54,7 @@ pi-hole/pi-hole
 prestodb/presto
 python/cpython
 pytorch/pytorch
+rg3/youtube-dl
 robertdavidgraham/masscan
 rust-lang/rust
 scikit-learn/scikit-learn
