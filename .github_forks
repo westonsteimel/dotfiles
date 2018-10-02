@@ -18,6 +18,8 @@ curl/curl
 envoyproxy/envoy
 explosion/spaCy
 genuinetools/amicontained
+genuinetools/bpfd
+genuinetools/bpfps
 genuinetools/bane
 genuinetools/img
 genuinetools/reg
@@ -26,6 +28,8 @@ golang/go
 google/syzkaller
 hashcat/hashcat
 hashicorp/vault
+iovisor/bcc
+iovisor/gobpf
 junegunn/vim-plug
 keras-team/keras
 kubeflow/kubeflow
