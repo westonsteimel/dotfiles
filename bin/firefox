@@ -19,5 +19,5 @@ docker run -d \
     --device /dev/snd \
     --device /dev/dri \
     --name firefox \
-    firefox:alpine "$@"
-    #${DOCKER_REPO_PREFIX}/firefox:alpine "$@"
+    firefox "$@"
+    #${DOCKER_REPO_PREFIX}/firefox "$@"

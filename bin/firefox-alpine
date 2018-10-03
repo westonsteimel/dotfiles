@@ -7,11 +7,11 @@ docker run -d \
     --cpuset-cpus 0 \
     -v /etc/localtime:/etc/localtime:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v "${HOME}/.firefox/cache:/root/.cache/mozilla" \
-    -v "${HOME}/.firefox/mozilla:/root/.mozilla" \
-    -v "${HOME}/Downloads:/root/Downloads" \
-    -v "${HOME}/Pictures:/root/Pictures" \
-    -v "${HOME}/Torrents:/root/Torrents" \
+    -v "${HOME}/.firefox/cache:/home/firefox/.cache/mozilla" \
+    -v "${HOME}/.firefox/mozilla:/home/firefox/.mozilla" \
+    -v "${HOME}/Downloads:/home/firefox/Downloads" \
+    -v "${HOME}/Pictures:/home/firefox/Pictures" \
+    -v "${HOME}/Torrents:/home/firefox/Torrents" \
     -e "DISPLAY=unix${DISPLAY}" \
     -e GDK_SCALE \
     -e GDK_DPI_SCALE \
@@ -19,4 +19,5 @@ docker run -d \
     --device /dev/snd \
     --device /dev/dri \
     --name firefox \
-    ${DOCKER_REPO_PREFIX}/firefox "$@"
+    firefox:alpine "$@"
+    #${DOCKER_REPO_PREFIX}/firefox:alpine "$@"
