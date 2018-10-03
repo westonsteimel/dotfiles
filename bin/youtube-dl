@@ -2,7 +2,6 @@
 
 docker run \
     --rm \
-    --cap-add ALL \
     -v "${HOME}/Downloads:/home/youtube-dl/Downloads" \
     --name youtube-dl \
     youtube-dl "$@"
