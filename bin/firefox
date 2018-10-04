@@ -1,5 +1,19 @@
 #!/bin/bash
 
+relies_on(){
+	for container in "$@"; do
+		local state
+		state=$(docker inspect --format "{{.State.Running}}" "$container" 2>/dev/null)
+
+		if [[ "$state" == "false" ]] || [[ "$state" == "" ]]; then
+			echo "$container is not running, starting it for you."
+			$container
+		fi
+	done
+}
+
+relies_on pulseaudio
+
 docker run -d \
     --rm \
     --memory 2gb \
@@ -16,8 +30,12 @@ docker run -d \
     -e GDK_SCALE \
     -e GDK_DPI_SCALE \
     -v /dev/shm:/dev/shm \
+    -e PULSE_SERVER=pulseaudio \
     --device /dev/snd \
     --device /dev/dri \
+    --device /dev/video0 \
+    --group-add audio \
+    --group-add video \
     --name firefox \
     firefox "$@"
     #${DOCKER_REPO_PREFIX}/firefox "$@"

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+docker run --rm \
+    -d \
+    --security-opt "apparmor=unconfined" \
+    -v /etc/localtime:/etc/localtime:ro \
+	--device /dev/snd \
+	-p 4713:4713 \
+	--restart always \
+	--group-add audio \
+	--name pulseaudio \
+    ${DOCKER_REPO_PREFIX}/pulseaudio
