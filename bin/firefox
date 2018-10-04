@@ -30,7 +30,7 @@ docker run -d \
     -e GDK_SCALE \
     -e GDK_DPI_SCALE \
     -v /dev/shm:/dev/shm \
-    -e PULSE_SERVER=pulseaudio \
+    -e "PULSE_SERVER=pulseaudio" \
     --device /dev/snd \
     --device /dev/dri \
     --device /dev/video0 \
