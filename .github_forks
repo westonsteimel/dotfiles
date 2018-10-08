@@ -29,6 +29,7 @@ google/syzkaller
 hashcat/hashcat
 hashicorp/vault
 iovisor/bcc
+iovisor/bpftrace
 iovisor/gobpf
 junegunn/vim-plug
 keras-team/keras
