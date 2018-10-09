@@ -3,7 +3,6 @@ apache/arrow
 apache/hadoop
 apache/hive
 apache/mesos
-apache/parquet-cpp
 apache/spark
 aws/aws-cli
 aws/chalice
@@ -12,6 +11,7 @@ bashtage/randomgen
 blechschmidt/massdns
 boto/boto3
 bugcrowd/HUNT
+containerd/cgroups
 containerd/containerd
 coreos/clair
 curl/curl
@@ -23,6 +23,7 @@ genuinetools/bpfps
 genuinetools/bane
 genuinetools/img
 genuinetools/reg
+git/git
 gliderlabs/docker-alpine
 golang/go
 google/syzkaller
