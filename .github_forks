@@ -17,6 +17,7 @@ coreos/clair
 curl/curl
 envoyproxy/envoy
 explosion/spaCy
+fatih/vim-go
 genuinetools/amicontained
 genuinetools/bpfd
 genuinetools/bpfps
