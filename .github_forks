@@ -40,6 +40,7 @@ kubernetes/kubernetes
 kubernetes/minikube
 lballabio/QuantLib
 lballabio/QuantLib-SWIG
+libvirt/libvirt
 linuxkit/linuxkit
 moby/buildkit
 moby/moby
