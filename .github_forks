@@ -29,6 +29,10 @@ gliderlabs/docker-alpine
 golang/go
 google/syzkaller
 hashcat/hashcat
+hashicorp/consul
+hashicorp/nomad
+hashicorp/terraform
+hashicorp/vagrant
 hashicorp/vault
 iovisor/bcc
 iovisor/bpftrace
@@ -62,6 +66,9 @@ pi-hole/pi-hole
 prestodb/presto
 python/cpython
 pytorch/pytorch
+rancher/rancher
+rancher/rke
+rancher/os westonsteimel/rancher-os
 rg3/youtube-dl
 robertdavidgraham/masscan
 rust-lang/rust
