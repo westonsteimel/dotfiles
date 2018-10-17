@@ -5,4 +5,4 @@ docker run --rm -d \
     -e DISPLAY=unix$DISPLAY \
     --privileged \
     --name virtualbox \
-    jess/virtualbox
+    jess/virtualbox /usr/bin/VBoxManage

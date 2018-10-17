@@ -1,0 +1,7 @@
+#!/bin/sh
+
+docker run --rm \
+    --privileged \
+    --name vboxmanage \
+    --entrypoint "/usr/bin/vboxmanage" \
+    jess/virtualbox "$@"

@@ -4,6 +4,6 @@ docker run \
     --rm \
     -it \
     --name vagrant \
-    ${DOCKER_REPO_PREFIX}/vagrant
+    ${DOCKER_REPO_PREFIX}/vagrant "$@"
 
 
