@@ -4,6 +4,8 @@ docker run \
     --rm \
     -it \
     --name vagrant \
+    --workdir /work \
+    --volume "$PWD:/work" \
     ${DOCKER_REPO_PREFIX}/vagrant "$@"
 
 
