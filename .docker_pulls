@@ -1,5 +1,7 @@
 alpine
 golang:alpine
+jess/bcc-tools
+jess/bpfd
 jess/chrome
 jess/clair
 jess/firefox
@@ -25,6 +27,7 @@ jess/vscode
 jess/wg
 jess/wireguard
 jess/wireshark
+quay.io/westonsteimel/quantlib-python:latest
 owasp/zap2docker-stable
 owasp/zap2docker-weekly
 python:alpine
