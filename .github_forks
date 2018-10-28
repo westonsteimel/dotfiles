@@ -86,3 +86,8 @@ WireGuard/WireGuard
 wireshark/wireshark
 xfernando/go2seccomp
 zaproxy/zaproxy
+https://git.torproject.org/tor.git
+https://git.torproject.org/tor-browser.git 
+https://git.busybox.net/busybox/
+https://git.musl-libc.org/cgit/musl
+
