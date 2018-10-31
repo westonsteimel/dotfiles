@@ -7,7 +7,7 @@ docker run --rm -d \
     -e "DISPLAY=unix${DISPLAY}" \
     -v /etc/machine-id:/etc/machine-id:ro \
     -v "${HOME}/.keepass:/root/keepass" \
-    -v "${HOME}/.config/keepassxc:/home/root/.config/keepassxc" \
+    -v "${HOME}/.config/keepassxc:/root/.config/keepassxc" \
     --name keepassxc \
     ${DOCKER_REPO_PREFIX}/keepassxc
 
