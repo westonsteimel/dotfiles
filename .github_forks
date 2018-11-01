@@ -13,6 +13,7 @@ boto/boto3
 bugcrowd/HUNT
 containerd/cgroups
 containerd/containerd
+containernetworking/cni
 coreos/clair
 curl/curl
 envoyproxy/envoy
@@ -82,6 +83,7 @@ tensorflow/tensorflow
 torvalds/linux
 cilium/cilium
 virtual-kubelet/virtual-kubelet
+wagoodman/dive
 WireGuard/WireGuard
 wireshark/wireshark
 xfernando/go2seccomp
