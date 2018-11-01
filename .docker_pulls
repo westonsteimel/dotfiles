@@ -20,7 +20,6 @@ jess/pulseaudio
 jess/reg
 jess/skype
 jess/slack
-jess/steam
 jess/tor-browser
 jess/tor-browser:alpha
 jess/traceroute
@@ -31,9 +30,9 @@ jess/vscode
 jess/wg
 jess/wireguard
 jess/wireshark
-owasp/zap2docker-stable
 owasp/zap2docker-weekly
 python:alpine
 quay.io/westonsteimel/quantlib-python:latest
 tianon/steam
+tianon/steamos
 wagoodman/dive
