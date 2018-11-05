@@ -1,0 +1,6 @@
+#!/bin/sh
+
+docker run -it --rm \
+	--net host \
+	--name traceroute \
+	${DOCKER_REPO_PREFIX}/traceroute "$@"

@@ -4,6 +4,9 @@ pull-docker-images() {
     while read -r line; do
         docker pull $line
     done <$HOME/.docker_pulls
+
+    docker container prune -f
+    docker image prune -f
 }
 
 fork-sync() {
