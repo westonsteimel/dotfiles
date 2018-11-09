@@ -13,6 +13,7 @@ boto/boto3
 bugcrowd/HUNT
 containerd/cgroups
 containerd/containerd
+containerd/cri
 containernetworking/cni
 coreos/clair
 curl/curl
