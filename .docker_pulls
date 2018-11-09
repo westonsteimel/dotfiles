@@ -43,3 +43,7 @@ quay.io/westonsteimel/quantlib-python:latest
 tianon/steam
 tianon/steamos
 wagoodman/dive
+debian:sid-slim
+debian:stretch-slim
+debian:buster-slim
+
