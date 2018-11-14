@@ -22,4 +22,5 @@ docker run -d \
     --group-add audio \
     --group-add video \
     --name firefox \
-    ${DOCKER_REPO_PREFIX}/firefox "$@"
+    --security-opt "apparmor=unconfined" \
+    westonsteimel/firefox:nightly -setDefaultBrowser "$@"
