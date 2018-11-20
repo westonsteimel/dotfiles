@@ -21,6 +21,7 @@ jess/nomad
 jess/packer
 jess/pulseaudio
 jess/reg
+jess/shellcheck
 jess/skype
 jess/slack
 jess/strace
@@ -37,6 +38,7 @@ jess/wg
 jess/wireguard
 jess/wireshark
 jess/zoom-us
+koalaman/shellcheck
 owasp/zap2docker-weekly
 python:alpine
 quay.io/westonsteimel/quantlib-python:latest
