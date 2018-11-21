@@ -1,0 +1,9 @@
+#!/bin/sh
+
+docker run \
+    --rm \
+    -it \
+    --name shelcheck \
+    --volume "$PWD:/usr/src:ro" \
+	--workdir /usr/src \
+    ${DOCKER_REPO_PREFIX}/shellcheck "$@"
