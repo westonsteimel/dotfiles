@@ -87,5 +87,8 @@ push-dockerfiles() {
     docker push "quay.io/$GITHUB_USERNAME/nmap:alpine"
     docker push "quay.io/$GITHUB_USERNAME/subfinder"
     docker push "quay.io/$GITHUB_USERNAME/gobuster"
+
+    docker system prune -f
+    docker volume prune -f
 }
 
