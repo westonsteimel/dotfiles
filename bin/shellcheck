@@ -6,4 +6,4 @@ docker run \
     --name shelcheck \
     --volume "$PWD:/usr/src:ro" \
 	--workdir /usr/src \
-    ${DOCKER_REPO_PREFIX}/shellcheck "$@"
+    ${JESS_DOCKER_REPO_PREFIX}/shellcheck "$@"

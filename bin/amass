@@ -5,4 +5,4 @@ docker run -it --rm \
 	--net host \
 	--cap-add NET_ADMIN \
 	--name amass \
-	amass "$@"
+	${DOCKER_REPO_PREFIX}/amass "$@"

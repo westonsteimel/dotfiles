@@ -13,6 +13,6 @@ docker run -d \
     --group-add video \
     --group-add audio \
     --name skype \
-    ${DOCKER_REPO_PREFIX}/skype
+    ${JESS_DOCKER_REPO_PREFIX}/skype
 }
 

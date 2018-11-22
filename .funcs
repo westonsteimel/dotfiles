@@ -60,3 +60,32 @@ fork-sync() {
         cd - 
     done <$HOME/.github_forks
 }
+
+build-dockerfiles() {
+    cd "$GITHUB_PATH/$GITHUB_USERNAME/dockerfiles"
+    time docker build --no-cache -t "$GITHUB_USERNAME/firefox:nightly" -t "quay.io/$GITHUB_USERNAME/firefox:nightly" firefox/nightly
+    time docker build --no-cache -t "$GITHUB_USERNAME/youtube-dl" -t "quay.io/$GITHUB_USERNAME/youtube-dl" youtube-dl
+    time docker build --no-cache -t "$GITHUB_USERNAME/whois" -t "quay.io/$GITHUB_USERNAME/whois" whois
+    time docker build --no-cache -t "$GITHUB_USERNAME/nmap:alpine" -t "quay.io/$GITHUB_USERNAME/nmap:alpine" nmap/alpine
+    time docker build --no-cache -t "$GITHUB_USERNAME/subfinder" -t "quay.io/$GITHUB_USERNAME/subfinder" subfinder
+    time docker build --no-cache -t "$GITHUB_USERNAME/gobuster" -t "quay.io/$GITHUB_USERNAME/gobuster" gobuster
+    #time docker build --no-cache -t "$GITHUB_USERNAME/amass" -t "quay.io/$GITHUB_USERNAME/amass" amass 
+    cd -
+}
+
+push-dockerfiles() {
+    docker push "$GITHUB_USERNAME/firefox:nightly"
+    docker push "$GITHUB_USERNAME/youtube-dl"
+    docker push "$GITHUB_USERNAME/whois"
+    docker push "$GITHUB_USERNAME/nmap:alpine"
+    docker push "$GITHUB_USERNAME/subfinder"
+    docker push "$GITHUB_USERNAME/gobuster"
+    
+    docker push "quay.io/$GITHUB_USERNAME/firefox:nightly"
+    docker push "quay.io/$GITHUB_USERNAME/youtube-dl"
+    docker push "quay.io/$GITHUB_USERNAME/whois"
+    docker push "quay.io/$GITHUB_USERNAME/nmap:alpine"
+    docker push "quay.io/$GITHUB_USERNAME/subfinder"
+    docker push "quay.io/$GITHUB_USERNAME/gobuster"
+}
+

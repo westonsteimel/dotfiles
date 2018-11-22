@@ -4,4 +4,4 @@ docker run --rm \
     --privileged \
     --name vboxmanage \
     --entrypoint "/usr/bin/vboxmanage" \
-    jess/virtualbox "$@"
+    ${JESS_DOCKER_REPO_PREFIX}/virtualbox "$@"

@@ -2,5 +2,5 @@
 
 docker run --rm -it \
     --net host \
-    nmap "$@"
+    ${DOCKER_REPO_PREFIX}/nmap "$@"
 

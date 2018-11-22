@@ -2,4 +2,4 @@
 
 docker run --rm -it \
     --name slurp \
-    slurp "$@"
+    ${DOCKER_REPO_PREFIX}/slurp "$@"

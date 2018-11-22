@@ -6,4 +6,4 @@ docker run -d \
     -e "DISPLAY=unix${DISPLAY}" \
     --device /dev/dri \
     --name visualstudio \
-    ${DOCKER_REPO_PREFIX}/vscode
+    ${JESS_DOCKER_REPO_PREFIX}/vscode

@@ -6,4 +6,4 @@ docker run -i --rm \
 	--cap-add NET_ADMIN \
 	--net host \
 	--name wg \
-	${DOCKER_REPO_PREFIX}/wg "$@"
+	${JESS_DOCKER_REPO_PREFIX}/wg "$@"

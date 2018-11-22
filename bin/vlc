@@ -14,4 +14,4 @@ docker run -d \
     -v "${HOME}/Torrents:/home/vlc/Torrents" \
     --device /dev/dri \
     --name vlc \
-    ${DOCKER_REPO_PREFIX}/vlc
+    ${JESS_DOCKER_REPO_PREFIX}/vlc
