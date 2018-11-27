@@ -20,6 +20,7 @@ curl/curl
 envoyproxy/envoy
 explosion/spaCy
 fatih/vim-go
+firecracker-microvm/firecracker
 genuinetools/amicontained
 genuinetools/bpfd
 genuinetools/bpfps
