@@ -75,7 +75,11 @@ rancher/os westonsteimel/rancher-os
 rg3/youtube-dl
 robertdavidgraham/masscan
 rootless-containers/rootlesskit
+rust-lang/cargo
 rust-lang/rust
+rust-lang/rustfmt
+rust-lang/rustup.rs
+rust-lang/rust.vim
 scikit-learn/scikit-learn
 scipy/scipy
 servo/servo
@@ -86,6 +90,7 @@ torvalds/linux
 cilium/cilium
 virtual-kubelet/virtual-kubelet
 wagoodman/dive
+weaveworks/eksctl
 WireGuard/WireGuard
 wireshark/wireshark
 xfernando/go2seccomp

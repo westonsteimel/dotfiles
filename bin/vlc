@@ -1,17 +1,17 @@
 #!/bin/sh
 
-docker run -d \
+docker run --rm -d \
     -v /etc/localtime:/etc/localtime:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e "DISPLAY=unix${DISPLAY}" \
     -e GDK_SCALE \
     -e GDK_DPI_SCALE \
     -e QT_DEVICE_PIXEL_RATIO \
-    --link pulseaudio:pulseaudio \
-    -e PULSE_SERVER=pulseaudio \
     --group-add audio \
     --group-add video \
-    -v "${HOME}/Torrents:/home/vlc/Torrents" \
+    -v "${HOME}/Downloads:/home/vlc/Torrents" \
     --device /dev/dri \
+    --device /dev/snd \
+    --device /dev/video0 \
     --name vlc \
     ${JESS_DOCKER_REPO_PREFIX}/vlc
