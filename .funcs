@@ -69,7 +69,7 @@ build-dockerfiles() {
     time docker build --no-cache -t "$GITHUB_USERNAME/nmap:alpine" -t "quay.io/$GITHUB_USERNAME/nmap:alpine" nmap/alpine
     time docker build --no-cache -t "$GITHUB_USERNAME/subfinder" -t "quay.io/$GITHUB_USERNAME/subfinder" subfinder
     time docker build --no-cache -t "$GITHUB_USERNAME/gobuster" -t "quay.io/$GITHUB_USERNAME/gobuster" gobuster
-    #time docker build --no-cache -t "$GITHUB_USERNAME/amass" -t "quay.io/$GITHUB_USERNAME/amass" amass 
+    time docker build --no-cache -t "$GITHUB_USERNAME/amass" -t "quay.io/$GITHUB_USERNAME/amass" amass 
     cd -
 }
 
@@ -80,13 +80,15 @@ push-dockerfiles() {
     docker push "$GITHUB_USERNAME/nmap:alpine"
     docker push "$GITHUB_USERNAME/subfinder"
     docker push "$GITHUB_USERNAME/gobuster"
-    
+    docker push "$GITHUB_USERNAME/amass"
+
     docker push "quay.io/$GITHUB_USERNAME/firefox:nightly"
     docker push "quay.io/$GITHUB_USERNAME/youtube-dl"
     docker push "quay.io/$GITHUB_USERNAME/whois"
     docker push "quay.io/$GITHUB_USERNAME/nmap:alpine"
     docker push "quay.io/$GITHUB_USERNAME/subfinder"
     docker push "quay.io/$GITHUB_USERNAME/gobuster"
+    docker push "quay.io/$GITHUB_USERNAME/amass" 
 
     docker system prune -f
     docker volume prune -f
