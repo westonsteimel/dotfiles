@@ -1,9 +1,10 @@
 #!/bin/sh
 docker run -d \
+    --rm \
     -v /etc/localtime:/etc/localtime:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix  \
-    -v "${HOME}/.vscode:/home/user/.vscode" \
+    -v "${HOME}/.vscode:/home/user/.vscode-insiders" \
     -e "DISPLAY=unix${DISPLAY}" \
     --device /dev/dri \
-    --name visualstudio \
-    ${JESS_DOCKER_REPO_PREFIX}/vscode
+    --name vscode \
+    ${DOCKER_REPO_PREFIX}/vscode:insiders

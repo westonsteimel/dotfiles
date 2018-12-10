@@ -69,7 +69,8 @@ build-dockerfiles() {
     time docker image build --no-cache -t "$GITHUB_USERNAME/nmap:alpine" -t "quay.io/$GITHUB_USERNAME/nmap:alpine" nmap/alpine
     time docker image build --no-cache -t "$GITHUB_USERNAME/subfinder" -t "quay.io/$GITHUB_USERNAME/subfinder" subfinder
     time docker image build --no-cache -t "$GITHUB_USERNAME/gobuster" -t "quay.io/$GITHUB_USERNAME/gobuster" gobuster
-    time docker image build --no-cache -t "$GITHUB_USERNAME/amass" -t "quay.io/$GITHUB_USERNAME/amass" amass 
+    time docker image build --no-cache -t "$GITHUB_USERNAME/amass" -t "quay.io/$GITHUB_USERNAME/amass" amass
+    time docker image build --no-cache -t "$GITHUB_USERNAME/vscode:insiders" -t "quay.io/$GITHUB_USERNAME/vscode:insiders" vscode/insiders
     cd -
 }
 
@@ -81,6 +82,7 @@ push-dockerfiles() {
     docker image push "$GITHUB_USERNAME/subfinder"
     docker image push "$GITHUB_USERNAME/gobuster"
     docker image push "$GITHUB_USERNAME/amass"
+    docker image push "$GITHUB_USER/vscode:insiders"
 
     docker image push "quay.io/$GITHUB_USERNAME/firefox:nightly"
     docker image push "quay.io/$GITHUB_USERNAME/youtube-dl"
@@ -89,6 +91,7 @@ push-dockerfiles() {
     docker image push "quay.io/$GITHUB_USERNAME/subfinder"
     docker image push "quay.io/$GITHUB_USERNAME/gobuster"
     docker image push "quay.io/$GITHUB_USERNAME/amass" 
+    docker image push "quay.io/$GITHUB_USERNAME/vscode:insiders"
 
     docker system prune -f
     docker volume prune -f
