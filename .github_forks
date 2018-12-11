@@ -17,6 +17,7 @@ containerd/cri
 containernetworking/cni
 coreos/clair
 curl/curl
+docker/cli westonsteimel/docker-cli
 envoyproxy/envoy
 explosion/spaCy
 fatih/vim-go
