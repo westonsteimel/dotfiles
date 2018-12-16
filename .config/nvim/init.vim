@@ -39,15 +39,16 @@ endif
 
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'cespare/vim-toml'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } 
+Plug 'mileszs/ack.vim'
+Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'} 
+Plug 'rust-lang/rust.vim' 
 Plug 'scrooloose/nerdtree'
 Plug 'tomasr/molokai'
-Plug 'mileszs/ack.vim'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'rust-lang/rust.vim'
-Plug 'cespare/vim-toml'
 " Plugin 'davidhalter/jedi-vim'
 call plug#end()
 

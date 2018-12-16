@@ -37,7 +37,7 @@ dcleanup(){
 
 update_docker() {
 	local user_home="/home/${TARGET_USER}"
-	local docker_dir="${GO_PATH}/src/github.com/docker/docker-ce"
+    local docker_dir="${GO_PATH}/src/github.com/docker/docker-ce"
 
 	# stop docker
 	dcleanup || true
@@ -45,24 +45,7 @@ update_docker() {
 
 	# Include contributed completions
 	mkdir -p /etc/bash_completion.d
-	curl -sSL -o /etc/bash_completion.d/docker https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker
-
-	if [[ -d "${docker_dir}" ]]; then
-		(
-		cd "${docker_dir}"
-
-		# Clean up bundles
-		rm -rf bundles
-
-		# move vim syntax highlighting
-		if [[ ! -d "${user_home}/.local/share/nvim/plugged/Dockerfile" ]]; then
-			mkdir -p "${user_home}/.local/share/nvim/plugged/Dockerfile"
-		fi
-		# shellcheck disable=SC2216
-		yes | cp -r contrib/syntax/vim/* "${user_home}/.local/share/nvim/plugged/Dockerfile/"
-		chown -R "${TARGET_USER}" "${user_home}/.local/share/nvim/plugged/Dockerfile"
-		)
-	fi
+	curl -sSL -o /etc/bash_completion.d/docker https://raw.githubusercontent.com/docker/cli/contrib/completion/bash/docker 
 
 	# get the binary
 	local tmp_tar=/tmp/docker.tgz

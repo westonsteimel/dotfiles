@@ -5,5 +5,4 @@ docker run --rm \
     --name shellcheck \
     --volume "$PWD:/usr/src:ro" \
 	--workdir /usr/src \
-    --entrypoint shellcheck \
     ${JESS_DOCKER_REPO_PREFIX}/shellcheck "$@"

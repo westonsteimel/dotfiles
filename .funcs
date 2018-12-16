@@ -28,7 +28,7 @@ fork-sync() {
             echo "Cloning repo $fork_repo..."
             git clone git@github.com:$fork_repo.git
         fi
-
+        (
         cd "$directory"
         
         if [ ! $(git config remote.upstream.url) ]; then
@@ -57,11 +57,12 @@ fork-sync() {
         unset upstream_repo
         unset fork_repo
         unset directory
-        cd - 
+        ) 
     done <"$HOME/.github_forks"
 }
 
 build-dockerfiles() {
+    (
     cd "$GITHUB_PATH/$GITHUB_USERNAME/dockerfiles"
     time docker image build --no-cache -t "$GITHUB_USERNAME/firefox:nightly" -t "quay.io/$GITHUB_USERNAME/firefox:nightly" firefox/nightly
     time docker image build --no-cache -t "$GITHUB_USERNAME/youtube-dl" -t "quay.io/$GITHUB_USERNAME/youtube-dl" youtube-dl
@@ -71,7 +72,7 @@ build-dockerfiles() {
     time docker image build --no-cache -t "$GITHUB_USERNAME/gobuster" -t "quay.io/$GITHUB_USERNAME/gobuster" gobuster
     time docker image build --no-cache -t "$GITHUB_USERNAME/amass" -t "quay.io/$GITHUB_USERNAME/amass" amass
     time docker image build --no-cache -t "$GITHUB_USERNAME/vscode:insiders" -t "quay.io/$GITHUB_USERNAME/vscode:insiders" vscode/insiders
-    cd -
+    )
 }
 
 push-dockerfiles() {
