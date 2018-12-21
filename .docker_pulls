@@ -7,6 +7,7 @@ jess/clair
 jess/consul
 jess/firefox
 jess/firefox:alpine
+jess/gimp
 jess/htop
 jess/img
 jess/irssi
