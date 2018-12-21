@@ -45,7 +45,7 @@ update_docker() {
 
 	# Include contributed completions
 	mkdir -p /etc/bash_completion.d
-	curl -sSL -o /etc/bash_completion.d/docker https://raw.githubusercontent.com/docker/cli/contrib/completion/bash/docker 
+	curl -sSL -o /etc/bash_completion.d/docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker 
 
 	# get the binary
 	local tmp_tar=/tmp/docker.tgz

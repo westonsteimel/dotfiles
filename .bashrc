@@ -20,4 +20,5 @@ alias ls='ls --color=auto'
 source /usr/share/bash-completion/completions/git
 source /home/weston/miniconda3/etc/profile.d/conda.sh
 source ~/.bash_profile
-complete -C /home/weston/.go/bin/vault vault
+
+complete -C /usr/local/bin/vault vault

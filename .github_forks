@@ -4,6 +4,9 @@ apache/hadoop
 apache/hive
 apache/mesos
 apache/spark
+aquasecurity/docker-bench
+aquasecurity/kube-bench
+aquasecurity/kube-hunter
 aws/aws-cli
 aws/chalice
 Azure/acs-engine
@@ -29,6 +32,7 @@ genuinetools/bane
 genuinetools/img
 genuinetools/reg
 git/git
+github/hub
 gliderlabs/docker-alpine
 golang/go
 google/syzkaller
@@ -76,6 +80,7 @@ rancher/os westonsteimel/rancher-os
 rg3/youtube-dl
 robertdavidgraham/masscan
 rootless-containers/rootlesskit
+rust-bpf/rust-bcc
 rust-lang/cargo
 rust-lang/rust
 rust-lang/rust-clippy
@@ -101,4 +106,3 @@ git.torproject.org/tor
 git.torproject.org/tor-browser 
 git.busybox.net/busybox
 git.musl-libc.org/cgit/musl
-
