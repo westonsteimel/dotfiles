@@ -45,17 +45,14 @@ update_docker() {
 
 	# Include contributed completions
 	mkdir -p /etc/bash_completion.d
-	curl -sSL -o /etc/bash_completion.d/docker https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker 
+	curl -sSL -o /etc/bash_completion.d/docker "https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker" 
 
 	# get the binary
 	local tmp_tar=/tmp/docker.tgz
 	local binary_uri="https://download.docker.com/linux/static/nightly/x86_64"
 	local docker_version
-	#docker_version=$(curl -sSL "https://api.github.com/repos/docker/docker-ce/releases/latest" | jq --raw-output .tag_name)
     docker_version=$(curl -sSL "https://download.docker.com/linux/static/nightly/x86_64/" | pcregrep -o1 "^\<a href=\"(docker-0.0.0-.*.tgz)\"\>" | sort | tail -n 1
 )
-	# local docker_sha256
-	# docker_sha256=$(curl -sSL "${binary_uri}/docker-${docker_version}.tgz.sha256" | awk '{print $1}')
 	(
 	set -x
 	curl -fSL "${binary_uri}/${docker_version}" -o "$tmp_tar"
@@ -122,17 +119,17 @@ update_k8s() {
 
 update_faas() {
     echo "Updating OpenFaaS CLI..."
-    curl -fSL https://cli.openfaas.com | sudo sh
+    curl -fSL "https://cli.openfaas.com" | sudo sh
 }
 
 update_img() {
     echo "Updating Genuine Tools img..."
-    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/genuinetools/img/releases/latest)
-    LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/genuinetools/img/releases/latest")
+    LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
     echo "Installing img version ${LATEST_VERSION}..."
-    sudo curl -L https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64 -o /usr/local/bin/img
+    sudo curl -fSL "https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64" -o /usr/local/bin/img
     # Verify the sha256sum
-    export SHASUM=$(curl -L https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64.sha256 | awk '{ print $1 }')
+    export SHASUM=$(curl -fSL "https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64.sha256" | awk '{ print $1 }')
     if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/img | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
     sudo chmod a+x /usr/local/bin/img
     echo "img installed!"
@@ -140,12 +137,12 @@ update_img() {
 
 update_reg() {
     echo "Updating Genuine Tools reg..."
-    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/genuinetools/reg/releases/latest)
-    LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/genuinetools/reg/releases/latest")
+    LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
     echo "Installing reg version ${LATEST_VERSION}..."
-    sudo curl -L https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64 -o /usr/local/bin/reg
+    sudo curl -fSL "https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64" -o /usr/local/bin/reg
     # Verify the sha256sum
-    export SHASUM=$(curl -L https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64.sha256 | awk '{ print $1 }')
+    export SHASUM=$(curl -fSL "https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64.sha256" | awk '{ print $1 }')
     if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/reg | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
     sudo chmod a+x /usr/local/bin/reg
 }

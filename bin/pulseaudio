@@ -9,4 +9,4 @@ docker run --rm \
 	--restart always \
 	--group-add audio \
 	--name pulseaudio \
-    ${JESS_DOCKER_REPO_PREFIX}/pulseaudio
+    "${JESS_DOCKER_REPO_PREFIX}/pulseaudio"

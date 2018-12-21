@@ -6,4 +6,4 @@ docker run \
     --name vagrant \
     --workdir /work \
     --volume "$PWD:/work" \
-    ${JESS_DOCKER_REPO_PREFIX}/vagrant "$@"
+    "${JESS_DOCKER_REPO_PREFIX}/vagrant" "$@"

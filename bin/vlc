@@ -14,4 +14,4 @@ docker run --rm -d \
     --device /dev/snd \
     --device /dev/video0 \
     --name vlc \
-    ${JESS_DOCKER_REPO_PREFIX}/vlc
+    "${JESS_DOCKER_REPO_PREFIX}/vlc"

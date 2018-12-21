@@ -2,4 +2,4 @@
 
 docker run --rm -it \
     --net host \
-    ${JESS_DOCKER_REPO_PREFIX}/netcat "$@"
+    "${JESS_DOCKER_REPO_PREFIX}/netcat" "$@"

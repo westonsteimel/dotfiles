@@ -17,5 +17,4 @@ docker run -d \
     --group-add audio \
     --group-add video \
     --name firefox-noprofileload \
-    --security-opt "apparmor=unconfined" \
-    ${DOCKER_REPO_PREFIX}/firefox:nightly -setDefaultBrowser "$@"
+    "${DOCKER_REPO_PREFIX}/firefox:nightly" -setDefaultBrowser "$@"

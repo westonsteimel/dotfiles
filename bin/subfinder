@@ -3,7 +3,7 @@
 docker run -it --rm \
 	--log-driver none \
     --net host \
-    -v $HOME/.config/subfinder:/root/.config/subfinder \
+    -v "${HOME}/.config/subfinder:/root/.config/subfinder" \
     --cap-add NET_ADMIN \
     --name subfinder \
-    ${DOCKER_REPO_PREFIX}/subfinder "$@"
+    "${DOCKER_REPO_PREFIX}/subfinder" "$@"

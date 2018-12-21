@@ -4,4 +4,4 @@ docker run --rm -it \
 	--pid host \
 	--net none \
 	--name htop \
-    ${JESS_DOCKER_REPO_PREFIX}/htop
+    "${JESS_DOCKER_REPO_PREFIX}/htop"
