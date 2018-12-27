@@ -1,4 +1,7 @@
 alpine
+busybox:glibc
+busybox:musl
+docker/compose
 golang:alpine
 jess/bcc-tools
 jess/bpfd

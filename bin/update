@@ -36,6 +36,7 @@ dcleanup(){
 }
 
 update_docker() {
+    echo "Updating docker..."
 	local user_home="/home/${TARGET_USER}"
     local docker_dir="${GO_PATH}/src/github.com/docker/docker-ce"
 
@@ -68,6 +69,29 @@ update_docker() {
 	# enable and start docker
 	# rc-update add docker default
 	rc-service docker start
+}
+
+update_docker_machine() {
+    echo "Updating docker-machine..."
+    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/docker/machine/releases/latest")
+    LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    echo "Installing docker-machine version ${LATEST_VERSION}..."
+    sudo curl -fSL "https://github.com/docker/machine/releases/download/${LATEST_VERSION}/docker-machine-Linux-x86_64" -o /usr/local/bin/docker-machine
+    # Verify the sha256sum
+    export SHASUM=$(curl -fSL "https://github.com/docker/machine/releases/download/${LATEST_VERSION}/sha256sum.txt" | awk '{ print $1 }')
+    if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/docker-machine | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
+    sudo chmod a+x /usr/local/bin/docker-machine
+    echo "docker-machine installed!"
+}
+
+update_docker_compose() {
+    echo "Updating docker-compose..."
+    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/docker/compose/releases/latest")
+    LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    echo "Installing docker-compose version ${LATEST_VERSION}..."
+    sudo curl -fSL "https://github.com/docker/compose/releases/download/${LATEST_VERSION}/run.sh" -o /usr/local/bin/docker-compose
+    sudo chmod a+x /usr/local/bin/docker-compose
+    echo "docker-compose installed!"
 }
 
 update_containerd() {
@@ -169,6 +193,8 @@ update() {
 		#update_runc;
 		#update_containerd;
 		update_docker;
+        update_docker_machine;
+        update_docker_compose;
 		update_k8s;
         update_img;
         update_faas;

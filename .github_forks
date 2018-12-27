@@ -50,6 +50,7 @@ keras-team/keras
 kubeflow/kubeflow
 kubernetes/kubernetes
 kubernetes/minikube
+kubernetes-sigs/kind
 lballabio/QuantLib
 lballabio/QuantLib-SWIG
 libvirt/libvirt
