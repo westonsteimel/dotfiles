@@ -1,0 +1,18 @@
+#!/bin/bash
+set -e
+set -o pipefail
+
+update_kernel_modules(){
+	if [ "$EUID" -ne 0 ]; then
+		echo "Please run as root."
+		return 1
+	fi
+
+    emerge --oneshot @module-rebuild
+
+    local kernel_version=$(uname -r)
+
+    "/usr/src/linux/scripts/sign-file" sha512 "/usr/src/linux/certs/signing_key.pem" "/usr/src/linux/certs/signing_key.x509" "/lib/modules/${kernel_version}/misc/vboxdrv.ko"
+}
+
+update_kernel_modules "$@"
