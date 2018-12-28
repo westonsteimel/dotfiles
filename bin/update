@@ -76,11 +76,11 @@ update_docker_machine() {
     LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/docker/machine/releases/latest")
     LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
     echo "Installing docker-machine version ${LATEST_VERSION}..."
-    sudo curl -fSL "https://github.com/docker/machine/releases/download/${LATEST_VERSION}/docker-machine-Linux-x86_64" -o /usr/local/bin/docker-machine
+    curl -fSL "https://github.com/docker/machine/releases/download/${LATEST_VERSION}/docker-machine-Linux-x86_64" -o /usr/local/bin/docker-machine
     # Verify the sha256sum
-    export SHASUM=$(curl -fSL "https://github.com/docker/machine/releases/download/${LATEST_VERSION}/sha256sum.txt" | awk '{ print $1 }')
-    if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/docker-machine | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
-    sudo chmod a+x /usr/local/bin/docker-machine
+    #local SHASUM=$(curl -fSL "https://github.com/docker/machine/releases/download/${LATEST_VERSION}/sha256sum.txt" | awk '{ print $1 }')
+    #if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/docker-machine | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
+    chmod a+x /usr/local/bin/docker-machine
     echo "docker-machine installed!"
 }
 
@@ -89,9 +89,24 @@ update_docker_compose() {
     LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/docker/compose/releases/latest")
     LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
     echo "Installing docker-compose version ${LATEST_VERSION}..."
-    sudo curl -fSL "https://github.com/docker/compose/releases/download/${LATEST_VERSION}/run.sh" -o /usr/local/bin/docker-compose
-    sudo chmod a+x /usr/local/bin/docker-compose
+    curl -fSL "https://github.com/docker/compose/releases/download/${LATEST_VERSION}/run.sh" -o /usr/local/bin/docker-compose
+    chmod a+x /usr/local/bin/docker-compose
     echo "docker-compose installed!"
+}
+
+update_hub() {
+    echo "Updating hub..."
+    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/github/hub/releases/latest")
+    LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    echo "Installing hub version ${LATEST_VERSION}..."
+    curl -fSL "https://github.com/github/hub/releases/download/${LATEST_VERSION}/hub-linux-amd64-${LATEST_VERSION#v}.tgz" -o /tmp/hub.tar.gz
+    mkdir -p /tmp/hub
+    tar -C /tmp/hub --strip-components 1 -xzvf /tmp/hub.tar.gz
+    cp /tmp/hub/bin/hub /usr/local/bin
+    rm /tmp/hub.tar.gz
+    rm -r /tmp/hub
+    chmod a+x /usr/local/bin/hub
+    echo "hub installed!"
 }
 
 update_containerd() {
@@ -151,11 +166,11 @@ update_img() {
     LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/genuinetools/img/releases/latest")
     LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
     echo "Installing img version ${LATEST_VERSION}..."
-    sudo curl -fSL "https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64" -o /usr/local/bin/img
+    curl -fSL "https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64" -o /usr/local/bin/img
     # Verify the sha256sum
-    export SHASUM=$(curl -fSL "https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64.sha256" | awk '{ print $1 }')
+    local SHASUM=$(curl -fSL "https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64.sha256" | awk '{ print $1 }')
     if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/img | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
-    sudo chmod a+x /usr/local/bin/img
+    chmod a+x /usr/local/bin/img
     echo "img installed!"
 }
 
@@ -164,11 +179,11 @@ update_reg() {
     LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/genuinetools/reg/releases/latest")
     LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
     echo "Installing reg version ${LATEST_VERSION}..."
-    sudo curl -fSL "https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64" -o /usr/local/bin/reg
+    curl -fSL "https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64" -o /usr/local/bin/reg
     # Verify the sha256sum
-    export SHASUM=$(curl -fSL "https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64.sha256" | awk '{ print $1 }')
+    local SHASUM=$(curl -fSL "https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64.sha256" | awk '{ print $1 }')
     if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/reg | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
-    sudo chmod a+x /usr/local/bin/reg
+    chmod a+x /usr/local/bin/reg
 }
 
 update_rust() {
@@ -192,6 +207,7 @@ update() {
 		# update
 		#update_runc;
 		#update_containerd;
+        update_hub;
 		update_docker;
         update_docker_machine;
         update_docker_compose;

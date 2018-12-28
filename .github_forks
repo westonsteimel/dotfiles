@@ -21,6 +21,8 @@ containernetworking/cni
 coreos/clair
 curl/curl
 docker/cli westonsteimel/docker-cli
+docker/compose westonsteimel/docker-compose
+docker/machine westonsteimel/docker-machine
 envoyproxy/envoy
 explosion/spaCy
 fatih/vim-go
