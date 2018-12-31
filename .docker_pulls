@@ -43,6 +43,7 @@ jess/wireguard
 jess/wireshark
 jess/zoom-us
 koalaman/shellcheck
+mitmproxy/mitmproxy
 owasp/zap2docker-weekly
 python:alpine
 quay.io/westonsteimel/quantlib-python:latest

@@ -57,6 +57,7 @@ lballabio/QuantLib
 lballabio/QuantLib-SWIG
 libvirt/libvirt
 linuxkit/linuxkit
+mitmproxy/mitmproxy
 moby/buildkit
 moby/moby
 neovim/neovim
