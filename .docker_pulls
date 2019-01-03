@@ -1,7 +1,6 @@
 alpine
 busybox:glibc
 busybox:musl
-docker/compose
 golang:alpine
 jess/bcc-tools
 jess/bpfd
@@ -44,7 +43,6 @@ jess/wireshark
 jess/zoom-us
 koalaman/shellcheck
 mitmproxy/mitmproxy
-owasp/zap2docker-weekly
 python:alpine
 quay.io/westonsteimel/quantlib-python:latest
 tianon/steam

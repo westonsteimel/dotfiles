@@ -62,6 +62,9 @@ fork-sync() {
 
 build-dockerfiles() {
     (
+    cd "${GITHUB_PATH}/${GITHUB_USERNAME}/docker-debian"
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/debian:sid-slim" -t "quay.io/${GITHUB_USERNAME}/debian:sid-slim" sid-slim
+
     cd "${GITHUB_PATH}/${GITHUB_USERNAME}/dockerfiles"
     time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:nightly" -t "quay.io/${GITHUB_USERNAME}/firefox:nightly" firefox/nightly
     time docker image build --no-cache -t "${GITHUB_USERNAME}/youtube-dl" -t "quay.io/${GITHUB_USERNAME}/youtube-dl" youtube-dl
@@ -76,6 +79,7 @@ build-dockerfiles() {
 }
 
 push-dockerfiles() {
+	docker image push "${GITHUB_USERNAME}/debian:sid-slim"
     docker image push "${GITHUB_USERNAME}/firefox:nightly"
     docker image push "${GITHUB_USERNAME}/youtube-dl"
     docker image push "${GITHUB_USERNAME}/whois"
@@ -86,6 +90,7 @@ push-dockerfiles() {
     docker image push "${GITHUB_USER}/vscode:insiders"
     docker image push "${GITHUB_USER}/mitmproxy:alpine"
 
+	docker image push "quay.io/${GITHUB_USERNAME}/debian:sid-slim"
     docker image push "quay.io/${GITHUB_USERNAME}/firefox:nightly"
     docker image push "quay.io/${GITHUB_USERNAME}/youtube-dl"
     docker image push "quay.io/${GITHUB_USERNAME}/whois"
