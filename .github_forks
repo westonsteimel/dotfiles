@@ -27,6 +27,9 @@ envoyproxy/envoy
 explosion/spaCy
 fatih/vim-go
 firecracker-microvm/firecracker
+firecracker-microvm/firecracker-containerd
+firecracker-microvm/firecracker-go-sdk
+firecracker-microvm/firectl
 genuinetools/amicontained
 genuinetools/bpfd
 genuinetools/bpfps
