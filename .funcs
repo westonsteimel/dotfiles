@@ -75,6 +75,7 @@ build-dockerfiles() {
     time docker image build --no-cache -t "${GITHUB_USERNAME}/amass" -t "quay.io/${GITHUB_USERNAME}/amass" amass
     time docker image build --no-cache -t "${GITHUB_USERNAME}/vscode:insiders" -t "quay.io/${GITHUB_USERNAME}/vscode:insiders" vscode/insiders
     time docker image build --no-cache -t "${GITHUB_USERNAME}/mitmproxy:alpine" -t "quay.io/${GITHUB_USERNAME}/mitmproxy:alpine" mitmproxy/alpine
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/vlc:alpine" -t "quay.io/${GITHUB_USERNAME}/vlc:alpine" vlc/alpine
     )
 }
 
@@ -87,8 +88,9 @@ push-dockerfiles() {
     docker image push "${GITHUB_USERNAME}/subfinder"
     docker image push "${GITHUB_USERNAME}/gobuster"
     docker image push "${GITHUB_USERNAME}/amass"
-    docker image push "${GITHUB_USER}/vscode:insiders"
-    docker image push "${GITHUB_USER}/mitmproxy:alpine"
+    docker image push "${GITHUB_USERNAME}/vscode:insiders"
+    docker image push "${GITHUB_USERNAME}/mitmproxy:alpine"
+    docker image push "${GITHUB_USERNAME}/vlc:alpine"
 
 	docker image push "quay.io/${GITHUB_USERNAME}/debian:sid-slim"
     docker image push "quay.io/${GITHUB_USERNAME}/firefox:nightly"
@@ -99,7 +101,8 @@ push-dockerfiles() {
     docker image push "quay.io/${GITHUB_USERNAME}/gobuster"
     docker image push "quay.io/${GITHUB_USERNAME}/amass" 
     docker image push "quay.io/${GITHUB_USERNAME}/vscode:insiders"
-    docker image push "quay.io/${GITHUB_USER}/mitmproxy:alpine"
+    docker image push "quay.io/${GITHUB_USERNAME}/mitmproxy:alpine"
+    docker image push "quay.io/${GITHUB_USERNAME}/vlc:alpine"
 
     docker system prune -f
     docker volume prune -f
