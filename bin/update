@@ -40,73 +40,102 @@ update_docker() {
 	local user_home="/home/${TARGET_USER}"
     local docker_dir="${GO_PATH}/src/github.com/docker/docker-ce"
 
-	# stop docker
-	dcleanup || true
-	rc-service docker stop || true
-
-	# Include contributed completions
-	mkdir -p /etc/bash_completion.d
-	curl -sSL -o /etc/bash_completion.d/docker "https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker" 
-
 	# get the binary
 	local tmp_tar=/tmp/docker.tgz
 	local binary_uri="https://download.docker.com/linux/static/nightly/x86_64"
 	local docker_version
     docker_version=$(curl -sSL "https://download.docker.com/linux/static/nightly/x86_64/" | pcregrep -o1 "^\<a href=\"(docker-0.0.0-.*.tgz)\"\>" | sort | tail -n 1
 )
-	(
-	set -x
-	curl -fSL "${binary_uri}/${docker_version}" -o "$tmp_tar"
-	# echo "${docker_sha256} ${tmp_tar}" | sha256sum -c -
-	tar -C /usr/local/bin --strip-components 1 -xzvf "$tmp_tar"
-	rm "${tmp_tar}"
-	# remove binaries we don't need
-	#rm /usr/local/bin/docker-containerd*
-	docker -v
-	)
-	chmod +x /usr/local/bin/docker*
+    local latest_build=$(echo $docker_version | pcregrep -o1 -e "docker-.*-.*-(.*).tgz")
+    local installed_build=$(docker --version | pcregrep -o1 -e "build (.*)")
 
-	# enable and start docker
-	# rc-update add docker default
-	rc-service docker start
+	if [[ "$latest_build" != "$installed_build" ]]; then
+		# stop docker
+        dcleanup || true
+        rc-service docker stop || true
+
+        # Include contributed completions
+        mkdir -p /etc/bash_completion.d
+        curl -sSL -o /etc/bash_completion.d/docker "https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker"
+
+		(
+			set -x
+			curl -fSL "${binary_uri}/${docker_version}" -o "$tmp_tar"
+			# echo "${docker_sha256} ${tmp_tar}" | sha256sum -c -
+			tar -C /usr/local/bin --strip-components 1 -xzvf "$tmp_tar"
+			rm "${tmp_tar}"
+			# remove binaries we don't need
+			#rm /usr/local/bin/docker-containerd*
+			docker -v
+		)
+		
+		chmod +x /usr/local/bin/docker*
+
+		# enable and start docker
+		# rc-update add docker default
+		rc-service docker start
+	else 
+		echo "docker is already up-to-date"
+	fi
 }
 
 update_docker_machine() {
     echo "Updating docker-machine..."
-    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/docker/machine/releases/latest")
-    LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
-    echo "Installing docker-machine version ${LATEST_VERSION}..."
-    curl -fSL "https://github.com/docker/machine/releases/download/${LATEST_VERSION}/docker-machine-Linux-x86_64" -o /usr/local/bin/docker-machine
-    # Verify the sha256sum
-    #local SHASUM=$(curl -fSL "https://github.com/docker/machine/releases/download/${LATEST_VERSION}/sha256sum.txt" | awk '{ print $1 }')
-    #if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/docker-machine | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
-    chmod a+x /usr/local/bin/docker-machine
-    echo "docker-machine installed!"
+    local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/docker/machine/releases/latest")
+    local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    local latest_build="${LATEST_VERSION#v}"
+    local installed_build=$(docker-machine --version | pcregrep -o1 -e "version (.*),")
+
+    if [[ "$latest_build" != "$installed_build" ]]; then
+        echo "Installing docker-machine version ${LATEST_VERSION}..."
+        curl -fSL "https://github.com/docker/machine/releases/download/${LATEST_VERSION}/docker-machine-Linux-x86_64" -o /usr/local/bin/docker-machine
+        # Verify the sha256sum
+        #local SHASUM=$(curl -fSL "https://github.com/docker/machine/releases/download/${LATEST_VERSION}/sha256sum.txt" | awk '{ print $1 }')
+        #if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/docker-machine | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
+        chmod a+x /usr/local/bin/docker-machine
+        echo "docker-machine installed!"
+    else
+        echo "docker-machine is already up-to-date"
+    fi
 }
 
 update_docker_compose() {
     echo "Updating docker-compose..."
-    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/docker/compose/releases/latest")
-    LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
-    echo "Installing docker-compose version ${LATEST_VERSION}..."
-    curl -fSL "https://github.com/docker/compose/releases/download/${LATEST_VERSION}/run.sh" -o /usr/local/bin/docker-compose
-    chmod a+x /usr/local/bin/docker-compose
-    echo "docker-compose installed!"
+    local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/docker/compose/releases/latest")
+    local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    local latest_build="${LATEST_VERSION}"
+    local installed_build=$(docker-compose --version | pcregrep -o1 -e "version (.*),")
+
+    if [[ "$latest_build" != "$installed_build" ]]; then
+        echo "Installing docker-compose version ${LATEST_VERSION}..."
+        curl -fSL "https://github.com/docker/compose/releases/download/${LATEST_VERSION}/run.sh" -o /usr/local/bin/docker-compose
+        chmod a+x /usr/local/bin/docker-compose
+        echo "docker-compose installed!"
+    else
+        echo "docker-compose is already up-to-date"
+    fi
 }
 
 update_hub() {
     echo "Updating hub..."
-    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/github/hub/releases/latest")
-    LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
-    echo "Installing hub version ${LATEST_VERSION}..."
-    curl -fSL "https://github.com/github/hub/releases/download/${LATEST_VERSION}/hub-linux-amd64-${LATEST_VERSION#v}.tgz" -o /tmp/hub.tar.gz
-    mkdir -p /tmp/hub
-    tar -C /tmp/hub --strip-components 1 -xzvf /tmp/hub.tar.gz
-    cp /tmp/hub/bin/hub /usr/local/bin
-    rm /tmp/hub.tar.gz
-    rm -r /tmp/hub
-    chmod a+x /usr/local/bin/hub
-    echo "hub installed!"
+    local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/github/hub/releases/latest")
+    local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')    
+    local latest_build="${LATEST_VERSION#v}"
+    local installed_build=$(hub --version | pcregrep -o1 -e "hub version (.*)")
+
+    if [[ "$latest_build" != "$installed_build" ]]; then
+        echo "Installing hub version ${LATEST_VERSION}..."
+        curl -fSL "https://github.com/github/hub/releases/download/${LATEST_VERSION}/hub-linux-amd64-${LATEST_VERSION#v}.tgz" -o /tmp/hub.tar.gz
+        mkdir -p /tmp/hub
+        tar -C /tmp/hub --strip-components 1 -xzvf /tmp/hub.tar.gz
+        cp /tmp/hub/bin/hub /usr/local/bin
+        rm /tmp/hub.tar.gz
+        rm -r /tmp/hub
+        chmod a+x /usr/local/bin/hub
+        echo "hub installed!"
+    else
+        echo "hub is already up-to-date"
+    fi
 }
 
 update_containerd() {
@@ -115,7 +144,7 @@ update_containerd() {
     local tmp_tar=/tmp/containerd.tar.gz
 	local containerd_version
 	containerd_version=$(curl -sSL "https://api.github.com/repos/containerd/containerd/releases" | jq --raw-output .[0].tag_name)
-	containerd_version=${containerd_version#v}
+	containerd_version="${containerd_version#v}"
 	local binary_uri="https://github.com/containerd/containerd/releases/download/v${containerd_version}/containerd-${containerd_version}.linux-amd64.tar.gz"
 	(
 	set -x
@@ -145,33 +174,61 @@ update_runc() {
 
 update_k8s() {
     echo "Updating minikube..."
-    curl -fSL "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64" > /usr/local/bin/minikube
-    chmod +x /usr/local/bin/minikube
-    minikube version
+
+    local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/kubernetes/minikube/releases/latest")
+    local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    local latest_build="${LATEST_VERSION}"
+    local installed_build=$(minikube version | pcregrep -o1 -e "minikube version: (.*)")
+
+    if [[ "$latest_build" != "$installed_build" ]]; then
+        curl -fSL "https://storage.googleapis.com/minikube/releases/${LATEST_VERSION}/minikube-linux-amd64" > /usr/local/bin/minikube
+        chmod +x /usr/local/bin/minikube
+        minikube version
+    else
+        echo "minikube is already up-to-date"
+    fi
 }
 
 update_faas() {
     echo "Updating OpenFaaS CLI..."
-    curl -fSL "https://cli.openfaas.com" | sudo sh
+
+    local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/openfaas/faas-cli/releases/latest")
+    local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    local latest_build="${LATEST_VERSION}"
+    local installed_build=$(faas-cli version | pcregrep -o1 -e "version: (.*)")
+
+    if [[ "$latest_build" != "$installed_build" ]]; then
+        curl -fSL "https://cli.openfaas.com" | sudo sh
+    else
+        echo "faas-cli is already up-to-date"
+    fi
 }
 
 update_img() {
     echo "Updating Genuine Tools img..."
-    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/genuinetools/img/releases/latest")
-    LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
-    echo "Installing img version ${LATEST_VERSION}..."
-    curl -fSL "https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64" -o /usr/local/bin/img
-    # Verify the sha256sum
-    local SHASUM=$(curl -fSL "https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64.sha256" | awk '{ print $1 }')
-    if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/img | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
-    chmod a+x /usr/local/bin/img
-    echo "img installed!"
+    local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/genuinetools/img/releases/latest")
+    local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    local latest_build="${LATEST_VERSION}"
+    local installed_build=$(img version | pcregrep -o1 -e "version     : (.*)")
+   
+    if [[ "$latest_build" != "$installed_build" ]]; then
+        echo "Installing img version ${LATEST_VERSION}..."
+        curl -fSL "https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64" -o /usr/local/bin/img
+        # Verify the sha256sum
+        local SHASUM=$(curl -fSL "https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64.sha256" | awk '{ print $1 }')
+        if [ "$SHASUM" != "$(shasum -a 256 /usr/local/bin/img | awk '{ print $1 }')" ]; then echo "sha256sum mismatch!"; fi
+        chmod a+x /usr/local/bin/img
+        echo "img installed!"
+    else
+        echo "img is already up-to-date"
+    fi
 }
 
 update_reg() {
     echo "Updating Genuine Tools reg..."
-    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/genuinetools/reg/releases/latest")
-    LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/genuinetools/reg/releases/latest")
+    local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+    
     echo "Installing reg version ${LATEST_VERSION}..."
     curl -fSL "https://github.com/genuinetools/reg/releases/download/${LATEST_VERSION}/reg-linux-amd64" -o /usr/local/bin/reg
     # Verify the sha256sum
@@ -208,7 +265,7 @@ update() {
 		update_k8s;
         update_img;
         update_faas;
-		update_rust;
+		#update_rust;
 	else
 		echo "We don't have update functions for OS: ${OSTYPE}"
 		echo "Moving on..."
