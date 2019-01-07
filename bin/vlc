@@ -2,6 +2,7 @@
 
 docker run --rm -d \
     -v /etc/localtime:/etc/localtime:ro \
+    -v /etc/machine-id:/etc/machine-id:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e "DISPLAY=unix${DISPLAY}" \
     -e GDK_SCALE \
@@ -14,4 +15,4 @@ docker run --rm -d \
     --device /dev/snd \
     --device /dev/video0 \
     --name vlc \
-    "${JESS_DOCKER_REPO_PREFIX}/vlc"
+    "${DOCKER_REPO_PREFIX}/vlc:alpine" "$@"
