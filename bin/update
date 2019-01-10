@@ -237,6 +237,101 @@ update_reg() {
     chmod a+x /usr/local/bin/reg
 }
 
+update_vagrant() {
+    echo "Updating HashiCorp vagrant..."
+    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/vagrant/" | pcregrep -o1 "^.*\<a href=\"\/vagrant\/(.*)\/\"\>" | head -n 1
+)
+    local latest_build="${LATEST_VERSION}"
+    local installed_build=$(vagrant --version | pcregrep -o1 -e "Vagrant (.*)")
+
+    if [[ "$latest_build" != "$installed_build" ]]; then
+        (
+            echo "Installing vagrant version ${LATEST_VERSION}..."
+            curl -fSL "https://releases.hashicorp.com/vagrant/${LATEST_VERSION}/vagrant_${LATEST_VERSION}_linux_amd64.zip" -o /tmp/vagrant.zip
+            cd /tmp
+            unzip vagrant.zip
+            cp /tmp/vagrant /usr/local/bin
+            rm /tmp/vagrant.zip
+            rm /tmp/vagrant
+            chmod a+x /usr/local/bin/vagrant
+            echo "vagrant installed!"
+        )
+    else
+        echo "vagrant is already up-to-date"
+    fi
+}
+
+update_nomad() {
+    echo "Updating HashiCorp nomad..."
+    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/nomad/" | pcregrep -o1 "^.*\<a href=\"\/nomad\/(.*)\/\"\>" | head -n 1
+)
+    local latest_build="${LATEST_VERSION}"
+    local installed_build=$(nomad --version | pcregrep -o1 -e "Nomad v(.*) .*")
+
+    if [[ "$latest_build" != "$installed_build" ]]; then
+        (
+            echo "Installing nomad version ${LATEST_VERSION}..."
+            curl -fSL "https://releases.hashicorp.com/nomad/${LATEST_VERSION}/nomad_${LATEST_VERSION}_linux_amd64.zip" -o /tmp/nomad.zip
+            cd /tmp
+            unzip nomad.zip
+            cp /tmp/nomad /usr/local/bin
+            rm /tmp/nomad.zip
+            rm /tmp/nomad
+            chmod a+x /usr/local/bin/nomad
+            echo "nomad installed!"
+        )
+    else
+        echo "nomad is already up-to-date"
+    fi
+}
+
+update_terraform() {
+    echo "Updating HashiCorp terraform..."
+    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/terraform/" | pcregrep -o1 "^.*\<a href=\"\/terraform\/(.*)\/\"\>" | head -n 1
+)
+    local latest_build="${LATEST_VERSION}"
+    local installed_build=$(terraform --version | pcregrep -o1 -e "Terraform v(.*)")
+
+    if [[ "$latest_build" != "$installed_build" ]]; then
+        (
+            echo "Installing terraform version ${LATEST_VERSION}..."
+            curl -fSL "https://releases.hashicorp.com/terraform/${LATEST_VERSION}/terraform_${LATEST_VERSION}_terraform_${LATEST_VERSION}_linux_amd64.zip" -o /tmp/terraform.zip
+            cd /tmp
+            unzip terraform.zip
+            cp /tmp/terraform /usr/local/bin
+            rm /tmp/terraform.zip
+            rm /tmp/terraform
+            chmod a+x /usr/local/bin/terraform
+            echo "terraform installed!"
+        )
+    else
+        echo "terraform is already up-to-date"
+    fi
+}
+
+update_vault() {
+	echo "Updating HashiCorp vault..."
+    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/vault/" | pcregrep -o1 "^.*\<a href=\"\/vault\/(.*)\/\"\>" | head -n 1)
+    local latest_build="${LATEST_VERSION}"
+    local installed_build=$(vault --version | pcregrep -o1 -e "Vault v(.*) .*")
+
+    if [[ "$latest_build" != "$installed_build" ]]; then
+		(
+    		echo "Installing vault version ${LATEST_VERSION}..."
+            curl -fSL "https://releases.hashicorp.com/vault/${LATEST_VERSION}/vault_${LATEST_VERSION}_linux_amd64.zip" -o /tmp/vault.zip
+            cd /tmp
+            unzip vault.zip
+            cp /tmp/vault /usr/local/bin
+            rm /tmp/vault.zip
+            rm /tmp/vault
+            chmod a+x /usr/local/bin/vault
+            echo "vault installed!"
+        )
+	else
+		echo "vault is already up-to-date"
+	fi
+}
+
 update_rust() {
     rustup update
 	rustc --version
@@ -265,6 +360,10 @@ update() {
 		update_k8s;
         update_img;
         update_faas;
+        update_vagrant;
+        update_nomad;
+		update_terraform;
+		update_vault;
 		#update_rust;
 	else
 		echo "We don't have update functions for OS: ${OSTYPE}"
