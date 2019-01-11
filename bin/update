@@ -290,7 +290,7 @@ update_terraform() {
     local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/terraform/" | pcregrep -o1 "^.*\<a href=\"\/terraform\/(.*)\/\"\>" | head -n 1
 )
     local latest_build="${LATEST_VERSION}"
-    local installed_build=$(terraform --version | pcregrep -o1 -e "Terraform v(.*)")
+    local installed_build=$(terraform --version | pcregrep -o1 -e "Terraform v(.*) .*")
 
     if [[ "$latest_build" != "$installed_build" ]]; then
         (
