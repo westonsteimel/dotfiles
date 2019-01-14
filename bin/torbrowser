@@ -9,6 +9,6 @@ docker run --rm \
     -e GDK_DPI_SCALE \
     -v /dev/shm:/dev/shm \
     --device /dev/snd \
-    --name torbrowser \
-    "${JESS_DOCKER_REPO_PREFIX}/tor-browser:alpha"
+    --name tor-browser \
+    "${DOCKER_REPO_PREFIX}/tor-browser:alpha"
     

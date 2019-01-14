@@ -30,6 +30,7 @@ firecracker-microvm/firecracker
 firecracker-microvm/firecracker-containerd
 firecracker-microvm/firecracker-go-sdk
 firecracker-microvm/firectl
+frol/docker-alpine-glibc
 genuinetools/amicontained
 genuinetools/bpfd
 genuinetools/bpfps

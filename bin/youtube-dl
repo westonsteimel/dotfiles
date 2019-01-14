@@ -2,6 +2,6 @@
 
 docker run \
     --rm \
-    -v "${HOME}/Downloads:/home/youtube-dl/Downloads" \
+    -v "${HOME}/Torrents:/home/youtube-dl/Downloads" \
     --name youtube-dl \
     "${DOCKER_REPO_PREFIX}/youtube-dl" "$@"

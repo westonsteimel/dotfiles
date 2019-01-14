@@ -10,7 +10,7 @@ docker run --rm -d \
     -e QT_DEVICE_PIXEL_RATIO \
     --group-add audio \
     --group-add video \
-    -v "${HOME}/Downloads:/home/vlc/Torrents" \
+    -v "${HOME}/Torrents:/home/vlc/Torrents" \
     --device /dev/dri \
     --device /dev/snd \
     --device /dev/video0 \
