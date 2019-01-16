@@ -77,6 +77,7 @@ build-dockerfiles() {
     time docker image build --no-cache -t "${GITHUB_USERNAME}/mitmproxy:alpine" -t "quay.io/${GITHUB_USERNAME}/mitmproxy:alpine" mitmproxy/alpine
     time docker image build --no-cache -t "${GITHUB_USERNAME}/vlc:alpine" -t "quay.io/${GITHUB_USERNAME}/vlc:alpine" vlc/alpine
     time docker image build --no-cache -t "${GITHUB_USERNAME}/tor-browser:alpha" -t "quay.io/${GITHUB_USERNAME}/tor-browser:alpha" tor-browser/alpha
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/slack" -t "quay.io/${GITHUB_USERNAME}/slack" slack
     )
 }
 
@@ -93,6 +94,7 @@ push-dockerfiles() {
     docker image push "${GITHUB_USERNAME}/mitmproxy:alpine"
     docker image push "${GITHUB_USERNAME}/vlc:alpine"
     docker image push "${GITHUB_USERNAME}/tor-browser:alpha"
+    docker image push "${GITHUB_USERNAME}/slack"
 
 	docker image push "quay.io/${GITHUB_USERNAME}/debian:sid-slim"
     docker image push "quay.io/${GITHUB_USERNAME}/firefox:nightly"
@@ -106,6 +108,7 @@ push-dockerfiles() {
     docker image push "quay.io/${GITHUB_USERNAME}/mitmproxy:alpine"
     docker image push "quay.io/${GITHUB_USERNAME}/vlc:alpine"
     docker image push "quay.io/${GITHUB_USERNAME}/tor-browser:alpha"
+    docker image push "quay.io/${GITHUB_USERNAME}/slack"
 
     docker system prune -f
     docker volume prune -f

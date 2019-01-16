@@ -12,4 +12,4 @@ docker run --rm -d \
     -v "${HOME}/.slack:/root/.config/Slack" \
     --ipc="host" \
     --name slack \
-    "${JESS_DOCKER_REPO_PREFIX}/slack" "$@"
+    "${DOCKER_REPO_PREFIX}/slack" "$@"
