@@ -64,6 +64,7 @@ linuxkit/linuxkit
 mitmproxy/mitmproxy
 moby/buildkit
 moby/moby
+nektos/act
 neovim/neovim
 nltk/nltk
 nmap/nmap

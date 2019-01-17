@@ -7,8 +7,6 @@ jess/bpfd
 jess/chrome
 jess/clair
 jess/consul
-jess/firefox
-jess/firefox:alpine
 jess/gimp
 jess/htop
 jess/img
@@ -16,7 +14,6 @@ jess/irssi
 jess/keepassxc
 jess/libvirt-client
 jess/masscan
-jess/mc
 jess/nes
 jess/netcat
 jess/nmap
@@ -26,17 +23,13 @@ jess/pulseaudio
 jess/reg
 jess/shellcheck
 jess/skype
-jess/slack
 jess/strace
 jess/terraform
 jess/tor-browser
-jess/tor-browser:alpha
 jess/traceroute
 jess/vagrant
 jess/vault
 jess/virtualbox
-jess/vlc
-jess/vscode
 jess/wg
 jess/wireguard
 jess/wireshark
