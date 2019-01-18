@@ -126,9 +126,9 @@ update_act() {
     if [[ "$latest_build" != "$installed_build" ]]; then
         (
             echo "Installing act version ${LATEST_VERSION}..."
-            curl -fSL "https://github.com/nektos/act/releases/download/v${LATEST_VERSION}/act_Linux_x86_64.tar.gz" -o /tmp/act.tar.gz
+            curl -fSL "https://github.com/nektos/act/releases/download/${LATEST_VERSION}/act_Linux_x86_64.tar.gz" -o /tmp/act.tar.gz
             cd /tmp
-            tar --strip-components 1 -xzvf /tmp/act.tar.gz
+            tar -xzvf /tmp/act.tar.gz
             cp /tmp/act /usr/local/bin
             rm /tmp/act.tar.gz
             rm /tmp/act
