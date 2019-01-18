@@ -102,7 +102,6 @@ servo/servo
 statsmodels/statsmodels
 subfinder/subfinder
 tensorflow/tensorflow
-torvalds/linux
 cilium/cilium
 virtual-kubelet/virtual-kubelet
 wagoodman/dive
@@ -111,6 +110,7 @@ WireGuard/WireGuard
 wireshark/wireshark
 xfernando/go2seccomp
 zaproxy/zaproxy
+git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux
 git.torproject.org/tor
 git.torproject.org/tor-browser 
 git.busybox.net/busybox
