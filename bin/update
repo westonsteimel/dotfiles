@@ -389,7 +389,7 @@ update() {
         update_nomad;
 		update_terraform;
 		update_vault;
-		update_rust;
+		#update_rust;
 	else
 		echo "We don't have update functions for OS: ${OSTYPE}"
 		echo "Moving on..."

@@ -1,4 +1,5 @@
 #!/bin/bash
 
 docker run --rm \
+    --net host \
     lachlanevenson/k8s-kubectl "$@"
