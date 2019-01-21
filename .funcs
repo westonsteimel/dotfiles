@@ -79,6 +79,8 @@ build-dockerfiles() {
     time docker image build --no-cache -t "${GITHUB_USERNAME}/tor-browser:alpha" -t "quay.io/${GITHUB_USERNAME}/tor-browser:alpha" tor-browser/alpha
     time docker image build --no-cache -t "${GITHUB_USERNAME}/slack" -t "quay.io/${GITHUB_USERNAME}/slack" slack
     time docker image build --no-cache -t "${GITHUB_USERNAME}/pv" -t "quay.io/${GITHUB_USERNAME}/pv" pv
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/jq" -t "quay.io/${GITHUB_USERNAME}/jq" jq/alpine
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/figlet" -t "quay.io/${GITHUB_USERNAME}/figlet" figlet
     )
 }
 
@@ -97,6 +99,8 @@ push-dockerfiles() {
     docker image push "${GITHUB_USERNAME}/tor-browser:alpha"
     docker image push "${GITHUB_USERNAME}/slack"
     docker image push "${GITHUB_USERNAME}/pv"
+    docker image push "${GITHUB_USERNAME}/jq"
+    docker image push "${GITHUB_USERNAME}/figlet"
 
 	docker image push "quay.io/${GITHUB_USERNAME}/debian:sid-slim"
     docker image push "quay.io/${GITHUB_USERNAME}/firefox:nightly"
@@ -112,6 +116,8 @@ push-dockerfiles() {
     docker image push "quay.io/${GITHUB_USERNAME}/tor-browser:alpha"
     docker image push "quay.io/${GITHUB_USERNAME}/slack"
     docker image push "quay.io/${GITHUB_USERNAME}/pv"
+    docker image push "quay.io/${GITHUB_USERNAME}/jq"
+    docker image push "quay.io/${GITHUB_USERNAME}/figlet"
 
     docker system prune -f
     docker volume prune -f
