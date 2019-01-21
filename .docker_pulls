@@ -1,6 +1,7 @@
 alpine
 busybox:glibc
 busybox:musl
+docker/docker-bench-security
 golang:alpine
 jess/bcc-tools
 jess/bpfd

@@ -22,6 +22,7 @@ coreos/clair
 curl/curl
 docker/cli westonsteimel/docker-cli
 docker/compose westonsteimel/docker-compose
+docker/docker-bench-security
 docker/machine westonsteimel/docker-machine
 envoyproxy/envoy
 explosion/spaCy
@@ -30,7 +31,6 @@ firecracker-microvm/firecracker
 firecracker-microvm/firecracker-containerd
 firecracker-microvm/firecracker-go-sdk
 firecracker-microvm/firectl
-frol/docker-alpine-glibc
 genuinetools/amicontained
 genuinetools/bpfd
 genuinetools/bpfps

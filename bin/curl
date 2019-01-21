@@ -3,4 +3,5 @@
 docker run --rm \
     --net host \
     -e "https_proxy=${https_proxy}" \
+    -e "http_proxy=${http_proxy}" \
     "${JESS_DOCKER_REPO_PREFIX}/curl" "$@"
