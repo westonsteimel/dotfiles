@@ -43,8 +43,7 @@ update_docker() {
 	# get the binary
 	local tmp_tar=/tmp/docker.tgz
 	local binary_uri="https://download.docker.com/linux/static/nightly/x86_64"
-	local docker_version
-    docker_version=$(curl -sSL "https://download.docker.com/linux/static/nightly/x86_64/" | pcregrep -o1 "^\<a href=\"(docker-0.0.0-.*.tgz)\"\>" | sort | tail -n 1
+	local docker_version=$(curl -sSL "${binary_uri}/" | pcregrep -o1 "^\<a href=\"(docker-0.0.0-.*.tgz)\"\>" | sort | tail -n 1
 )
     local latest_build=$(echo $docker_version | pcregrep -o1 -e "docker-.*-.*-(.*).tgz")
     local installed_build=$(docker --version | pcregrep -o1 -e "build (.*)")

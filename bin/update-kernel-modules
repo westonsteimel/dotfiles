@@ -11,12 +11,12 @@ update_kernel_modules(){
     emerge --oneshot @module-rebuild
 
 	(
-    local kernel_version=$(uname -r)
-	cd /usr/src/linux 
+        local kernel_version=$(uname -r)
+	    cd /usr/src/linux 
 
-    for module in {vboxdrv.ko,vboxnetadp.ko,vboxnetflt.ko,vboxpci.ko}; do 
-    	"./scripts/sign-file" sha512 "./certs/signing_key.pem" "./certs/signing_key.x509" "/lib/modules/${kernel_version}/misc/${module}"
-	done
+        for module in {vboxdrv.ko,vboxnetadp.ko,vboxnetflt.ko,vboxpci.ko}; do 
+    	    "./scripts/sign-file" sha512 "./certs/signing_key.pem" "./certs/signing_key.x509" "/lib/modules/${kernel_version}/misc/${module}"
+	    done
 	)
 }
 
