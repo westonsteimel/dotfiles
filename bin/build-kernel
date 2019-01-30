@@ -13,7 +13,7 @@ build_kernel(){
         make && make modules_install
         make install
         grub-mkconfig -o /boot/grub/grub.cfg
-        update-kernel-modules
+        echo "If this is a new kernel, execute update-kernel-modules after rebooting"
 	)
 }
 
