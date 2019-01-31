@@ -1,3 +1,10 @@
 #!/bin/sh
+INTERACTIVE=$([ -t 0 ] && echo 1 || echo 0)
 
-docker run --rm -i westonsteimel/figlet "$@"
+if [ ${INTERACTIVE} == 1 ]; then
+    DOCKER_FLAGS="-it"
+else
+    DOCKER_FLAGS="-i"
+fi
+
+docker run --rm ${DOCKER_FLAGS} westonsteimel/figlet "$@"
