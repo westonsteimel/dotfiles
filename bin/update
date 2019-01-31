@@ -46,7 +46,10 @@ update_docker() {
 	local docker_version=$(curl -sSL "${binary_uri}/" | pcregrep -o1 "^\<a href=\"(docker-0.0.0-.*.tgz)\"\>" | sort | tail -n 1
 )
     local latest_build=$(echo $docker_version | pcregrep -o1 -e "docker-.*-.*-(.*).tgz")
-    local installed_build=$(docker --version | pcregrep -o1 -e "build (.*)")
+    
+    if [ -x "$(command -v docker)" ]; then
+        local installed_build=$(docker --version | pcregrep -o1 -e "build (.*)")
+    fi
 
 	if [[ "$latest_build" != "$installed_build" ]]; then
 		# stop docker
@@ -83,7 +86,10 @@ update_docker_machine() {
     local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/docker/machine/releases/latest")
     local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
     local latest_build="${LATEST_VERSION#v}"
-    local installed_build=$(docker-machine --version | pcregrep -o1 -e "version (.*),")
+
+    if [ -x "$(command -v docker-machine)" ]; then
+        local installed_build=$(docker-machine --version | pcregrep -o1 -e "version (.*),")
+    fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
         echo "Installing docker-machine version ${LATEST_VERSION}..."
@@ -103,7 +109,10 @@ update_docker_compose() {
     local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/docker/compose/releases/latest")
     local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
     local latest_build="${LATEST_VERSION}"
-    local installed_build=$(docker-compose --version | pcregrep -o1 -e "version (.*),")
+    
+    if [ -x "$(command -v docker-compose)" ]; then
+        local installed_build=$(docker-compose --version | pcregrep -o1 -e "version (.*),")
+    fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
         echo "Installing docker-compose version ${LATEST_VERSION}..."
@@ -120,7 +129,10 @@ update_act() {
     local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/nektos/act/releases/latest")
     local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
     local latest_build="${LATEST_VERSION#v}"
-    local installed_build=$(act --version | pcregrep -o1 -e "act version (.*)")
+    
+    if [ -x "$(command -v act)" ]; then
+        local installed_build=$(act --version | pcregrep -o1 -e "act version (.*)")
+    fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
         (
@@ -144,7 +156,10 @@ update_hub() {
     local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/github/hub/releases/latest")
     local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')    
     local latest_build="${LATEST_VERSION#v}"
-    local installed_build=$(hub --version | pcregrep -o1 -e "hub version (.*)")
+    
+    if [ -x "$(command -v hub)" ]; then
+        local installed_build=$(hub --version | pcregrep -o1 -e "hub version (.*)")
+    fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
         echo "Installing hub version ${LATEST_VERSION}..."
@@ -201,7 +216,10 @@ update_k8s() {
     local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/kubernetes/minikube/releases/latest")
     local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
     local latest_build="${LATEST_VERSION}"
-    local installed_build=$(minikube version | pcregrep -o1 -e "minikube version: (.*)")
+    
+    if [ -x "$(command -v minikube)" ]; then
+        local installed_build=$(minikube version | pcregrep -o1 -e "minikube version: (.*)")
+    fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
         curl -fSL "https://storage.googleapis.com/minikube/releases/${LATEST_VERSION}/minikube-linux-amd64" > /usr/local/bin/minikube
@@ -218,7 +236,10 @@ update_faas() {
     local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/openfaas/faas-cli/releases/latest")
     local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
     local latest_build="${LATEST_VERSION}"
-    local installed_build=$(faas-cli version | pcregrep -o1 -e "version: (.*)")
+    
+    if [ -x "$(command -v faas-cli)" ]; then
+        local installed_build=$(faas-cli version | pcregrep -o1 -e "version: (.*)")
+    fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
         curl -fSL "https://cli.openfaas.com" | sudo sh
@@ -232,8 +253,11 @@ update_img() {
     local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/genuinetools/img/releases/latest")
     local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
     local latest_build="${LATEST_VERSION}"
-    local installed_build=$(img version | pcregrep -o1 -e "version     : (.*)")
-   
+    
+    if [ -x "$(command -v img)" ]; then
+        local installed_build=$(img version | pcregrep -o1 -e "version     : (.*)")
+    fi
+
     if [[ "$latest_build" != "$installed_build" ]]; then
         echo "Installing img version ${LATEST_VERSION}..."
         curl -fSL "https://github.com/genuinetools/img/releases/download/${LATEST_VERSION}/img-linux-amd64" -o /usr/local/bin/img
@@ -265,7 +289,10 @@ update_vagrant() {
     local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/vagrant/" | pcregrep -o1 "^.*\<a href=\"\/vagrant\/(.*)\/\"\>" | head -n 1
 )
     local latest_build="${LATEST_VERSION}"
-    local installed_build=$(vagrant --version | pcregrep -o1 -e "Vagrant (.*)")
+    
+    if [ -x "$(command -v vagrant)" ]; then
+        local installed_build=$(vagrant --version | pcregrep -o1 -e "Vagrant (.*)")
+    fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
         (
@@ -284,12 +311,42 @@ update_vagrant() {
     fi
 }
 
+update_consul() {
+    echo "Updating HashiCorp consul..."
+    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/consul/" | pcregrep -o1 "^.*\<a href=\"\/consul\/(.*)\/\"\>" | head -n 1
+)
+    local latest_build="${LATEST_VERSION}"
+    
+    if [ -x "$(command -v consul)" ]; then
+        local installed_build=$(consul --version | pcregrep -o1 -e "Consul v(.*)")
+    fi
+
+    if [[ "$latest_build" != "$installed_build" ]]; then
+        (
+            echo "Installing consul version ${LATEST_VERSION}..."
+            curl -fSL "https://releases.hashicorp.com/consul/${LATEST_VERSION}/consul_${LATEST_VERSION}_linux_amd64.zip" -o /tmp/consul.zip
+            cd /tmp
+            unzip consul.zip
+            cp /tmp/consul /usr/local/bin
+            rm /tmp/consul.zip
+            rm /tmp/consul
+            chmod a+x /usr/local/bin/consul
+            echo "consul installed!"
+        )
+    else
+        echo "consul is already up-to-date"
+    fi
+}
+
 update_nomad() {
     echo "Updating HashiCorp nomad..."
     local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/nomad/" | pcregrep -o1 "^.*\<a href=\"\/nomad\/(.*)\/\"\>" | head -n 1
 )
     local latest_build="${LATEST_VERSION}"
-    local installed_build=$(nomad --version | pcregrep -o1 -e "Nomad v(.*) .*")
+    
+    if [ -x "$(command -v nomad)" ]; then
+        local installed_build=$(nomad --version | pcregrep -o1 -e "Nomad v(.*) .*")
+    fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
         (
@@ -313,7 +370,10 @@ update_terraform() {
     local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/terraform/" | pcregrep -o1 "^.*\<a href=\"\/terraform\/(.*)\/\"\>" | head -n 1
 )
     local latest_build="${LATEST_VERSION}"
-    local installed_build=$(terraform --version | pcregrep -o1 -e "Terraform v(.*) .*")
+    
+    if [ -x "$(command -v terraform)" ]; then
+        local installed_build=$(terraform --version | pcregrep -o1 -e "Terraform v(.*) .*")
+    fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
         (
@@ -336,7 +396,10 @@ update_vault() {
 	echo "Updating HashiCorp vault..."
     local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/vault/" | pcregrep -o1 "^.*\<a href=\"\/vault\/(.*)\/\"\>" | head -n 1)
     local latest_build="${LATEST_VERSION}"
-    local installed_build=$(vault --version | pcregrep -o1 -e "Vault v(.*) .*")
+    
+    if [ -x "$(command -v vault)" ]; then
+        local installed_build=$(vault --version | pcregrep -o1 -e "Vault v(.*) .*")
+    fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
 		(
@@ -384,6 +447,7 @@ update() {
 		update_k8s;
         update_img;
         update_faas;
+        update_consul;
         update_vagrant;
         update_nomad;
 		update_terraform;
