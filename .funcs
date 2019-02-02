@@ -63,7 +63,12 @@ fork-sync() {
 build-dockerfiles() {
     (
     cd "${GITHUB_PATH}/${GITHUB_USERNAME}/docker-debian"
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/debian:sid-slim" -t "quay.io/${GITHUB_USERNAME}/debian:sid-slim" sid-slim
+    time make build
+    time REPO_URL="quay.io/westonsteimel" make build
+
+    cd "${GITHUB_PATH}/${GITHUB_USERNAME}/docker-alpine-glibc"
+    time make build
+    time REPO_URL="quay.io/westonsteimel" make build
 
     cd "${GITHUB_PATH}/${GITHUB_USERNAME}/dockerfiles"
     time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:nightly" -t "quay.io/${GITHUB_USERNAME}/firefox:nightly" firefox/nightly
@@ -81,11 +86,11 @@ build-dockerfiles() {
     time docker image build --no-cache -t "${GITHUB_USERNAME}/pv" -t "quay.io/${GITHUB_USERNAME}/pv" pv
     time docker image build --no-cache -t "${GITHUB_USERNAME}/jq" -t "quay.io/${GITHUB_USERNAME}/jq" jq/alpine
     time docker image build --no-cache -t "${GITHUB_USERNAME}/figlet" -t "quay.io/${GITHUB_USERNAME}/figlet" figlet
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/shellcheck:alpine" -t "quay.io/${GITHUB_USERNAME}/shellcheck:alpine" shellcheck/alpine
     )
 }
 
 push-dockerfiles() {
-	docker image push "${GITHUB_USERNAME}/debian:sid-slim"
     docker image push "${GITHUB_USERNAME}/firefox:nightly"
     docker image push "${GITHUB_USERNAME}/youtube-dl"
     docker image push "${GITHUB_USERNAME}/whois"
@@ -101,8 +106,8 @@ push-dockerfiles() {
     docker image push "${GITHUB_USERNAME}/pv"
     docker image push "${GITHUB_USERNAME}/jq"
     docker image push "${GITHUB_USERNAME}/figlet"
+    docker image push "${GITHUB_USERNAME}/shellcheck:alpine"
 
-	docker image push "quay.io/${GITHUB_USERNAME}/debian:sid-slim"
     docker image push "quay.io/${GITHUB_USERNAME}/firefox:nightly"
     docker image push "quay.io/${GITHUB_USERNAME}/youtube-dl"
     docker image push "quay.io/${GITHUB_USERNAME}/whois"
@@ -118,6 +123,7 @@ push-dockerfiles() {
     docker image push "quay.io/${GITHUB_USERNAME}/pv"
     docker image push "quay.io/${GITHUB_USERNAME}/jq"
     docker image push "quay.io/${GITHUB_USERNAME}/figlet"
+    docker image push "quay.io/${GITHUB_USERNAME}/shellcheck:alpine"
 
     docker system prune -f
     docker volume prune -f

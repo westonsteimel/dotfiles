@@ -51,6 +51,7 @@ hashicorp/vault
 iovisor/bcc
 iovisor/bpftrace
 iovisor/gobpf
+iovisor/kubectl-trace
 junegunn/vim-plug
 keras-team/keras
 kubeflow/kubeflow
