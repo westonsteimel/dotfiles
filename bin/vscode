@@ -8,4 +8,4 @@ docker run -d \
     -e "DISPLAY=unix${DISPLAY}" \
     --device /dev/dri \
     --name vscode \
-    "${DOCKER_REPO_PREFIX}/vscode:insiders"
+    "${DOCKER_REPO_PREFIX}/vscode:insiders" "$@"
