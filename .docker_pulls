@@ -18,16 +18,13 @@ jess/libvirt-client
 jess/masscan
 jess/nes
 jess/netcat
-jess/nmap
 jess/nomad
 jess/packer
 jess/pulseaudio
 jess/reg
-jess/shellcheck
 jess/skype
 jess/strace
 jess/terraform
-jess/tor-browser
 jess/traceroute
 jess/vagrant
 jess/vault

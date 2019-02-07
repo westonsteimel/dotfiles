@@ -2,5 +2,5 @@
 
 docker run --rm -it \
     --net host \
-    "${DOCKER_REPO_PREFIX}/nmap" "$@"
+    "${DOCKER_REPO_PREFIX}/nmap:alpine" "$@"
 
