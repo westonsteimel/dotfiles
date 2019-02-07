@@ -4,7 +4,8 @@ docker run -d \
     -v "/etc/localtime:/etc/localtime:ro" \
     -v "/tmp/.X11-unix:/tmp/.X11-unix"  \
     -v "${HOME}/github:/home/user/github" \
-    -v "${HOME}/.vscode:/home/user/.vscode-insiders" \
+    -v "${HOME}/.vscode-insiders:/home/user/.vscode-insiders" \
+    -v "${HOME}/.config/Code - Insiders:/home/user/.config/Code - Insiders" \
     -e "DISPLAY=unix${DISPLAY}" \
     --device /dev/dri \
     --name vscode \
