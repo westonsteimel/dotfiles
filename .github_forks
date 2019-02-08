@@ -20,6 +20,7 @@ containerd/cri
 containernetworking/cni
 coreos/clair
 curl/curl
+dflemstr/rq
 docker/cli westonsteimel/docker-cli
 docker/compose westonsteimel/docker-compose
 docker/docker-bench-security
