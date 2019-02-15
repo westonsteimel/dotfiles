@@ -313,7 +313,7 @@ update_vagrant() {
 
 update_consul() {
     echo "Updating HashiCorp consul..."
-    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/consul/" | pcregrep -o1 "^.*\<a href=\"\/consul\/(.*)\/\"\>" | head -n 1
+    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/consul/" | pcregrep -o1 "^.*\<a href=\"\/consul\/(((?!\+ent).)*)\/\"\>" | head -n 1
 )
     local latest_build="${LATEST_VERSION}"
     
