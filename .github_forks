@@ -85,6 +85,7 @@ pi-hole/pi-hole
 prestodb/presto
 python/cpython
 pytorch/pytorch
+rancher/k3s
 rancher/rancher
 rancher/rke
 rancher/os westonsteimel/rancher-os
