@@ -3,4 +3,4 @@
 docker run --rm -d \
     --privileged \
     --name k3s  \
-    ibuildthecloud/k3s:v0.1.0-rc5 "$@"
+    "rancher/k3s:v0.1.0" "$@"
