@@ -378,7 +378,7 @@ update_terraform() {
     if [[ "$latest_build" != "$installed_build" ]]; then
         (
             echo "Installing terraform version ${LATEST_VERSION}..."
-            curl -fSL "https://releases.hashicorp.com/terraform/${LATEST_VERSION}/terraform_${LATEST_VERSION}_terraform_${LATEST_VERSION}_linux_amd64.zip" -o /tmp/terraform.zip
+            curl -fSL "https://releases.hashicorp.com/terraform/${LATEST_VERSION}/terraform_${LATEST_VERSION}_linux_amd64.zip" -o /tmp/terraform.zip
             cd /tmp
             unzip terraform.zip
             cp /tmp/terraform /usr/local/bin
