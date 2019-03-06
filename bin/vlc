@@ -4,13 +4,14 @@ docker run --rm -d \
     -v /etc/localtime:/etc/localtime:ro \
     -v /etc/machine-id:/etc/machine-id:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v "${HOME}/Torrents:/home/vlc/Torrents" \
+    -v "${HOME}/.config/vlc:/home/vlc/.config/vlc" \
     -e "DISPLAY=unix${DISPLAY}" \
     -e GDK_SCALE \
     -e GDK_DPI_SCALE \
     -e QT_DEVICE_PIXEL_RATIO \
     --group-add audio \
     --group-add video \
-    -v "${HOME}/Torrents:/home/vlc/Torrents" \
     --device /dev/dri \
     --device /dev/snd \
     --device /dev/video0 \
