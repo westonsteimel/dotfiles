@@ -89,7 +89,6 @@ rancher/k3s
 rancher/rancher
 rancher/rke
 rancher/os westonsteimel/rancher-os
-rg3/youtube-dl
 robertdavidgraham/masscan
 rootless-containers/rootlesskit
 rust-bpf/rust-bcc
@@ -112,6 +111,7 @@ weaveworks/eksctl
 WireGuard/WireGuard
 wireshark/wireshark
 xfernando/go2seccomp
+ytdl-org/youtube-dl
 zaproxy/zaproxy
 git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux
 git.torproject.org/tor

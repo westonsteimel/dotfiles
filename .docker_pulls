@@ -37,7 +37,6 @@ koalaman/shellcheck
 lachlanevenson/k8s-kubectl
 mitmproxy/mitmproxy
 python:alpine
-quay.io/westonsteimel/quantlib-python:latest
 tianon/steam
 tianon/steamos
 wagoodman/dive
