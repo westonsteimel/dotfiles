@@ -1,10 +1,11 @@
 #!/bin/sh
 
-docker run -d \
+docker run \
     --rm \
     -v /etc/localtime:/etc/localtime:ro \
     -v /etc/machine-id:/etc/machine-id:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v ${HOME}/.stellarium:/home/stellarium/.stellarium \
     -e "DISPLAY=unix${DISPLAY}" \
     -e GDK_SCALE \
     -e GDK_DPI_SCALE \
