@@ -1,0 +1,9 @@
+#!/bin/sh
+
+docker run \
+    --rm -it \
+    -v ${HOME}/.gnupg:/home/keybase/.gnupg:ro \
+    -v ${HOME}/.config/keybase:/home/keybase/.config/keybase \
+    --name keybase \
+    "${DOCKER_REPO_PREFIX}/keybase" "$@"
+
