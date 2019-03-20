@@ -372,7 +372,7 @@ update_terraform() {
     local latest_build="${LATEST_VERSION}"
     
     if [ -x "$(command -v terraform)" ]; then
-        local installed_build=$(terraform --version | pcregrep -o1 -e "Terraform v(.*) .*")
+        local installed_build=$(terraform --version | pcregrep -o1 -e "Terraform v(.*)")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
