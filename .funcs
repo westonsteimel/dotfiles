@@ -64,11 +64,11 @@ build-dockerfiles() {
     (
     cd "${GITHUB_PATH}/${GITHUB_USERNAME}/docker-debian"
     time make build
-    time REPO_URL="quay.io/westonsteimel" make build
+    #time REPO_URL="quay.io/westonsteimel" make build
 
     cd "${GITHUB_PATH}/${GITHUB_USERNAME}/docker-alpine-glibc"
     time make build
-    time REPO_URL="quay.io/westonsteimel" make build
+    #time REPO_URL="quay.io/westonsteimel" make build
 
     cd "${GITHUB_PATH}/${GITHUB_USERNAME}/dockerfiles"
     time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:nightly" -t "quay.io/${GITHUB_USERNAME}/firefox:nightly" firefox/nightly
@@ -110,25 +110,6 @@ push-dockerfiles() {
     docker image push "${GITHUB_USERNAME}/figlet"
     docker image push "${GITHUB_USERNAME}/shellcheck:alpine"
     docker image push "${GITHUB_USERNAME}/curl"
-    docker image push "${GITHUB_USERNAME}/rq"
-
-    docker image push "quay.io/${GITHUB_USERNAME}/firefox:nightly"
-    docker image push "quay.io/${GITHUB_USERNAME}/youtube-dl"
-    docker image push "quay.io/${GITHUB_USERNAME}/whois"
-    docker image push "quay.io/${GITHUB_USERNAME}/nmap:alpine"
-    docker image push "quay.io/${GITHUB_USERNAME}/subfinder"
-    docker image push "quay.io/${GITHUB_USERNAME}/gobuster"
-    docker image push "quay.io/${GITHUB_USERNAME}/amass" 
-    docker image push "quay.io/${GITHUB_USERNAME}/vscode:insiders"
-    docker image push "quay.io/${GITHUB_USERNAME}/mitmproxy:alpine"
-    docker image push "quay.io/${GITHUB_USERNAME}/vlc:alpine"
-    docker image push "quay.io/${GITHUB_USERNAME}/tor-browser:alpha"
-    docker image push "quay.io/${GITHUB_USERNAME}/slack"
-    docker image push "quay.io/${GITHUB_USERNAME}/pv"
-    docker image push "quay.io/${GITHUB_USERNAME}/jq"
-    docker image push "quay.io/${GITHUB_USERNAME}/figlet"
-    docker image push "quay.io/${GITHUB_USERNAME}/shellcheck:alpine"
-    docker image push "quay.io/${GITHUB_USERNAME}/curl"
     docker image push "${GITHUB_USERNAME}/rq"
 
     docker system prune -f
