@@ -51,7 +51,7 @@ update_docker() {
         local installed_build=$(docker --version | pcregrep -o1 -e "build (.*)")
     fi
 
-	if [[ "$latest_build" != "$installed_build" ]]; then
+	if [[ "$latest_build" != "${installed_build:0:7}" ]]; then
 		# stop docker
         dcleanup || true
         rc-service docker stop || true
