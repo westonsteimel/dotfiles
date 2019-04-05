@@ -2,6 +2,7 @@
 
 docker run --rm \
     --net host \
+    -v "${PWD}:/home/curl" \
     -e "https_proxy=${https_proxy}" \
     -e "http_proxy=${http_proxy}" \
     "${DOCKER_REPO_PREFIX}/curl" "$@"
