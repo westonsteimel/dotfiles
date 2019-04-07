@@ -89,6 +89,7 @@ build-dockerfiles() {
     time docker image build --no-cache -t "${GITHUB_USERNAME}/shellcheck:alpine" -t "quay.io/${GITHUB_USERNAME}/shellcheck:alpine" shellcheck/alpine
     time docker image build --no-cache -t "${GITHUB_USERNAME}/curl" -t "quay.io/${GITHUB_USERNAME}/curl" curl
     time docker image build --no-cache -t "${GITHUB_USERNAME}/rq" -t "quay.io/${GITHUB_USERNAME}/rq" rq
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/bind-tools" -t "quay.io/${GITHUB_USERNAME}/bind-tools" bind-tools
     )
 }
 
@@ -111,6 +112,7 @@ push-dockerfiles() {
     docker image push "${GITHUB_USERNAME}/shellcheck:alpine"
     docker image push "${GITHUB_USERNAME}/curl"
     docker image push "${GITHUB_USERNAME}/rq"
+    docker image push "${GITHUB_USERNAME}/bind-tools" 
 
     docker system prune -f
     docker volume prune -f
