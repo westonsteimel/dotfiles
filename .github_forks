@@ -15,6 +15,7 @@ blechschmidt/massdns
 boto/boto3
 bugcrowd/HUNT
 CelestiaProject/Celestia
+cilium/cilium
 containerd/cgroups
 containerd/containerd
 containerd/cri
@@ -54,6 +55,7 @@ iovisor/bcc
 iovisor/bpftrace
 iovisor/gobpf
 iovisor/kubectl-trace
+jessfraz/dockerfiles westonsteimel/jessfraz-dockerfiles
 junegunn/vim-plug
 keras-team/keras
 kubeflow/kubeflow
@@ -86,6 +88,7 @@ pi-hole/pi-hole
 prestodb/presto
 python/cpython
 pytorch/pytorch
+rancher/k3d
 rancher/k3s
 rancher/rancher
 rancher/rke
@@ -106,7 +109,8 @@ statsmodels/statsmodels
 Stellarium/stellarium
 subfinder/subfinder
 tensorflow/tensorflow
-cilium/cilium
+tomasr/molokai
+Track3/hermit
 virtual-kubelet/virtual-kubelet
 wagoodman/dive
 weaveworks/eksctl
@@ -115,6 +119,7 @@ wireshark/wireshark
 xfernando/go2seccomp
 ytdl-org/youtube-dl
 zaproxy/zaproxy
+zeerorg/k3s-in-docker
 git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux
 git.torproject.org/tor
 git.torproject.org/tor-browser 
