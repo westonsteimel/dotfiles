@@ -71,25 +71,25 @@ build-dockerfiles() {
     #time REPO_URL="quay.io/westonsteimel" make build
 
     cd "${GITHUB_PATH}/${GITHUB_USERNAME}/dockerfiles"
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:nightly" -t "quay.io/${GITHUB_USERNAME}/firefox:nightly" firefox/nightly
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/youtube-dl" -t "quay.io/${GITHUB_USERNAME}/youtube-dl" youtube-dl
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/whois" -t "quay.io/${GITHUB_USERNAME}/whois" whois
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/nmap:alpine" -t "quay.io/${GITHUB_USERNAME}/nmap:alpine" nmap/alpine
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/subfinder" -t "quay.io/${GITHUB_USERNAME}/subfinder" subfinder
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/gobuster" -t "quay.io/${GITHUB_USERNAME}/gobuster" gobuster
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/amass" -t "quay.io/${GITHUB_USERNAME}/amass" amass
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/vscode:insiders" -t "quay.io/${GITHUB_USERNAME}/vscode:insiders" vscode/insiders
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/mitmproxy:alpine" -t "quay.io/${GITHUB_USERNAME}/mitmproxy:alpine" mitmproxy/alpine
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/vlc:alpine" -t "quay.io/${GITHUB_USERNAME}/vlc:alpine" vlc/alpine
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/tor-browser:alpha" -t "quay.io/${GITHUB_USERNAME}/tor-browser:alpha" tor-browser/alpha
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/slack" -t "quay.io/${GITHUB_USERNAME}/slack" slack
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/pv" -t "quay.io/${GITHUB_USERNAME}/pv" pv
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/jq" -t "quay.io/${GITHUB_USERNAME}/jq" jq/alpine
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/figlet" -t "quay.io/${GITHUB_USERNAME}/figlet" figlet
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/shellcheck:alpine" -t "quay.io/${GITHUB_USERNAME}/shellcheck:alpine" shellcheck/alpine
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/curl" -t "quay.io/${GITHUB_USERNAME}/curl" curl
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/rq" -t "quay.io/${GITHUB_USERNAME}/rq" rq
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/bind-tools" -t "quay.io/${GITHUB_USERNAME}/bind-tools" bind-tools
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:nightly" firefox/nightly
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/youtube-dl" youtube-dl
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/whois" whois
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/nmap:alpine" nmap/alpine
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/subfinder" subfinder
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/gobuster" gobuster
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/amass" amass
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/vscode:insiders"vscode/insiders
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/mitmproxy:alpine" mitmproxy/alpine
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/vlc:alpine" vlc/alpine
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/slack" slack
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/pv" pv
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/jq" jq/alpine
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/figlet" figlet
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/shellcheck:alpine" shellcheck/alpine
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/curl" curl
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/rq" rq
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/bind-tools" bind-tools
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/tor-browser:alpha" tor-browser/alpha
     )
 }
 

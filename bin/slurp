@@ -1,5 +1,0 @@
-#!/bin/sh
-
-docker run --rm -it \
-    --name slurp \
-    "${DOCKER_REPO_PREFIX}/slurp" "$@"
