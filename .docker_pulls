@@ -1,7 +1,10 @@
-alpine:latest
 alpine:edge
+alpine:latest
 busybox:glibc
 busybox:musl
+debian:buster-slim
+debian:sid-slim
+debian:stretch-slim
 docker/docker-bench-security
 golang:alpine
 jess/bcc-tools
@@ -40,6 +43,4 @@ python:alpine
 tianon/steam
 tianon/steamos
 wagoodman/dive
-debian:sid-slim
-debian:stretch-slim
-debian:buster-slim
+wpscanteam/wpscan
