@@ -39,6 +39,7 @@ jess/zoom-us
 koalaman/shellcheck
 lachlanevenson/k8s-kubectl
 mitmproxy/mitmproxy
+owasp/zap2docker-weekly
 python:alpine
 tianon/steam
 tianon/steamos

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+docker run --rm -it \
+    -u zap \
+    -p 8080:8080 \
+    -p 8090:8090 \
+    -v "${HOME}/.zap/:/home/zap/" \
+    --name zap \
+    owasp/zap2docker-weekly zap-webswing.sh
