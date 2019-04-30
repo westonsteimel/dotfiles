@@ -74,7 +74,7 @@ build-dockerfiles() {
     time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:nightly" firefox/nightly
     time docker image build --no-cache -t "${GITHUB_USERNAME}/youtube-dl" youtube-dl
     time docker image build --no-cache -t "${GITHUB_USERNAME}/whois" whois
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/nmap:alpine" nmap/alpine
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/nmap:alpine" -t "${GITHUB_USERNAME}/nmap" nmap
     time docker image build --no-cache -t "${GITHUB_USERNAME}/subfinder" subfinder
     time docker image build --no-cache -t "${GITHUB_USERNAME}/gobuster" gobuster
     time docker image build --no-cache -t "${GITHUB_USERNAME}/amass" amass
@@ -97,6 +97,7 @@ push-dockerfiles() {
     docker image push "${GITHUB_USERNAME}/firefox:nightly"
     docker image push "${GITHUB_USERNAME}/youtube-dl"
     docker image push "${GITHUB_USERNAME}/whois"
+    docker image push "${GITHUB_USERNAME}/nmap"
     docker image push "${GITHUB_USERNAME}/nmap:alpine"
     docker image push "${GITHUB_USERNAME}/subfinder"
     docker image push "${GITHUB_USERNAME}/gobuster"

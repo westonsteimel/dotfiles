@@ -89,6 +89,7 @@ prestodb/presto
 python/cpython
 pytorch/pytorch
 rancher/k3d
+rancher/k3os
 rancher/k3s
 rancher/rancher
 rancher/rke

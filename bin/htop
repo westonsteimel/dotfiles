@@ -1,7 +1,8 @@
 #!/bin/sh
 
 docker run --rm -it \
-	--pid host \
-	--net none \
-	--name htop \
+    --pid host \
+    -v "/etc/passwd:/etc/passwd:ro" \
+    --user $(id -u $(whoami)) \
+    --name htop \
     "${JESS_DOCKER_REPO_PREFIX}/htop"
