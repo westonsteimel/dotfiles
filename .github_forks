@@ -56,6 +56,7 @@ iovisor/bpftrace
 iovisor/gobpf
 iovisor/kubectl-trace
 jessfraz/dockerfiles westonsteimel/jessfraz-dockerfiles
+jakubroztocil/httpie
 junegunn/vim-plug
 keras-team/keras
 kubeflow/kubeflow
