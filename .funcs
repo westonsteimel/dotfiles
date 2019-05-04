@@ -78,18 +78,21 @@ build-dockerfiles() {
     time docker image build --no-cache -t "${GITHUB_USERNAME}/subfinder" subfinder
     time docker image build --no-cache -t "${GITHUB_USERNAME}/gobuster" gobuster
     time docker image build --no-cache -t "${GITHUB_USERNAME}/amass" amass
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/vscode:insiders"vscode/insiders
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/mitmproxy:alpine" mitmproxy/alpine
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/vlc:alpine" vlc/alpine
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/vscode:insiders" vscode/insiders
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/mitmproxy:alpine" -t "${GITHUB_USERNAME}/mitmproxy" mitmproxy
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/vlc:alpine" -t "${GITHUB_USERNAME}/vlc" vlc
     time docker image build --no-cache -t "${GITHUB_USERNAME}/slack" slack
     time docker image build --no-cache -t "${GITHUB_USERNAME}/pv" pv
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/jq" jq/alpine
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/jq" jq
     time docker image build --no-cache -t "${GITHUB_USERNAME}/figlet" figlet
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/shellcheck:alpine" shellcheck/alpine
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/shellcheck:alpine" -t "${GITHUB_USERNAME}/shellcheck" shellcheck
     time docker image build --no-cache -t "${GITHUB_USERNAME}/curl" curl
     time docker image build --no-cache -t "${GITHUB_USERNAME}/rq" rq
     time docker image build --no-cache -t "${GITHUB_USERNAME}/bind-tools" bind-tools
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/iputils" iputils
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/htop" htop
     time docker image build --no-cache -t "${GITHUB_USERNAME}/tor-browser:alpha" tor-browser/alpha
+
     )
 }
 
@@ -104,16 +107,21 @@ push-dockerfiles() {
     docker image push "${GITHUB_USERNAME}/amass"
     docker image push "${GITHUB_USERNAME}/vscode:insiders"
     docker image push "${GITHUB_USERNAME}/mitmproxy:alpine"
+    docker image push "${GITHUB_USERNAME}/mitmproxy"
     docker image push "${GITHUB_USERNAME}/vlc:alpine"
+    docker image push "${GITHUB_USERNAME}/vlc"
     docker image push "${GITHUB_USERNAME}/tor-browser:alpha"
     docker image push "${GITHUB_USERNAME}/slack"
     docker image push "${GITHUB_USERNAME}/pv"
     docker image push "${GITHUB_USERNAME}/jq"
     docker image push "${GITHUB_USERNAME}/figlet"
     docker image push "${GITHUB_USERNAME}/shellcheck:alpine"
+    docker image push "${GITHUB_USERNAME}/shellcheck"
     docker image push "${GITHUB_USERNAME}/curl"
     docker image push "${GITHUB_USERNAME}/rq"
     docker image push "${GITHUB_USERNAME}/bind-tools" 
+    docker image push "${GITHUB_USERNAME}/iputils"
+    docker image push "${GITHUB_USERNAME}/htop"
 
     docker system prune -f
     docker volume prune -f

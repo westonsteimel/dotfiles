@@ -5,4 +5,4 @@ docker run --rm -it \
     -v "/etc/passwd:/etc/passwd:ro" \
     --user $(id -u $(whoami)) \
     --name htop \
-    "${JESS_DOCKER_REPO_PREFIX}/htop"
+    "${DOCKER_REPO_PREFIX}/htop"

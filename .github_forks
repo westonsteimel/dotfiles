@@ -11,6 +11,7 @@ aws/aws-cli
 aws/chalice
 Azure/acs-engine
 bashtage/randomgen
+BlackArch/blackarch
 blechschmidt/massdns
 boto/boto3
 bugcrowd/HUNT
@@ -95,6 +96,7 @@ rancher/k3s
 rancher/rancher
 rancher/rke
 rancher/os westonsteimel/rancher-os
+rapid7/metasploit-framework
 robertdavidgraham/masscan
 rootless-containers/rootlesskit
 rust-bpf/rust-bcc
