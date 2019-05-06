@@ -52,6 +52,7 @@ hashicorp/nomad
 hashicorp/terraform
 hashicorp/vagrant
 hashicorp/vault
+hishamhm/htop
 iovisor/bcc
 iovisor/bpftrace
 iovisor/gobpf
