@@ -5,4 +5,5 @@ docker run --rm -it \
     -e "https_proxy=${https_proxy}" \
     -e "http_proxy=${http_proxy}" \
     -v "${HOME}/.httpie:/home/httpie/.httpie" \
+    -v "${PWD}:/home/httpie" \
     "${DOCKER_REPO_PREFIX}/httpie" "$@"
