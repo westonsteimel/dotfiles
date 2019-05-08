@@ -1,0 +1,8 @@
+#!/bin/sh
+
+docker run --rm -it --rm \
+	-v /etc/localtime:/etc/localtime:ro \
+	-v /run/libvirt:/var/run/libvirt \
+	--log-driver none \
+	--net container:kvm \
+    ${JESS_DOCKER_REPO_PREFIX}/libvirt-client "$@"
