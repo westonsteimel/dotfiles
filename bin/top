@@ -1,0 +1,8 @@
+#!/bin/sh
+
+docker run --rm -it \
+    --pid host \
+    -v "/etc/passwd:/etc/passwd:ro" \
+    --user $(id -u $(whoami)) \
+    --name top \
+    "alpine:edge" top
