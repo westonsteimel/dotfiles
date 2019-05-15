@@ -1,0 +1,5 @@
+#!/bin/sh
+
+docker run --rm -it \
+    -v "${HOME}/ledger:/home/ledger/data" \
+    "${DOCKER_REPO_PREFIX}/ledger" "$@"

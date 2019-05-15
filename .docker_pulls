@@ -2,6 +2,7 @@ alpine:edge
 alpine:latest
 busybox:glibc
 busybox:musl
+clockworksoul/zork1
 debian:buster-slim
 debian:sid-slim
 debian:stretch-slim

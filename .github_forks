@@ -69,6 +69,7 @@ kubernetes/minikube
 kubernetes-sigs/kind
 lballabio/QuantLib
 lballabio/QuantLib-SWIG
+ledger/ledger
 libvirt/libvirt
 linuxkit/linuxkit
 mitmproxy/mitmproxy
