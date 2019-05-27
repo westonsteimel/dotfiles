@@ -93,7 +93,7 @@ build-dockerfiles() {
     time docker image build --no-cache -t "${GITHUB_USERNAME}/htop" htop
     time docker image build --no-cache -t "${GITHUB_USERNAME}/cmatrix" cmatrix
     time docker image build --no-cache -t "${GITHUB_USERNAME}/tor-browser:alpha" tor-browser/alpha
-
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/ledger" ledger
     )
 }
 
@@ -124,6 +124,7 @@ push-dockerfiles() {
     docker image push "${GITHUB_USERNAME}/iputils"
     docker image push "${GITHUB_USERNAME}/htop"
     docker image push "${GITHUB_USERNAME}/cmatrix"
+    docker image push "${GITHUB_USERNAME}/ledger"
 
     docker system prune -f
     docker volume prune -f

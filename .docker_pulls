@@ -14,10 +14,8 @@ jess/chrome
 jess/clair
 jess/consul
 jess/gimp
-jess/htop
 jess/img
 jess/irssi
-jess/keepassxc
 jess/libvirt-client
 jess/masscan
 jess/nes
@@ -29,7 +27,6 @@ jess/reg
 jess/skype
 jess/strace
 jess/terraform
-jess/traceroute
 jess/vagrant
 jess/vault
 jess/virtualbox
