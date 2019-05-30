@@ -22,4 +22,4 @@ docker run -d \
     --group-add audio \
     --group-add video \
     --name firefox \
-    "${JESS_DOCKER_REPO_PREFIX}/firefox" "$@"
+    "${DOCKER_REPO_PREFIX}/firefox:stable" "$@"
