@@ -6,4 +6,4 @@ docker run --rm -it \
     -p 8090:8090 \
     -v "${HOME}/.zap/:/home/zap/" \
     --name zap \
-    owasp/zap2docker-weekly zap-webswing.sh
+    westonsteimel/zaproxy zap-webswing.sh

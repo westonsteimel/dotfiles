@@ -55,6 +55,7 @@ hashicorp/terraform
 hashicorp/vagrant
 hashicorp/vault
 hishamhm/htop
+i3/i3
 iovisor/bcc
 iovisor/bpftrace
 iovisor/gobpf
@@ -70,6 +71,7 @@ kubernetes-sigs/kind
 lballabio/QuantLib
 lballabio/QuantLib-SWIG
 ledger/ledger
+libbpf/libbpf
 libvirt/libvirt
 linuxkit/linuxkit
 mitmproxy/mitmproxy

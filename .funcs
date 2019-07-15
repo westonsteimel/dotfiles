@@ -130,3 +130,6 @@ push-dockerfiles() {
     docker volume prune -f
 }
 
+ga-wifi-accept() {
+    http -F --all --form POST https://www.ombord.info/hotspot/hotspot.cgi method=login username="" password="" url="http%3A%2F%2Fstanstedexpress.on.icomera.com%2F" onerror="http%3A%2F%2Fstanstedexpress.on.icomera.com%2Ferror.html"
+}

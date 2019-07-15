@@ -44,7 +44,7 @@ update_docker() {
 	local tmp_tar=/tmp/docker.tgz
 	local binary_uri="https://download.docker.com/linux/static/nightly/x86_64"
 	local docker_version=$(curl -sSL "${binary_uri}/" | pcregrep -o1 "^\<a href=\"(docker-0.0.0-.*.tgz)\"\>" | sort | tail -n 1)
-    #local docker_version="docker-0.0.0-20190511045941-84cbe5e.tgz"
+    #local docker_version="docker-0.0.0-20190607010609-76fb764.tgz"
     local latest_build=$(echo $docker_version | pcregrep -o1 -e "docker-.*-.*-(.*).tgz")
     
     if [ -x "$(command -v docker)" ]; then
@@ -313,12 +313,12 @@ update_vagrant() {
 
 update_consul() {
     echo "Updating HashiCorp consul..."
-    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/consul/" | pcregrep -o1 "^.*\<a href=\"\/consul\/(((?!\+ent).)*)\/\"\>" | head -n 1
+    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/consul/" | pcregrep -o1 "^.*\<a href=\"\/consul\/(((?!(\+ent|\-beta)).)*)\/\"\>" | head -n 1
 )
     local latest_build="${LATEST_VERSION}"
     
     if [ -x "$(command -v consul)" ]; then
-        local installed_build=$(consul --version | pcregrep -o1 -e "Consul v(.*)")
+        local installed_build=$(consul --version | pcregrep -o1 -e "Consul v(.*)\w?")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
@@ -398,7 +398,7 @@ update_vault() {
     local latest_build="${LATEST_VERSION}"
     
     if [ -x "$(command -v vault)" ]; then
-        local installed_build=$(vault --version | pcregrep -o1 -e "Vault v(.*) .*")
+        local installed_build=$(vault --version | pcregrep -o1 -e "Vault v(.*)")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
