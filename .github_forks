@@ -10,7 +10,6 @@ aquasecurity/kube-bench
 aquasecurity/kube-hunter
 aws/aws-cli
 aws/chalice
-Azure/acs-engine
 bashtage/randomgen
 BlackArch/blackarch
 blechschmidt/massdns
@@ -30,6 +29,7 @@ docker/cli westonsteimel/docker-cli
 docker/compose westonsteimel/docker-compose
 docker/docker-bench-security
 docker/machine westonsteimel/docker-machine
+drk1wi/Modlishka
 envoyproxy/envoy
 explosion/spaCy
 fatih/vim-go

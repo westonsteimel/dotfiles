@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p "${HOME}/.firefox/cache"
-mkdir -p "${HOME}/.firefox/firefox"
+mkdir -p "${HOME}/.firefox-beta/cache"
+mkdir -p "${HOME}/.firefox-beta/firefox"
 
 docker run -d \
     --rm \
@@ -10,8 +10,8 @@ docker run -d \
     --cpuset-cpus 0 \
     -v /etc/localtime:/etc/localtime:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v "${HOME}/.firefox/cache:/root/.cache/mozilla" \
-    -v "${HOME}/.firefox/mozilla:/root/.mozilla" \
+    -v "${HOME}/.firefox-beta/cache:/root/.cache/mozilla" \
+    -v "${HOME}/.firefox-beta/mozilla:/root/.mozilla" \
     -v "${HOME}/Downloads:/root/Downloads" \
     -v "${HOME}/Pictures:/root/Pictures" \
     -v "${HOME}/Torrents:/root/Torrents" \
@@ -25,4 +25,4 @@ docker run -d \
     --group-add audio \
     --group-add video \
     --name firefox \
-    "${DOCKER_REPO_PREFIX}/firefox:nightly" -setDefaultBrowser "$@"
+    "${DOCKER_REPO_PREFIX}/firefox:beta" -setDefaultBrowser "$@"

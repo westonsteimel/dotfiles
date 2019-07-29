@@ -62,6 +62,7 @@ fork-sync() {
 
 build-dockerfiles() {
     (
+    ssh-add
     cd "${GITHUB_PATH}/${GITHUB_USERNAME}/docker-debian"
     time make build
     #time REPO_URL="quay.io/westonsteimel" make build
@@ -71,6 +72,7 @@ build-dockerfiles() {
     #time REPO_URL="quay.io/westonsteimel" make build
 
     cd "${GITHUB_PATH}/${GITHUB_USERNAME}/dockerfiles"
+    git submodule update --recursive --remote
     time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:nightly" firefox/nightly
     time docker image build --no-cache -t "${GITHUB_USERNAME}/youtube-dl" youtube-dl
     time docker image build --no-cache -t "${GITHUB_USERNAME}/whois" whois
