@@ -15,5 +15,5 @@ docker run -d \
     --group-add audio \
     --group-add video \
     --name celestia \
-    "${DOCKER_REPO_PREFIX}/celestia" "$@"
+    "${DOCKER_REPO_PREFIX}/celestia:master" "$@"
 

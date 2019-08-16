@@ -8,5 +8,5 @@ docker run --rm -d \
     -v "${HOME}/.keepass:/home/keepassxc/keepass" \
     -v "${HOME}/.config/keepassxc:/home/keepassxc/.config/keepassxc" \
     --name keepassxc \
-    "${DOCKER_REPO_PREFIX}/keepassxc"
+    "${DOCKER_REPO_PREFIX}/keepassxc:latest"
 

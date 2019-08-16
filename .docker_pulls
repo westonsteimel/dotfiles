@@ -1,3 +1,10 @@
+westonsteimel/firefox:nightly
+westonsteimel/httpie:latest
+westonsteimel/youtube-dl:latest
+westonsteimel/zaproxy:latest
+westonsteimel/stellarium:master
+westonsteimel/celestia:master
+westonsteimel/curl:latest
 alpine:edge
 alpine:latest
 busybox:glibc
@@ -5,10 +12,8 @@ busybox:musl
 clockworksoul/zork1
 debian:buster-slim
 debian:sid-slim
-debian:stretch-slim
 golang:alpine
 jess/masscan
-jess/nes
 jess/netcat
 jess/pulseaudio
 jess/strace

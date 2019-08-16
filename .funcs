@@ -74,6 +74,8 @@ build-dockerfiles() {
     cd "${GITHUB_PATH}/${GITHUB_USERNAME}/dockerfiles"
     git submodule update --recursive --remote
     time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:nightly" firefox/nightly
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:beta" firefox/beta
+    time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:stable" -t "${GITHUB_USERNAME}/firefox:latest" firefox/stable
     time docker image build --no-cache -t "${GITHUB_USERNAME}/youtube-dl" youtube-dl
     time docker image build --no-cache -t "${GITHUB_USERNAME}/whois" whois
     time docker image build --no-cache -t "${GITHUB_USERNAME}/nmap:alpine" -t "${GITHUB_USERNAME}/nmap" nmap
@@ -101,6 +103,8 @@ build-dockerfiles() {
 
 push-dockerfiles() {
     docker image push "${GITHUB_USERNAME}/firefox:nightly"
+    docker image push "${GITHUB_USERNAME}/firefox:beta" 
+    docker image push "${GITHUB_USERNAME}/firefox:stable" 
     docker image push "${GITHUB_USERNAME}/youtube-dl"
     docker image push "${GITHUB_USERNAME}/whois"
     docker image push "${GITHUB_USERNAME}/nmap"
