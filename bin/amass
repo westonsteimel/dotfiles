@@ -8,4 +8,4 @@ docker run -it --rm \
     -v "${PWD}":/home/amass/scan \
     --workdir /home/amass/scan \
 	--name amass \
-	"${DOCKER_REPO_PREFIX}/amass" "$@"
+	"${DOCKER_REPO_PREFIX}/amass:latest" "$@"

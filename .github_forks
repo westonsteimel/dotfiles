@@ -6,8 +6,10 @@ apache/hive
 apache/mesos
 apache/spark
 aquasecurity/docker-bench
+aquasecurity/go-dep-parser
 aquasecurity/kube-bench
 aquasecurity/kube-hunter
+aquasecurity/trivy
 aws/aws-cli
 aws/chalice
 bashtage/randomgen
@@ -116,11 +118,14 @@ scikit-learn/scikit-learn
 scipy/scipy
 servo/servo
 statsmodels/statsmodels
+stedolan/jq
 Stellarium/stellarium
 subfinder/subfinder
 tensorflow/tensorflow
+tesseract-ocr/tesseract
 tomasr/molokai
 Track3/hermit
+videolan/vlc
 virtual-kubelet/virtual-kubelet
 wagoodman/dive
 weaveworks/eksctl

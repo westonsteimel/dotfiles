@@ -62,26 +62,11 @@ fork-sync() {
 
 build-dockerfiles() {
     (
-    ssh-add
-    cd "${GITHUB_PATH}/${GITHUB_USERNAME}/docker-debian"
-    time make build
-    #time REPO_URL="quay.io/westonsteimel" make build
-
-    cd "${GITHUB_PATH}/${GITHUB_USERNAME}/docker-alpine-glibc"
-    time make build
-    #time REPO_URL="quay.io/westonsteimel" make build
-
     cd "${GITHUB_PATH}/${GITHUB_USERNAME}/dockerfiles"
     git submodule update --recursive --remote
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:nightly" firefox/nightly
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:beta" firefox/beta
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/firefox:stable" -t "${GITHUB_USERNAME}/firefox:latest" firefox/stable
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/youtube-dl" youtube-dl
     time docker image build --no-cache -t "${GITHUB_USERNAME}/whois" whois
     time docker image build --no-cache -t "${GITHUB_USERNAME}/nmap:alpine" -t "${GITHUB_USERNAME}/nmap" nmap
     time docker image build --no-cache -t "${GITHUB_USERNAME}/subfinder" subfinder
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/gobuster" gobuster
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/amass" amass
     time docker image build --no-cache -t "${GITHUB_USERNAME}/vscode:insiders" vscode/insiders
     time docker image build --no-cache -t "${GITHUB_USERNAME}/mitmproxy:alpine" -t "${GITHUB_USERNAME}/mitmproxy" mitmproxy
     time docker image build --no-cache -t "${GITHUB_USERNAME}/vlc:alpine" -t "${GITHUB_USERNAME}/vlc" vlc
@@ -90,47 +75,33 @@ build-dockerfiles() {
     time docker image build --no-cache -t "${GITHUB_USERNAME}/jq" jq
     time docker image build --no-cache -t "${GITHUB_USERNAME}/figlet" figlet
     time docker image build --no-cache -t "${GITHUB_USERNAME}/shellcheck:alpine" -t "${GITHUB_USERNAME}/shellcheck" shellcheck
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/curl" curl
     time docker image build --no-cache -t "${GITHUB_USERNAME}/rq" rq
     time docker image build --no-cache -t "${GITHUB_USERNAME}/bind-tools" bind-tools
     time docker image build --no-cache -t "${GITHUB_USERNAME}/iputils" iputils
     time docker image build --no-cache -t "${GITHUB_USERNAME}/htop" htop
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/cmatrix" cmatrix
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/tor-browser:alpha" tor-browser/alpha
-    time docker image build --no-cache -t "${GITHUB_USERNAME}/ledger" ledger
     )
 }
 
 push-dockerfiles() {
-    docker image push "${GITHUB_USERNAME}/firefox:nightly"
-    docker image push "${GITHUB_USERNAME}/firefox:beta" 
-    docker image push "${GITHUB_USERNAME}/firefox:stable" 
-    docker image push "${GITHUB_USERNAME}/youtube-dl"
     docker image push "${GITHUB_USERNAME}/whois"
     docker image push "${GITHUB_USERNAME}/nmap"
     docker image push "${GITHUB_USERNAME}/nmap:alpine"
     docker image push "${GITHUB_USERNAME}/subfinder"
-    docker image push "${GITHUB_USERNAME}/gobuster"
-    docker image push "${GITHUB_USERNAME}/amass"
     docker image push "${GITHUB_USERNAME}/vscode:insiders"
     docker image push "${GITHUB_USERNAME}/mitmproxy:alpine"
     docker image push "${GITHUB_USERNAME}/mitmproxy"
     docker image push "${GITHUB_USERNAME}/vlc:alpine"
     docker image push "${GITHUB_USERNAME}/vlc"
-    docker image push "${GITHUB_USERNAME}/tor-browser:alpha"
     docker image push "${GITHUB_USERNAME}/slack"
     docker image push "${GITHUB_USERNAME}/pv"
     docker image push "${GITHUB_USERNAME}/jq"
     docker image push "${GITHUB_USERNAME}/figlet"
     docker image push "${GITHUB_USERNAME}/shellcheck:alpine"
     docker image push "${GITHUB_USERNAME}/shellcheck"
-    docker image push "${GITHUB_USERNAME}/curl"
     docker image push "${GITHUB_USERNAME}/rq"
     docker image push "${GITHUB_USERNAME}/bind-tools" 
     docker image push "${GITHUB_USERNAME}/iputils"
     docker image push "${GITHUB_USERNAME}/htop"
-    docker image push "${GITHUB_USERNAME}/cmatrix"
-    docker image push "${GITHUB_USERNAME}/ledger"
 
     docker system prune -f
     docker volume prune -f

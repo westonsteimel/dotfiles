@@ -439,9 +439,9 @@ update() {
 		# update
 		#update_runc;
 		#update_containerd;
-        update_act;
+        #update_act;
         update_hub;
-		update_docker;
+		#update_docker;
         update_docker_machine;
         update_docker_compose;
 		update_k8s;

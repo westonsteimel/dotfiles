@@ -1,10 +1,14 @@
 westonsteimel/firefox:nightly
 westonsteimel/httpie:latest
-westonsteimel/youtube-dl:latest
+westonsteimel/youtube-dl:master
 westonsteimel/zaproxy:latest
 westonsteimel/stellarium:master
 westonsteimel/celestia:master
-westonsteimel/curl:latest
+westonsteimel/curl:master
+westonsteimel/amass:master
+westonsteimel/cmatrix:master
+westonsteimel/ledger:master
+westonsteimel/keepassxc:master
 alpine:edge
 alpine:latest
 busybox:glibc
