@@ -1,5 +1,5 @@
 westonsteimel/firefox:nightly
-westonsteimel/httpie:latest
+westonsteimel/httpie:master
 westonsteimel/youtube-dl:master
 westonsteimel/zaproxy:latest
 westonsteimel/stellarium:master
@@ -9,7 +9,7 @@ westonsteimel/amass:master
 westonsteimel/cmatrix:master
 westonsteimel/ledger:master
 westonsteimel/keepassxc:master
-westonsteimel/netcat:master
+westonsteimel/netcat:latest
 westonsteimel/masscan:master
 westonsteimel/htop:master
 westonsteimel/whois:latest
@@ -22,6 +22,7 @@ westonsteimel/hugo:master
 westonsteimel/bcc:latest
 westonsteimel/bind-tools:latest
 westonsteimel/links:latest
+westonsteimel/jq:master
 alpine:edge
 alpine:latest
 busybox:glibc

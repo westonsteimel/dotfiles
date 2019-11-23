@@ -7,4 +7,4 @@ else
     DOCKER_FLAGS="-i"
 fi
 
-docker run --rm ${DOCKER_FLAGS} westonsteimel/jq "$@"
+docker run --rm ${DOCKER_FLAGS} westonsteimel/jq:master "$@"

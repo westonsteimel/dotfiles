@@ -1,0 +1,5 @@
+#!/bin/sh
+
+docker run --rm -it \
+    -v "${HOME}/.shodan:/home/shodan/.shodan" \
+    "${DOCKER_REPO_PREFIX}/shodan:master" "$@"
