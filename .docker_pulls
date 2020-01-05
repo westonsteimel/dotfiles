@@ -23,6 +23,7 @@ westonsteimel/bcc:latest
 westonsteimel/bind-tools:latest
 westonsteimel/links:latest
 westonsteimel/jq:master
+westonsteimel/shodan:master
 alpine:edge
 alpine:latest
 busybox:glibc
@@ -39,5 +40,6 @@ jess/wireshark
 koalaman/shellcheck
 lachlanevenson/k8s-kubectl
 python:alpine
+rust:alpine
 wagoodman/dive
 wpscanteam/wpscan

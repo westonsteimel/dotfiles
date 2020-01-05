@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "socks5://$(docker inspect --format '{{.NetworkSettings.Networks.bridge.IPAddress}}' torproxy):9050"

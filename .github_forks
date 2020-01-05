@@ -16,6 +16,7 @@ bashtage/randomgen
 BlackArch/blackarch
 blechschmidt/massdns
 boto/boto3
+bpftools/linux-observability-with-bpf
 bugcrowd/HUNT
 CelestiaProject/Celestia
 cilium/cilium
@@ -23,7 +24,9 @@ containerd/cgroups
 containerd/containerd
 containerd/cri
 containernetworking/cni
+coreboot/coreboot
 coreos/clair
+coreutils/coreutils
 curl/curl
 dflemstr/rq
 docker/buildx
@@ -91,6 +94,7 @@ openfaas/faas
 openfaas/faas-cli
 openfaas/faas-netes
 openfaas/templates westonsteimel/openfaas-templates
+oreboot/oreboot
 OWASP/Amass
 pandas-dev/pandas
 pi-hole/docker-pi-hole
@@ -114,6 +118,7 @@ rust-lang/rust-clippy
 rust-lang/rustfmt
 rust-lang/rustup.rs
 rust-lang/rust.vim
+samuela/rustybox
 scikit-learn/scikit-learn
 scipy/scipy
 servo/servo
@@ -125,6 +130,7 @@ tensorflow/tensorflow
 tesseract-ocr/tesseract
 tomasr/molokai
 Track3/hermit
+uutils/coreutils westonsteimel/rust-coreutils
 videolan/vlc
 virtual-kubelet/virtual-kubelet
 wagoodman/dive

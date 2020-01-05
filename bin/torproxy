@@ -1,0 +1,8 @@
+#!/bin/sh
+
+docker run -d \
+    -v /etc/localtime:/etc/localtime:ro \
+	-p 9050:9050 \
+	--name torproxy \
+	${JESS_DOCKER_REPO_PREFIX}/tor-proxy
+

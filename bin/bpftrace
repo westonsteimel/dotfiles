@@ -2,7 +2,8 @@
 
 docker run --rm -it \
     --privileged \
+    -v /sys/kernel/debug:/sys/kernel/debug:ro \
     -v /lib/modules:/lib/modules:ro \
     -v /usr/src:/usr/src:ro \
     -v /etc/localtime:/etc/localtime:ro \
-    "${DOCKER_REPO_PREFIX}/bcc" "$@"
+    "${DOCKER_REPO_PREFIX}/bpftrace" "$@"
