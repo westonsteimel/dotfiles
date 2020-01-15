@@ -12,6 +12,10 @@ build_kernel(){
 	    cd /usr/src/linux
         make && make modules_install
         make install
+
+        cd tools/bpf/bpftool
+        make && make install
+
         grub-mkconfig -o /boot/grub/grub.cfg
         echo "If this is a new kernel, execute update-kernel-modules after rebooting"
 	)
