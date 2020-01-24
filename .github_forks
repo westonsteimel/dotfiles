@@ -1,4 +1,5 @@
 abishekvashok/cmatrix
+alexellis/faasd
 alpinelinux/aports
 apache/arrow
 apache/hadoop
@@ -9,6 +10,7 @@ aquasecurity/docker-bench
 aquasecurity/go-dep-parser
 aquasecurity/kube-bench
 aquasecurity/kube-hunter
+aquasecurity/tracee
 aquasecurity/trivy
 aws/aws-cli
 aws/chalice
@@ -37,6 +39,7 @@ docker/machine westonsteimel/docker-machine
 drk1wi/Modlishka
 envoyproxy/envoy
 explosion/spaCy
+falcosecurity/falco
 fatih/vim-go
 firecracker-microvm/firecracker
 firecracker-microvm/firecracker-containerd
