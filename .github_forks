@@ -1,5 +1,4 @@
 abishekvashok/cmatrix
-alexellis/faasd
 alpinelinux/aports
 apache/arrow
 apache/hadoop
@@ -22,6 +21,8 @@ bpftools/linux-observability-with-bpf
 bugcrowd/HUNT
 CelestiaProject/Celestia
 cilium/cilium
+cilium/ebpf
+cilium/hubble
 containerd/cgroups
 containerd/containerd
 containerd/cri
@@ -69,6 +70,7 @@ iovisor/bpftrace
 iovisor/gobpf
 iovisor/kubectl-trace
 jessfraz/dockerfiles westonsteimel/jessfraz-dockerfiles
+jessfraz/gmailfilters
 jakubroztocil/httpie
 junegunn/vim-plug
 keras-team/keras
@@ -94,6 +96,7 @@ offensive-security/kali-linux-docker
 OJ/gobuster
 opencontainers/runc
 openfaas/faas
+openfaas/faasd
 openfaas/faas-cli
 openfaas/faas-netes
 openfaas/templates westonsteimel/openfaas-templates
@@ -139,6 +142,8 @@ virtual-kubelet/virtual-kubelet
 wagoodman/dive
 weaveworks/eksctl
 WireGuard/WireGuard
+WireGuard/wireguard-go
+WireGuard/wireguard-rs
 wireshark/wireshark
 xfernando/go2seccomp
 ytdl-org/youtube-dl
