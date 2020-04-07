@@ -124,33 +124,6 @@ update_docker_compose() {
     fi
 }
 
-update_act() {
-    echo "Updating act..."
-    local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/nektos/act/releases/latest")
-    local LATEST_VERSION=$(echo "${LATEST_RELEASE}" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
-    local latest_build="${LATEST_VERSION#v}"
-    
-    if [ -x "$(command -v act)" ]; then
-        local installed_build=$(act --version | pcregrep -o1 -e "act version (.*)")
-    fi
-
-    if [[ "$latest_build" != "$installed_build" ]]; then
-        (
-            echo "Installing act version ${LATEST_VERSION}..."
-            curl -fSL "https://github.com/nektos/act/releases/download/${LATEST_VERSION}/act_Linux_x86_64.tar.gz" -o /tmp/act.tar.gz
-            cd /tmp
-            tar -xzvf /tmp/act.tar.gz
-            cp /tmp/act /usr/local/bin
-            rm /tmp/act.tar.gz
-            rm /tmp/act
-            chmod a+x /usr/local/bin/act
-            echo "act installed!"
-        )
-    else
-        echo "act is already up-to-date"
-    fi
-}
-
 update_hub() {
     echo "Updating hub..."
     local LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' "https://github.com/github/hub/releases/latest")
@@ -439,7 +412,6 @@ update() {
 		# update
 		#update_runc;
 		#update_containerd;
-        #update_act;
         update_hub;
 		update_docker;
         update_docker_machine;
