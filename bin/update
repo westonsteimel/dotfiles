@@ -43,15 +43,15 @@ update_docker() {
 	# get the binary
 	local tmp_tar=/tmp/docker.tgz
 	local binary_uri="https://download.docker.com/linux/static/test/x86_64"
-	local docker_version=$(curl -sSL "${binary_uri}/" | pcregrep -o1 "^\<a href=\"(docker\-\d{1,2}\.\d{1,2}\.\d{1,2}.*\.tgz)\"\>" | sort | tail -n 1)
+	local docker_version=$(curl --silent "https://api.github.com/repos/docker/docker-ce/releases/latest" | jq -r .tag_name)
     #local docker_version="docker-0.0.0-20190607010609-76fb764.tgz"
-    local latest_build=$(echo $docker_version | pcregrep -o1 -e "docker-(.*).tgz")
+    local latest_build=${docker_version#"v"}
     
     if [ -x "$(command -v docker)" ]; then
         local installed_build=$(docker --version | pcregrep -o1 -e "version (.*),")
     fi
 
-	if [[ "$latest_build" != "${installed_build:0:7}" ]]; then
+	if [[ "$latest_build" != "${installed_build}" ]]; then
 		# stop docker
         dcleanup || true
         rc-service docker stop || true
@@ -62,7 +62,8 @@ update_docker() {
 
 		(
 			set -x
-			curl -fSL "${binary_uri}/${docker_version}" -o "$tmp_tar"
+			echo $latest_build
+            curl -fSL "${binary_uri}/docker-${latest_build}.tgz" -o "$tmp_tar"
 			# echo "${docker_sha256} ${tmp_tar}" | sha256sum -c -
 			tar -C /usr/local/bin --strip-components 1 -xzvf "$tmp_tar"
 			rm "${tmp_tar}"

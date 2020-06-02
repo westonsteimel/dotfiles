@@ -85,6 +85,7 @@ ledger/ledger
 libbpf/libbpf
 libvirt/libvirt
 linuxkit/linuxkit
+llvm/llvm-project
 mitmproxy/mitmproxy
 moby/buildkit
 moby/moby
@@ -92,6 +93,8 @@ nektos/act
 neovim/neovim
 nltk/nltk
 nmap/nmap
+numba/llvmlite
+numba/numba
 numpy/numpy
 offensive-security/kali-linux-docker
 OJ/gobuster
@@ -104,6 +107,7 @@ openfaas/templates westonsteimel/openfaas-templates
 oreboot/oreboot
 OWASP/Amass
 pandas-dev/pandas
+philc/vimium
 pi-hole/docker-pi-hole
 pi-hole/pi-hole
 prestodb/presto
