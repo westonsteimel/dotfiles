@@ -5,4 +5,4 @@ docker run -it --rm \
 	--net host \
 	--cap-add NET_ADMIN \
 	--name gobuster \
-	"${DOCKER_REPO_PREFIX}/gobuster:master" "$@"
+	"${DOCKER_REPO_PREFIX}/gobuster:main" "$@"

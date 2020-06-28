@@ -1,4 +1,4 @@
 #!/bin/sh
 
 docker run --rm -it \
-    "${DOCKER_REPO_PREFIX}/cmatrix:master" "$@"
+    "${DOCKER_REPO_PREFIX}/cmatrix:main" "$@"

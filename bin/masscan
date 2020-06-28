@@ -5,4 +5,4 @@ docker run -it --rm \
 	--net host \
 	--cap-add NET_ADMIN \
 	--name masscan \
-	"${DOCKER_REPO_PREFIX}/masscan:master" "$@"
+	"${DOCKER_REPO_PREFIX}/masscan:main" "$@"

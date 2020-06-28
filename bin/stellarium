@@ -16,5 +16,5 @@ docker run \
     --group-add audio \
     --group-add video \
     --name stellarium \
-    "${DOCKER_REPO_PREFIX}/stellarium:master" "$@"
+    "${DOCKER_REPO_PREFIX}/stellarium:main" "$@"
 

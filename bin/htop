@@ -5,4 +5,4 @@ docker run --rm -it \
     -v "/etc/passwd:/etc/passwd:ro" \
     --user $(id -u $(whoami)) \
     --name htop \
-    "${DOCKER_REPO_PREFIX}/htop:master"
+    "${DOCKER_REPO_PREFIX}/htop:main"
