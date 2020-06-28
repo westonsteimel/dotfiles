@@ -26,6 +26,7 @@ westonsteimel/jq:main
 westonsteimel/shodan:main
 westonsteimel/python-hacklab:main
 westonsteimel/trivy:main
+westonsteimel/rust-static-builder:nightly
 alpine:edge
 alpine:latest
 busybox:glibc
