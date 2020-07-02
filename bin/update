@@ -392,6 +392,22 @@ update_vault() {
 	fi
 }
 
+update_utils() {
+    docker image pull westonsteimel/exa:edge
+    docker image pull westonsteimel/hexyl:edge
+    #docker pull westonsteimel/bat:edge
+
+    docker container create -ti --name exa westonsteimel/exa:edge
+    docker container create -ti --name hexyl westonsteimel/hexyl:edge
+    docker container create -ti --name bat westonsteimel/bat:edge
+    docker container cp exa:/usr/local/bin/exa /usr/local/bin/exa
+    docker container cp hexyl:/usr/local/bin/hexyl /usr/local/bin/hexyl
+    docker container cp bat:/usr/local/bin/bat /usr/local/bin/bat
+    docker container rm -f exa
+    docker container rm -f hexyl 
+    docker container rm -f bat 
+}
+
 update_rust() {
     rustup update
 	rustc --version
@@ -425,6 +441,7 @@ update() {
         update_nomad;
 		update_terraform;
 		update_vault;
+        update_utils;
 		#update_rust;
 	else
 		echo "We don't have update functions for OS: ${OSTYPE}"
