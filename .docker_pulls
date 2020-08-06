@@ -4,11 +4,11 @@ westonsteimel/youtube-dl:main
 westonsteimel/zaproxy:latest
 westonsteimel/stellarium:main
 westonsteimel/celestia:main
-westonsteimel/curl:main
-westonsteimel/amass:main
+westonsteimel/curl:edge
+westonsteimel/amass:edge
 westonsteimel/cmatrix:main
-westonsteimel/ledger:main
-westonsteimel/keepassxc:main
+westonsteimel/ledger:edge
+westonsteimel/keepassxc:edge
 westonsteimel/netcat:latest
 westonsteimel/masscan:main
 westonsteimel/htop:main
@@ -18,7 +18,7 @@ westonsteimel/vlc:latest
 westonsteimel/tor-browser:alpha
 westonsteimel/nmap:latest
 westonsteimel/gobuster:main
-westonsteimel/hugo:main
+westonsteimel/hugo:edge
 westonsteimel/bcc:latest
 westonsteimel/bind-tools:latest
 westonsteimel/links:latest

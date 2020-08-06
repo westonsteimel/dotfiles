@@ -17,3 +17,4 @@ eval "$(hub alias -s)"
 
 alias ls="exa"
 alias cat="bat"
+alias ps="procs"

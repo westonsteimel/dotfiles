@@ -5,4 +5,4 @@ docker run --rm -it \
     -v "$PWD:/site" \
     -p 1313:1313 \
     --workdir /site \
-    "${DOCKER_REPO_PREFIX}/hugo" "$@"
+    "${DOCKER_REPO_PREFIX}/hugo:edge" "$@"

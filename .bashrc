@@ -13,10 +13,6 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(ssh-agent)"
 fi
 
-
-alias ls='ls --color=auto'
-#PS1='[\u@\h \W]\$ ';
-
 source /usr/share/bash-completion/completions/git
 source /home/weston/miniconda3/etc/profile.d/conda.sh
 source ~/.bash_profile

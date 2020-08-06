@@ -1,5 +1,5 @@
 #!/bin/sh
-docker run -d \
+docker run \
     --rm \
     -v "/etc/localtime:/etc/localtime:ro" \
     -v "/tmp/.X11-unix:/tmp/.X11-unix"  \

@@ -64,8 +64,9 @@ update_docker() {
 			set -x
 			echo $latest_build
             curl -fSL "${binary_uri}/docker-${latest_build}.tgz" -o "$tmp_tar"
-			# echo "${docker_sha256} ${tmp_tar}" | sha256sum -c -
+            # echo "${docker_sha256} ${tmp_tar}" | sha256sum -c -
 			tar -C /usr/local/bin --strip-components 1 -xzvf "$tmp_tar"
+            strip -s /usr/local/bin/docker*
 			rm "${tmp_tar}"
 			# remove binaries we don't need
 			#rm /usr/local/bin/docker-containerd*
@@ -140,6 +141,7 @@ update_hub() {
         curl -fSL "https://github.com/github/hub/releases/download/${LATEST_VERSION}/hub-linux-amd64-${LATEST_VERSION#v}.tgz" -o /tmp/hub.tar.gz
         mkdir -p /tmp/hub
         tar -C /tmp/hub --strip-components 1 -xzvf /tmp/hub.tar.gz
+        strip -s /tmp/hub/bin/hub
         cp /tmp/hub/bin/hub /usr/local/bin
         rm /tmp/hub.tar.gz
         rm -r /tmp/hub
@@ -395,17 +397,23 @@ update_vault() {
 update_utils() {
     docker image pull westonsteimel/exa:edge
     docker image pull westonsteimel/hexyl:edge
-    #docker pull westonsteimel/bat:edge
+    docker image pull westonsteimel/bat:edge
+    docker image pull westonsteimel/procs:edge
 
     docker container create -ti --name exa westonsteimel/exa:edge
     docker container create -ti --name hexyl westonsteimel/hexyl:edge
     docker container create -ti --name bat westonsteimel/bat:edge
+    docker container create -ti --name procs westonsteimel/procs:edge
+
     docker container cp exa:/usr/local/bin/exa /usr/local/bin/exa
     docker container cp hexyl:/usr/local/bin/hexyl /usr/local/bin/hexyl
     docker container cp bat:/usr/local/bin/bat /usr/local/bin/bat
+    docker container cp procs:/usr/local/bin/procs /usr/local/bin/procs 
+
     docker container rm -f exa
     docker container rm -f hexyl 
-    docker container rm -f bat 
+    docker container rm -f bat
+    docker container rm -f procs
 }
 
 update_rust() {
@@ -433,14 +441,14 @@ update() {
 		update_docker;
         update_docker_machine;
         update_docker_compose;
-		update_k8s;
-        update_img;
-        update_faas;
-        update_consul;
-        update_vagrant;
-        update_nomad;
-		update_terraform;
-		update_vault;
+		#update_k8s;
+        #update_img;
+        #update_faas;
+        #update_consul;
+        #update_vagrant;
+        #update_nomad;
+		#update_terraform;
+		#update_vault;
         update_utils;
 		#update_rust;
 	else
