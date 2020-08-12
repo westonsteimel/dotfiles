@@ -125,6 +125,7 @@ rancher/os westonsteimel/rancher-os
 rapid7/metasploit-framework
 robertdavidgraham/masscan
 rootless-containers/rootlesskit
+rs/curlie
 rust-bpf/rust-bcc
 rust-lang/cargo
 rust-lang/rust
