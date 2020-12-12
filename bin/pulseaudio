@@ -6,7 +6,6 @@ docker run --rm \
     -v /etc/localtime:/etc/localtime:ro \
 	--device /dev/snd \
 	-p 4713:4713 \
-	--restart always \
 	--group-add audio \
 	--name pulseaudio \
     "${JESS_DOCKER_REPO_PREFIX}/pulseaudio"

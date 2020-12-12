@@ -13,10 +13,13 @@ aquasecurity/tracee
 aquasecurity/trivy
 aws/aws-cli
 aws/chalice
+aws/aws-lambda-python-runtime-interface-client
+aws/aws-lambda-runtime-interface-emulator
 bashtage/randomgen
 BlackArch/blackarch
 blechschmidt/massdns
 boto/boto3
+boto/botocore
 bottlerocket-os/bottlerocket
 bpftools/linux-observability-with-bpf
 bugcrowd/HUNT
@@ -66,7 +69,9 @@ hashicorp/nomad
 hashicorp/terraform
 hashicorp/vagrant
 hashicorp/vault
+hashicorp/waypoint
 hishamhm/htop
+hyperium/hyper
 i3/i3
 iovisor/bcc
 iovisor/bpftrace
@@ -88,6 +93,7 @@ libbpf/libbpf
 libvirt/libvirt
 linuxkit/linuxkit
 llvm/llvm-project
+MagicStack/uvloop
 mitmproxy/mitmproxy
 moby/buildkit
 moby/moby
@@ -134,6 +140,7 @@ rust-lang/rustfmt
 rust-lang/rustup.rs
 rust-lang/rust.vim
 samuela/rustybox
+samuelcolvin/pydantic
 scikit-learn/scikit-learn
 scipy/scipy
 servo/servo
@@ -145,6 +152,7 @@ surfkansas/oauth2-client-credentials-api-sidecar
 tailscale/tailscale
 tensorflow/tensorflow
 tesseract-ocr/tesseract
+tiangolo/fastapi
 tomasr/molokai
 Track3/hermit
 uutils/coreutils westonsteimel/rust-coreutils

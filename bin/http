@@ -6,4 +6,4 @@ docker run --rm -it \
     -e http_proxy \
     -v "${HOME}/.httpie:/home/httpie/.httpie" \
     -v "${PWD}:/home/httpie/Downloads" \
-    "${DOCKER_REPO_PREFIX}/httpie:main" "$@"
+    "${DOCKER_REPO_PREFIX}/httpie:edge" "$@"
