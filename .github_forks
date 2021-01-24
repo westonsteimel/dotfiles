@@ -15,6 +15,9 @@ aws/aws-cli
 aws/chalice
 aws/aws-lambda-python-runtime-interface-client
 aws/aws-lambda-runtime-interface-emulator
+aws/aws-sam-cli
+awslabs/aws-lambda-rust-runtime
+ballista-compute/ballista
 bashtage/randomgen
 BlackArch/blackarch
 blechschmidt/massdns
@@ -43,6 +46,7 @@ docker/compose westonsteimel/docker-compose
 docker/docker-bench-security
 docker/machine westonsteimel/docker-machine
 drk1wi/Modlishka
+encode/starlette
 envoyproxy/envoy
 explosion/spaCy
 falcosecurity/falco
@@ -63,6 +67,8 @@ github/hub
 gliderlabs/docker-alpine
 golang/go
 google/syzkaller
+GREsau/okapi
+GREsau/rocket-lamb
 hashcat/hashcat
 hashicorp/consul
 hashicorp/nomad
@@ -86,6 +92,7 @@ kubeflow/kubeflow
 kubernetes/kubernetes
 kubernetes/minikube
 kubernetes-sigs/kind
+lamedh-dev/aws-lambda-rust-runtime westonsteimel/netlify-aws-lambda-rust-runtime
 lballabio/QuantLib
 lballabio/QuantLib-SWIG
 ledger/ledger
@@ -97,7 +104,6 @@ MagicStack/uvloop
 mitmproxy/mitmproxy
 moby/buildkit
 moby/moby
-nektos/act
 neovim/neovim
 nltk/nltk
 nmap/nmap
@@ -143,6 +149,7 @@ samuela/rustybox
 samuelcolvin/pydantic
 scikit-learn/scikit-learn
 scipy/scipy
+SergioBenitez/Rocket
 servo/servo
 statsmodels/statsmodels
 stedolan/jq
