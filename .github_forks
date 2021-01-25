@@ -79,7 +79,7 @@ jessfraz/dockerfiles westonsteimel/jessfraz-dockerfiles
 jessfraz/gmailfilters
 jakubroztocil/httpie
 junegunn/vim-plug
-lamedh-dev/aws-lambda-rust-runtime westonsteimel/netlify-aws-lambda-rust-runtime
+lamedh-dev/aws-lambda-rust-runtime westonsteimel/lamedh-aws-lambda-rust-runtime
 lballabio/QuantLib
 lballabio/QuantLib-SWIG
 ledger/ledger
