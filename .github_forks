@@ -1,4 +1,6 @@
 alpinelinux/aports
+anchore/grype
+anchore/syft 
 apache/arrow
 aquasecurity/docker-bench
 aquasecurity/go-dep-parser
@@ -88,10 +90,12 @@ libvirt/libvirt
 linuxkit/linuxkit
 llvm/llvm-project
 MagicStack/uvloop
+microsoft/windows-rs
 mitmproxy/mitmproxy
 moby/buildkit
 moby/moby
 neovim/neovim
+nexB/vulnerablecode
 nltk/nltk
 nmap/nmap
 numba/llvmlite
