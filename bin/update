@@ -43,7 +43,7 @@ update_docker() {
 	# get the binary
 	local tmp_tar=/tmp/docker.tgz
 	local binary_uri="https://download.docker.com/linux/static/test/x86_64"
-	local docker_version=$(curl --silent "https://api.github.com/repos/moby/moby/releases/latest" | jq -r .tag_name)
+	local docker_version=$(curl --silent "https://api.github.com/repos/moby/moby/releases" | jq -r .[0].tag_name)
     local latest_build=${docker_version#"v"}
     
     if [ -x "$(command -v docker)" ]; then
