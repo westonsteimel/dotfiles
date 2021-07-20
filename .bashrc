@@ -18,3 +18,9 @@ source /home/weston/miniconda3/etc/profile.d/conda.sh
 source ~/.bash_profile
 
 complete -C /usr/local/bin/vault vault
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/weston/google-cloud-sdk/path.bash.inc' ]; then . '/home/weston/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/weston/google-cloud-sdk/completion.bash.inc' ]; then . '/home/weston/google-cloud-sdk/completion.bash.inc'; fi

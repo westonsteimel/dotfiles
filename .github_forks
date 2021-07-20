@@ -1,13 +1,15 @@
 alpinelinux/aports
 anchore/grype
 anchore/syft 
-apache/arrow
+apache/arrow-datafusion
+apache/arrow-rs
 aquasecurity/docker-bench
 aquasecurity/go-dep-parser
 aquasecurity/kube-bench
 aquasecurity/kube-hunter
 aquasecurity/tracee
 aquasecurity/trivy
+aquasecurity/vuln-list-update
 aws/aws-cli
 aws/chalice
 aws/aws-lambda-python-runtime-interface-client
@@ -29,6 +31,7 @@ cilium/hubble
 containerd/cgroups
 containerd/containerd
 containerd/cri
+containerd/nerdctl
 containernetworking/cni
 coreboot/coreboot
 quay/clair
@@ -44,7 +47,6 @@ docker/machine westonsteimel/docker-machine
 drk1wi/Modlishka
 encode/starlette
 envoyproxy/envoy
-explosion/spaCy
 falcosecurity/falco
 fatih/vim-go
 firecracker-microvm/firecracker
@@ -61,15 +63,8 @@ genuinetools/reg
 git/git
 github/hub
 golang/go
-google/syzkaller
 GREsau/okapi
 GREsau/rocket-lamb
-hashicorp/consul
-hashicorp/nomad
-hashicorp/terraform
-hashicorp/vagrant
-hashicorp/vault
-hashicorp/waypoint
 hishamhm/htop
 hyperium/hyper
 i3/i3
@@ -82,13 +77,10 @@ jessfraz/gmailfilters
 jakubroztocil/httpie
 junegunn/vim-plug
 lamedh-dev/aws-lambda-rust-runtime westonsteimel/lamedh-aws-lambda-rust-runtime
-lballabio/QuantLib
-lballabio/QuantLib-SWIG
 ledger/ledger
 libbpf/libbpf
-libvirt/libvirt
+libbpf/libbpf-rs
 linuxkit/linuxkit
-llvm/llvm-project
 MagicStack/uvloop
 microsoft/windows-rs
 mitmproxy/mitmproxy
@@ -111,12 +103,7 @@ philc/vimium
 pi-hole/docker-pi-hole
 pi-hole/pi-hole
 python/cpython
-rancher/k3d
-rancher/k3os
-rancher/k3s
-rancher/rancher
-rancher/rke
-rancher/os westonsteimel/rancher-os
+ritchie46/polars
 robertdavidgraham/masscan
 rootless-containers/rootlesskit
 rs/curlie
@@ -132,17 +119,13 @@ samuelcolvin/pydantic
 scikit-learn/scikit-learn
 scipy/scipy
 SergioBenitez/Rocket
-servo/servo
 statsmodels/statsmodels
 stedolan/jq
-Stellarium/stellarium
-surfkansas/oauth2-client-credentials-api-sidecar
 tailscale/tailscale
 tiangolo/fastapi
 tomasr/molokai
 Track3/hermit
 uutils/coreutils westonsteimel/rust-coreutils
-videolan/vlc
 wagoodman/dive
 WireGuard/WireGuard
 WireGuard/wireguard-go
@@ -150,8 +133,6 @@ WireGuard/wireguard-rs
 wireshark/wireshark
 ytdl-org/youtube-dl
 zaproxy/zaproxy
-git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux
 git.torproject.org/tor
-git.torproject.org/tor-browser 
 git.busybox.net/busybox
 git.musl-libc.org/cgit/musl

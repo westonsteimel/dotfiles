@@ -51,24 +51,26 @@ update_docker() {
     fi
 
 	if [[ "$latest_build" != "${installed_build}" ]]; then
-		# stop docker
-        dcleanup || true
-        rc-service docker stop || true
-
         # Include contributed completions
+        echo "Attempting to install docker version ${latest_build}..."
         mkdir -p /etc/bash_completion.d
-        curl -sSL -o /etc/bash_completion.d/docker "https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker"
-
+        curl -sSL "https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker" > /etc/bash_completion.d/docker
 		(
 			set -x
 			echo $latest_build
+            mkdir -p /tmp
             curl -fSL "${binary_uri}/docker-${latest_build}.tgz" -o "$tmp_tar"
             tar -C /tmp/ -xzvf "$tmp_tar"
             strip -s /tmp/docker/*
             # echo "${docker_sha256} ${tmp_tar}" | sha256sum -c -
 			#tar -C /usr/local/bin --strip-components 1 -xzvf "$tmp_tar"
             #strip -s /usr/local/bin/docker-*
-			cp /tmp/docker/* /usr/local/bin
+			
+            # stop docker
+            dcleanup || true
+            rc-service docker stop || true
+
+            cp /tmp/docker/* /usr/local/bin
             rm "${tmp_tar}"
 			# remove binaries we don't need
 			#rm /usr/local/bin/docker-containerd*
@@ -79,7 +81,7 @@ update_docker() {
 
 		# enable and start docker
 		# rc-update add docker default
-		rc-service docker start
+		rc-service docker start || true
 	else 
 		echo "docker is already up-to-date"
 	fi
@@ -441,8 +443,8 @@ update() {
 		#update_containerd;
         update_hub;
 		update_docker;
-        update_docker_machine;
-        update_docker_compose;
+        #update_docker_machine;
+        #update_docker_compose;
 		#update_k8s;
         #update_img;
         #update_faas;

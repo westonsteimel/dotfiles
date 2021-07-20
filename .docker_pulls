@@ -6,8 +6,6 @@ westonsteimel/keepassxc:edge
 westonsteimel/htop:main
 westonsteimel/tor-browser:alpha
 westonsteimel/nmap:latest
-westonsteimel/python-hacklab:main
-westonsteimel/curlie:edge
 westonsteimel/youtube-dl:edge
 alpine:edge
 alpine:latest
