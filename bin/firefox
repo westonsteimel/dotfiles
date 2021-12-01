@@ -3,7 +3,8 @@
 mkdir -p "${HOME}/.firefox/cache"
 mkdir -p "${HOME}/.firefox/mozilla"
 
-docker run -d \
+docker run \
+    -d \
     --rm \
     --memory 2gb \
     --net host \
@@ -25,4 +26,4 @@ docker run -d \
     --group-add audio \
     --group-add video \
     --name firefox \
-    "${DOCKER_REPO_PREFIX}/firefox:nightly" -setDefaultBrowser "$@"
+    "ghcr.io/westonsteimel/firefox:nightly" -setDefaultBrowser "$@"

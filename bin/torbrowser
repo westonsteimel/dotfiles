@@ -9,5 +9,5 @@ docker run --rm \
     -v /dev/shm:/dev/shm \
     --device /dev/snd \
     --name tor-browser \
-    "${DOCKER_REPO_PREFIX}/tor-browser:alpha"
+    "ghcr.io/westonsteimel/tor-browser:alpha"
     

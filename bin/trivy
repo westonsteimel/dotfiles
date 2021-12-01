@@ -1,8 +1,0 @@
-#!/bin/sh
-
-mkdir -p "${HOME}/.cache/"
-
-docker run --rm \
-    -v "${HOME}/.cache/:/home/trivy/.cache/" \
-    --name trivy \
-    "${DOCKER_REPO_PREFIX}/trivy:main" "$@"

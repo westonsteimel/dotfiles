@@ -10,5 +10,5 @@ docker run --rm \
     -v /dev/shm:/dev/shm \
     --device /dev/snd \
     --name torbrowser \
-    "${JESS_DOCKER_REPO_PREFIX}/tor-browser"
+    "ghcr.io/westonsteimel/tor-browser:stable"
     

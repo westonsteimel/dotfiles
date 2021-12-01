@@ -1,10 +1,11 @@
-westonsteimel/firefox:nightly
+ghcr.io/westonsteimel/firefox:nightly
 westonsteimel/httpie:edge
-westonsteimel/curl:edge
-westonsteimel/ledger:edge
-westonsteimel/keepassxc:edge
+ghcr.io/westonsteimel/curl:edge
+ghcr.io/westonsteimel/ledger:edge
+ghcr.io/westonsteimel/jq:edge
+ghcr.io/westonsteimel/keepassxc:edge
 westonsteimel/htop:main
-westonsteimel/tor-browser:alpha
+ghcr.io/westonsteimel/tor-browser:alpha
 westonsteimel/nmap:latest
 westonsteimel/youtube-dl:edge
 alpine:edge

@@ -3,4 +3,4 @@
 docker run --rm \
     -v "${PWD}:/home/curl" \
     -v "/tmp:/tmp" \
-    "${DOCKER_REPO_PREFIX}/curl:stable" "$@"
+    "ghcr.io/westonsteimel/curl:edge" "$@"

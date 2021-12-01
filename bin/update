@@ -399,25 +399,23 @@ update_vault() {
 }
 
 update_utils() {
-    docker image pull westonsteimel/exa:edge
-    docker image pull westonsteimel/hexyl:edge
-    docker image pull westonsteimel/bat:edge
-    docker image pull westonsteimel/procs:edge
-
-    docker container create -ti --name exa westonsteimel/exa:edge
-    docker container create -ti --name hexyl westonsteimel/hexyl:edge
-    docker container create -ti --name bat westonsteimel/bat:edge
-    docker container create -ti --name procs westonsteimel/procs:edge
+    docker container create --pull "always" -ti --name exa ghcr.io/westonsteimel/exa:edge
+    docker container create --pull "always" -ti --name hexyl ghcr.io/westonsteimel/hexyl:edge
+    docker container create --pull "always" -ti --name bat ghcr.io/westonsteimel/bat:edge
+    docker container create --pull "always" -ti --name procs ghcr.io/westonsteimel/procs:edge
+    docker container create --pull "always" -ti --name fd ghcr.io/westonsteimel/fd:edge
 
     docker container cp exa:/usr/local/bin/exa /usr/local/bin/exa
     docker container cp hexyl:/usr/local/bin/hexyl /usr/local/bin/hexyl
     docker container cp bat:/usr/local/bin/bat /usr/local/bin/bat
     docker container cp procs:/usr/local/bin/procs /usr/local/bin/procs 
+    docker container cp fd:/usr/local/bin/fd /usr/local/bin/fd
 
     docker container rm -f exa
     docker container rm -f hexyl 
     docker container rm -f bat
     docker container rm -f procs
+    docker container rm -f fd
 }
 
 update_rust() {
