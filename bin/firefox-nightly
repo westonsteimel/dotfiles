@@ -25,5 +25,5 @@ docker run \
     --device /dev/video0 \
     --group-add audio \
     --group-add video \
-    --name firefox \
-    "ghcr.io/westonsteimel/firefox:alpine" -setDefaultBrowser "$@"
+    --name firefox-nightly \
+    "ghcr.io/westonsteimel/firefox:nightly" -setDefaultBrowser "$@"

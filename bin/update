@@ -404,18 +404,23 @@ update_utils() {
     docker container create --pull "always" -ti --name bat ghcr.io/westonsteimel/bat:edge
     docker container create --pull "always" -ti --name procs ghcr.io/westonsteimel/procs:edge
     docker container create --pull "always" -ti --name fd ghcr.io/westonsteimel/fd:edge
+    docker container create --pull "always" -ti --name tailscale ghcr.io/westonsteimel/tailscale:edge
+
 
     docker container cp exa:/usr/local/bin/exa /usr/local/bin/exa
     docker container cp hexyl:/usr/local/bin/hexyl /usr/local/bin/hexyl
     docker container cp bat:/usr/local/bin/bat /usr/local/bin/bat
     docker container cp procs:/usr/local/bin/procs /usr/local/bin/procs 
     docker container cp fd:/usr/local/bin/fd /usr/local/bin/fd
+    docker container cp tailscale:/usr/local/bin/tailscale /usr/local/bin/tailscale
+    docker container cp tailscale:/usr/local/bin/tailscaled /usr/local/bin/tailscaled
 
     docker container rm -f exa
     docker container rm -f hexyl 
     docker container rm -f bat
     docker container rm -f procs
     docker container rm -f fd
+    docker container rm -f tailscale
 }
 
 update_rust() {

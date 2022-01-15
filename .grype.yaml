@@ -1,7 +1,7 @@
 ignore:
   
   # Invalid CPE configuration causes all versions of docker to appear as vulnerable
-  - vulnerability: CVE-2017-7297
+  # - vulnerability: CVE-2017-7297
 
   # Inavlid match on protobuf go module
   - vulnerability: CVE-2015-5237
