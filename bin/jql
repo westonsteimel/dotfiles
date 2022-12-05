@@ -1,0 +1,10 @@
+#!/bin/sh
+INTERACTIVE=$([ -t 0 ] && echo 1 || echo 0)
+
+if [ ${INTERACTIVE} == 1 ]; then
+    DOCKER_FLAGS="-it"
+else
+    DOCKER_FLAGS="-i"
+fi
+
+docker run --rm ${DOCKER_FLAGS} ghcr.io/westonsteimel/jql:edge "$@"
