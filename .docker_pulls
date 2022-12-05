@@ -1,4 +1,4 @@
-ghcr.io/westonsteimel/firefox:nightly
+ghcr.io/westonsteimel/firefox:alpine
 westonsteimel/httpie:edge
 ghcr.io/westonsteimel/curl:edge
 ghcr.io/westonsteimel/ledger:edge

@@ -6,7 +6,6 @@ mkdir -p "${HOME}/.firefox/mozilla"
 docker run \
     -d \
     --rm \
-    --memory 2gb \
     --net host \
     --cpuset-cpus 0 \
     -v /etc/localtime:/etc/localtime:ro \
