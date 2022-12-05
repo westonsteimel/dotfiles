@@ -1,0 +1,8 @@
+#!/bin/sh
+
+docker run --rm -it \
+    --net host \
+    -e https_proxy \
+    -e http_proxy \
+    -v "${PWD}:/home/xh/Downloads" \
+    "ghcr.io/westonsteimel/xh:edge" "$@"
