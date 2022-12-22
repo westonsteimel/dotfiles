@@ -17,8 +17,8 @@
 #DOCKER_PIDFILE="/run/docker.pid"
 
 # where the docker daemon itself is run from
-#DOCKERD_BINARY="/usr/bin/dockerd"
+DOCKERD_BINARY="/usr/local/bin/dockerd"
 
 # any other random options you want to pass to docker
-DOCKER_OPTS="--experimental"
+DOCKER_OPTS="--experimental --add-runtime local-runc=/usr/local/bin/runc --default-runtime local-runc"
 DOCKER_BUILDKIT="1"
