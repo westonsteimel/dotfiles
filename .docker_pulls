@@ -1,5 +1,5 @@
 ghcr.io/westonsteimel/firefox:alpine
-westonsteimel/httpie:edge
+ghcr.io/westonsteimel/xh:edge
 ghcr.io/westonsteimel/curl:edge
 ghcr.io/westonsteimel/ledger:edge
 ghcr.io/westonsteimel/jq:edge

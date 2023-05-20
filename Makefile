@@ -33,6 +33,8 @@ dotfiles: ## Installs the dotfiles.
 	ln -snf $(CURDIR)/.bash_profile $(HOME)/.bash_profile;
 	ln -snf $(CURDIR)/.config/nvim/init.vim $(HOME)/.config/nvim/init.vim;
 	ln -snf $(CURDIR)/.config/sway $(HOME)/.config/sway;
+	ln -snf $(CURDIR)/.config/i3status $(HOME)/.config/i3status;
+	ln -snf $(CURDIR)/.config/alacritty $(HOME)/.config/alacritty;
 
 .PHONY: test
 test: shellcheck ## Runs all the tests on the files in the repository.

@@ -47,7 +47,7 @@ update_docker() {
     local latest_build=${docker_version#"v"}
     
     if [ -x "$(command -v docker)" ]; then
-        local installed_build=$(docker --version | pcregrep -o1 -e "version (.*),")
+        local installed_build=$(docker --version | pcre2grep -o1 -e "version (.*),")
     fi
 
 	if [[ "$latest_build" != "${installed_build}" ]]; then
@@ -94,7 +94,7 @@ update_docker_machine() {
     local latest_build="${LATEST_VERSION#v}"
 
     if [ -x "$(command -v docker-machine)" ]; then
-        local installed_build=$(docker-machine --version | pcregrep -o1 -e "version (.*),")
+        local installed_build=$(docker-machine --version | pcre2grep -o1 -e "version (.*),")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
@@ -117,7 +117,7 @@ update_docker_compose() {
     local latest_build="${LATEST_VERSION}"
     
     if [ -x "$(command -v docker-compose)" ]; then
-        local installed_build=$(docker-compose --version | pcregrep -o1 -e "version (.*),")
+        local installed_build=$(docker-compose --version | pcre2grep -o1 -e "version (.*),")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
@@ -137,7 +137,7 @@ update_hub() {
     local latest_build="${LATEST_VERSION#v}"
     
     if [ -x "$(command -v hub)" ]; then
-        local installed_build=$(hub --version | pcregrep -o1 -e "hub version (.*)")
+        local installed_build=$(hub --version | pcre2grep -o1 -e "hub version (.*)")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
@@ -198,7 +198,7 @@ update_k8s() {
     local latest_build="${LATEST_VERSION}"
     
     if [ -x "$(command -v minikube)" ]; then
-        local installed_build=$(minikube version | pcregrep -o1 -e "minikube version: (.*)")
+        local installed_build=$(minikube version | pcre2grep -o1 -e "minikube version: (.*)")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
@@ -218,7 +218,7 @@ update_faas() {
     local latest_build="${LATEST_VERSION}"
     
     if [ -x "$(command -v faas-cli)" ]; then
-        local installed_build=$(faas-cli version | pcregrep -o1 -e "version: (.*)")
+        local installed_build=$(faas-cli version | pcre2grep -o1 -e "version: (.*)")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
@@ -235,7 +235,7 @@ update_img() {
     local latest_build="${LATEST_VERSION}"
     
     if [ -x "$(command -v img)" ]; then
-        local installed_build=$(img version | pcregrep -o1 -e "version     : (.*)")
+        local installed_build=$(img version | pcre2grep -o1 -e "version     : (.*)")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
@@ -266,12 +266,12 @@ update_reg() {
 
 update_vagrant() {
     echo "Updating HashiCorp vagrant..."
-    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/vagrant/" | pcregrep -o1 "^.*\<a href=\"\/vagrant\/(.*)\/\"\>" | head -n 1
+    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/vagrant/" | pcre2grep -o1 "^.*\<a href=\"\/vagrant\/(.*)\/\"\>" | head -n 1
 )
     local latest_build="${LATEST_VERSION}"
     
     if [ -x "$(command -v vagrant)" ]; then
-        local installed_build=$(vagrant --version | pcregrep -o1 -e "Vagrant (.*)")
+        local installed_build=$(vagrant --version | pcre2grep -o1 -e "Vagrant (.*)")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
@@ -293,12 +293,12 @@ update_vagrant() {
 
 update_consul() {
     echo "Updating HashiCorp consul..."
-    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/consul/" | pcregrep -o1 "^.*\<a href=\"\/consul\/(((?!(\+ent|\-beta)).)*)\/\"\>" | head -n 1
+    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/consul/" | pcre2grep -o1 "^.*\<a href=\"\/consul\/(((?!(\+ent|\-beta)).)*)\/\"\>" | head -n 1
 )
     local latest_build="${LATEST_VERSION}"
     
     if [ -x "$(command -v consul)" ]; then
-        local installed_build=$(consul --version | pcregrep -o1 -e "Consul v(.*)\w?")
+        local installed_build=$(consul --version | pcre2grep -o1 -e "Consul v(.*)\w?")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
@@ -320,12 +320,12 @@ update_consul() {
 
 update_nomad() {
     echo "Updating HashiCorp nomad..."
-    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/nomad/" | pcregrep -o1 "^.*\<a href=\"\/nomad\/(.*)\/\"\>" | head -n 1
+    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/nomad/" | pcre2grep -o1 "^.*\<a href=\"\/nomad\/(.*)\/\"\>" | head -n 1
 )
     local latest_build="${LATEST_VERSION}"
     
     if [ -x "$(command -v nomad)" ]; then
-        local installed_build=$(nomad --version | pcregrep -o1 -e "Nomad v(.*) .*")
+        local installed_build=$(nomad --version | pcre2grep -o1 -e "Nomad v(.*) .*")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
@@ -347,12 +347,12 @@ update_nomad() {
 
 update_terraform() {
     echo "Updating HashiCorp terraform..."
-    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/terraform/" | pcregrep -o1 "^.*\<a href=\"\/terraform\/(.*)\/\"\>" | head -n 1
+    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/terraform/" | pcre2grep -o1 "^.*\<a href=\"\/terraform\/(.*)\/\"\>" | head -n 1
 )
     local latest_build="${LATEST_VERSION}"
     
     if [ -x "$(command -v terraform)" ]; then
-        local installed_build=$(terraform --version | pcregrep -o1 -e "Terraform v(.*)")
+        local installed_build=$(terraform --version | pcre2grep -o1 -e "Terraform v(.*)")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then
@@ -374,11 +374,11 @@ update_terraform() {
 
 update_vault() {
 	echo "Updating HashiCorp vault..."
-    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/vault/" | pcregrep -o1 "^.*\<a href=\"\/vault\/(.*)\/\"\>" | head -n 1)
+    local LATEST_VERSION=$(curl -sSL "https://releases.hashicorp.com/vault/" | pcre2grep -o1 "^.*\<a href=\"\/vault\/(.*)\/\"\>" | head -n 1)
     local latest_build="${LATEST_VERSION}"
     
     if [ -x "$(command -v vault)" ]; then
-        local installed_build=$(vault --version | pcregrep -o1 -e "Vault v(.*)")
+        local installed_build=$(vault --version | pcre2grep -o1 -e "Vault v(.*)")
     fi
 
     if [[ "$latest_build" != "$installed_build" ]]; then

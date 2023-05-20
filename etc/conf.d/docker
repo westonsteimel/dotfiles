@@ -20,5 +20,5 @@
 DOCKERD_BINARY="/usr/local/bin/dockerd"
 
 # any other random options you want to pass to docker
-DOCKER_OPTS="--experimental --add-runtime local-runc=/usr/local/bin/runc --default-runtime local-runc"
+DOCKER_OPTS="--experimental --add-runtime local-runc=/usr/local/bin/runc --default-runtime local-runc --seccomp-profile=/etc/docker/seccomp/default.json"
 DOCKER_BUILDKIT="1"
