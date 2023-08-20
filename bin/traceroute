@@ -1,3 +1,0 @@
-#!/bin/sh
-
-docker run --rm -it "${DOCKER_REPO_PREFIX}/iputils" traceroute "$@"
