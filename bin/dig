@@ -1,4 +1,4 @@
 #!/bin/sh
 
 docker run --rm -it \
-    "${DOCKER_REPO_PREFIX}/bind-tools:latest" dig "$@"
+    "${DOCKER_REPO_PREFIX}/bind-tools:edge" dig "$@"
