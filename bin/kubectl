@@ -1,6 +1,0 @@
-#!/bin/bash
-
-docker run --rm \
-    --net host \
-    -v "${PWD}:/root" \
-    lachlanevenson/k8s-kubectl "$@"

@@ -1,6 +1,0 @@
-#!/bin/sh
-
-docker run --rm -it \
-    -v "${HOME}/.mitmproxy:/home/mitmproxy/.mitmproxy" \
-    -p 8080:8080 \
-    "${DOCKER_REPO_PREFIX}/mitmproxy:alpine" mitmdump

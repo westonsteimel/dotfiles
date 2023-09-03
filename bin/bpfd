@@ -1,8 +1,0 @@
-#!/bin/sh
-
-docker run --rm -it \
-    --name bpfd \
-    -v /lib/modules:/lib/modules:ro \
-    -v /usr/src:/usr/src:ro \
-    --privileged \
-    "${JESS_DOCKER_REPO_PREFIX}/bpfd" "$@"

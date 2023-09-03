@@ -1,8 +1,0 @@
-#!/bin/sh
-
-docker run --rm -d \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -e "DISPLAY=unix${DISPLAY}" \
-    --privileged \
-    --name virtualbox \
-    "${JESS_DOCKER_REPO_PREFIX}/virtualbox" /usr/bin/VBoxManage

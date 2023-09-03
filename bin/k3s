@@ -1,6 +1,0 @@
-#!/bin/sh
-
-docker run --rm -d \
-    --privileged \
-    --name k3s  \
-    "rancher/k3s:latest" "$@"

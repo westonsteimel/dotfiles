@@ -1,8 +1,0 @@
-#!/bin/sh
-
-docker run --rm \
-    --net host \
-    -v "${PWD}:/home/curlie" \
-    -e "https_proxy=${https_proxy}" \
-    -e "http_proxy=${http_proxy}" \
-    "${DOCKER_REPO_PREFIX}/curlie:edge" "$@"

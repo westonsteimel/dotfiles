@@ -1,8 +1,0 @@
-#!/bin/sh
-
-docker run -it --rm \
-	--log-driver none \
-	--net host \
-	--cap-add NET_ADMIN \
-	--name masscan \
-	"${DOCKER_REPO_PREFIX}/masscan:main" "$@"

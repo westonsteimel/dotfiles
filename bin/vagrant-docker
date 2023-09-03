@@ -1,9 +1,0 @@
-#!/bin/sh
-
-docker run \
-    --rm \
-    -it \
-    --name vagrant \
-    --workdir /work \
-    --volume "$PWD:/work" \
-    "${JESS_DOCKER_REPO_PREFIX}/vagrant" "$@"
