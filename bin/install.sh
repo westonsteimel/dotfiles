@@ -41,7 +41,7 @@ install_rust() {
 # install/update golang from source
 install_golang() {
 	export GO_VERSION
-	GO_VERSION=$(curl -sSL "https://golang.org/VERSION?m=text")
+	GO_VERSION=$(curl -sSL "https://go.dev/VERSION?m=text")
 	export GO_SRC=/usr/local/go
 
 	# if we are passing the version

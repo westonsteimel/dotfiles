@@ -15,7 +15,7 @@ docker run \
     -v "${HOME}/Downloads:/home/firefox/Downloads" \
     -v "${HOME}/Pictures:/home/firefox/Pictures" \
     -v "${HOME}/Torrents:/home/firefox/Torrents" \
-    -e "DISPLAY=unix${DISPLAY}" \
+    -e "DISPLAY=${DISPLAY}" \
     -e GDK_SCALE \
     -e GDK_DPI_SCALE \
     -v /dev/shm:/dev/shm \
