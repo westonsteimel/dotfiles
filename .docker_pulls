@@ -6,7 +6,3 @@ ghcr.io/westonsteimel/jq:edge
 ghcr.io/westonsteimel/keepassxc:edge
 westonsteimel/htop:main
 ghcr.io/westonsteimel/tor-browser:alpha
-westonsteimel/nmap:latest
-westonsteimel/youtube-dl:edge
-alpine:edge
-alpine:latest
