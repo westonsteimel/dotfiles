@@ -1,13 +1,19 @@
 #!/bin/bash
 
+mkdir -p "${HOME}/.firefox/cache"
+mkdir -p "${HOME}/.firefox/mozilla"
+
 docker run \
+    -d \
     --rm \
-    --memory 2gb \
     --net host \
     --cpuset-cpus 0 \
     -v /etc/localtime:/etc/localtime:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -e "DISPLAY=unix${DISPLAY}" \
+    -v "${HOME}/Downloads:/home/firefox/Downloads" \
+    -v "${HOME}/Pictures:/home/firefox/Pictures" \
+    -v "${HOME}/Torrents:/home/firefox/Torrents" \
+    -e "DISPLAY=${DISPLAY}" \
     -e GDK_SCALE \
     -e GDK_DPI_SCALE \
     -v /dev/shm:/dev/shm \
@@ -16,5 +22,5 @@ docker run \
     --device /dev/video0 \
     --group-add audio \
     --group-add video \
-    --name firefox-noprofileload \
-    "test/firefox:edge-amd64" -setDefaultBrowser "$@"
+    --name firefox \
+    "ghcr.io/westonsteimel/firefox:alpine" -setDefaultBrowser "$@"
