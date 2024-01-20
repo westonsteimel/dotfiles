@@ -373,7 +373,7 @@ update_vault() {
 }
 
 update_utils() {
-    docker container create --pull "always" -ti --name exa ghcr.io/westonsteimel/exa:edge
+    docker container create --pull "always" -ti --name eza ghcr.io/westonsteimel/eza:edge
     docker container create --pull "always" -ti --name hexyl ghcr.io/westonsteimel/hexyl:edge
     docker container create --pull "always" -ti --name bat ghcr.io/westonsteimel/bat:edge
     docker container create --pull "always" -ti --name procs ghcr.io/westonsteimel/procs:edge
@@ -381,7 +381,7 @@ update_utils() {
     docker container create --pull "always" -ti --name tailscale ghcr.io/westonsteimel/tailscale:edge
 
 
-    docker container cp exa:/usr/local/bin/exa /usr/local/bin/exa
+    docker container cp eza:/usr/local/bin/eza /usr/local/bin/eza
     docker container cp hexyl:/usr/local/bin/hexyl /usr/local/bin/hexyl
     docker container cp bat:/usr/local/bin/bat /usr/local/bin/bat
     docker container cp procs:/usr/local/bin/procs /usr/local/bin/procs 
@@ -389,7 +389,7 @@ update_utils() {
     docker container cp tailscale:/usr/local/bin/tailscale /usr/local/bin/tailscale
     docker container cp tailscale:/usr/local/bin/tailscaled /usr/local/bin/tailscaled
 
-    docker container rm -f exa
+    docker container rm -f eza
     docker container rm -f hexyl 
     docker container rm -f bat
     docker container rm -f procs

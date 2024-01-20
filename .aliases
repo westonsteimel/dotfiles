@@ -12,7 +12,7 @@ alias h="history"
 alias untar='tar xvzf'
 alias vim="nvim"
 
-alias ls="exa"
+alias ls="eza"
 alias cat="bat"
 alias ps="procs"
 alias http="xh"
